@@ -4,9 +4,10 @@
         <div class="col-md-12">
           <div class="login-section-bg">
             <div class="login-section">
+            <%= devise_error_messages! %>
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
               <div class="form-group form-login">
-                <%= f.email_field :email, placeholder: "John", id: "exampleInputName2",class: "form-control field-user", autocorrect: "off" %>
+                <%= f.email_field :email, placeholder: "Email Address", id: "exampleInputName2",class: "form-control field-user", autocorrect: "off" %>
               </div>
               <div class="form-group form-login">
                 <%= f.password_field :password, autocomplete: "off", placeholder: "Password", id: "exampleInputEmail2", class: "form-control field-password" %>

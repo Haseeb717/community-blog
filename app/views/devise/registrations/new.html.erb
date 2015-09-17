@@ -1,40 +1,48 @@
-<h2>Sign up</h2>
+<div class="login-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="login-section-bg">
+          <div class="login-section">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <div class="form-group form-login">
+              <%= devise_error_messages! %>
+              <%= f.text_field :first_name, placeholder: "First Name", id: "exampleInputName2",class: "form-control field-user", autocorrect: "off" %>
+            </div>
+            <div class="form-group form-login">
+              <%= f.text_field :last_name, placeholder: "Last Name", id: "exampleInputName2",class: "form-control field-user", autocorrect: "off" %>
+            </div>
+            <div class="form-group form-login">
+              <%= f.email_field :email, placeholder: "Email Address", id: "exampleInputName2",class: "form-control field-user", autocorrect: "off" %>
+            </div>
+            <div class="form-group form-login">
+              <%= f.password_field :password, autocomplete: "off", placeholder: "Password", id: "exampleInputEmail2", class: "form-control field-password" %>
+            </div>
+            <div class="form-group form-login">
+              <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Password Confirmation", id: "exampleInputEmail2", class: "form-control field-password" %>
+            </div>
+            <div class="login-link">
+              <%= f.submit "Sign Up" , id: "login-btn" %>
+            </div>
+          <% end -%>
+          <div class="Or-option">
+            <p>
+              <span>or</span>
+            </p>
+          </div>
+          <div class="facebook-link">
+            <a href="#">
+              <i class="fa fa-facebook-official"></i>
+              <span>SignUp With Facebook</span>
+            </a>
+          </div>
+          <div class="others-link">
+            <%= render "devise/shared/links" %>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  <div>
+</div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
-
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>

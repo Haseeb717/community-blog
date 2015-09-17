@@ -59,6 +59,7 @@
   background-color: transparent;
   height: 40px;
   padding-left: 30px;
+  width:100%;
 }
 .login-page .login-section input.field-user{
 	background: url('image-user.png') no-repeat;
@@ -168,16 +169,25 @@
 
 #login-btn{
 	text-transform: uppercase;
-    color: #263d48;
-    font-size: 22px;
-    font-family: 'source_sans_prosemibold';
-    text-decoration: none;
-    padding-left: 0px;
-    height: auto;
-    border:0;
+  color: #263d48;
+  font-size: 22px;
+  font-family: 'source_sans_prosemibold';
+  text-decoration: none;
+  padding-left: 0px;
+  height: auto;
+  border:0;
+  width:auto;
 }
-
-
+#pwd_btn{
+  text-transform: uppercase;
+  color: #263d48;
+  font-size: 22px;
+  font-family: 'source_sans_prosemibold';
+  text-decoration: none;
+  padding-left: 0px;
+  height: auto;
+  border:0;
+}
 
 
 

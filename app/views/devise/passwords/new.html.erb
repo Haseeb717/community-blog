@@ -1,16 +1,37 @@
-<h2>Forgot your password?</h2>
+<div class="login-page">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="login-section-bg">
+            <div class="login-section">
+              <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+                <%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+                <div class="form-group form-login">
+                  <%= f.email_field :email, placeholder: "Email Address", id: "exampleInputName2",class: "form-control field-user", autocorrect: "off" , autofocus: true %>
+                </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+                <div class="login-link">
+                  <%= f.submit "Send instructions", id: "pwd_btn" %>
+                </div>
+              <% end %>
+              <div class="Or-option">
+                <p>
+                  <span>or</span>
+                </p>
+              </div>
+              <div class="facebook-link">
+                <a href="#">
+                  <i class="fa fa-facebook-official"></i>
+                  <span>Login With Facebook</span>
+                </a>
+              </div>
+              <div class="others-link">
+                <%= render "devise/shared/links" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
