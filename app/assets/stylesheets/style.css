@@ -177,6 +177,10 @@
   height: auto;
   border:0;
   width:auto;
+  border-radius: 7px;
+  background:#5ca545;
+  padding:10px 15px;
+  text-align:center;
 }
 #pwd_btn{
   text-transform: uppercase;
@@ -187,6 +191,11 @@
   padding-left: 0px;
   height: auto;
   border:0;
+  width:auto;
+  border-radius: 7px;
+  background:#5ca545;
+  padding:10px 15px;
+  text-align:center;
 }
 
 
