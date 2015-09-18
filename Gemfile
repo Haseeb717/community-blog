@@ -30,6 +30,10 @@ gem 'jbuilder', '~> 1.2'
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
 gem "socialization"
+gem 'paperclip'
+gem 'pry'
+
+gem 'non-stupid-digest-assets', '~> 1.0.4'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
