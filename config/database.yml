@@ -21,6 +21,6 @@ test:
 production:
   adapter: mysql
   username: root
-  database: db/production.sqlite3
+  database: db/production.mysql
   pool: 5
   timeout: 5000
