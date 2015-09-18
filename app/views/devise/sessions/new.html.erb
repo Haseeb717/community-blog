@@ -4,6 +4,16 @@
         <div class="col-md-12">
           <div class="login-section-bg">
             <div class="login-section">
+              <% flash.each do |key, value| %>
+                <div class="alert alert-<%= key %>">
+                  <a href="#" data-dismiss="alert" class="close">×</a>
+                    <ul>
+                      <li>
+                        <%= value %>
+                      </li>
+                    </ul>
+                </div>
+              <% end %>
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
               <div class="form-group form-login">
                 <%= devise_error_messages! %>
@@ -13,7 +23,7 @@
                 <%= f.password_field :password, autocomplete: "off", placeholder: "Password", id: "exampleInputEmail2", class: "form-control field-password" %>
               </div>
               <div class="login-link">
-                <%= f.submit "Login" , id: "login-btn" %>
+                <%= f.submit "Login" , id: "login-btn", class: "btn" %>
               </div>
             <% end -%>
             <div class="Or-option">
