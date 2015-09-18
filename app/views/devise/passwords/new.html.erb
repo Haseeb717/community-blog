@@ -4,6 +4,16 @@
         <div class="col-md-12">
           <div class="login-section-bg">
             <div class="login-section">
+              <% flash.each do |key, value| %>
+                <div class="alert alert-<%= key %>">
+                  <a href="#" data-dismiss="alert" class="close">×</a>
+                    <ul>
+                      <li>
+                        <%= value %>
+                      </li>
+                    </ul>
+                </div>
+              <% end %>
               <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
                 <%= devise_error_messages! %>
 
