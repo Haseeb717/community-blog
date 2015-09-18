@@ -32,7 +32,7 @@ gem 'activeadmin', github: 'activeadmin'
 gem "socialization"
 gem 'paperclip'
 gem 'pry'
-gem 'mysql'
+gem 'mysql2'
 gem 'non-stupid-digest-assets', '~> 1.0.4'
 
 group :doc do
