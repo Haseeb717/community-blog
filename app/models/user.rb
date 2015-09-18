@@ -8,4 +8,7 @@ class User < ActiveRecord::Base
   has_many :tags, through: :user_tags
   has_many :comments
   has_many :ratings, as: :rate_able
+
+  acts_as_liker
+  
 end
