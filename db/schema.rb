@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150918074501) do
+ActiveRecord::Schema.define(version: 20150918100541) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -84,6 +84,19 @@ ActiveRecord::Schema.define(version: 20150918074501) do
 
   add_index "follows", ["followable_id", "followable_type"], name: "fk_followables"
   add_index "follows", ["follower_id", "follower_type"], name: "fk_follows"
+
+  create_table "images", force: true do |t|
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "images", ["imageable_id", "imageable_type"], name: "index_images_on_imageable_id_and_imageable_type"
 
   create_table "likes", force: true do |t|
     t.string   "liker_type"

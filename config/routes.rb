@@ -3,7 +3,12 @@ Blog::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  resources :products
+
+  resources :products do
+    member do
+      post 'product_comments'
+    end
+  end
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

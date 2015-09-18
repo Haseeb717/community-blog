@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy,:product_comments]
 
   respond_to :html
 
@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product.images.build
     respond_with(@product)
   end
 
@@ -36,12 +37,23 @@ class ProductsController < ApplicationController
     respond_with(@product)
   end
 
+  def product_comments
+    comment = Comment.new(comment_params)
+    comment.save
+    @product.comments << comment
+    respond_with(@product)
+  end
+
   private
     def set_product
       @product = Product.find(params[:id])
     end
 
     def product_params
-      params.require(:product).permit(:title,:description,:pros,:cons,:price,:link)
+      params.require(:product).permit(:title,:description,:pros,:cons,:price,:link, images_attributes: [:avatar])
+    end
+
+    def comment_params
+      params.require(:product).require(:comments_attributes).require("0").permit(:description)
     end
 end
