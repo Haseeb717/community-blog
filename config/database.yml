@@ -21,6 +21,6 @@ test:
 production:
   adapter: mysql
   username: root
-  database: db/production.mysql
+  database: mvp_beta_production
   pool: 5
   timeout: 5000
