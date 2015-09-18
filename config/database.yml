@@ -5,7 +5,7 @@ development:
   database: blog_development
   pool: 5
   username: root
-  password: 
+  password: root
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
@@ -30,5 +30,5 @@ production:
   username: root
   password: 
   host: localhost
-  encoding: utf8mb4
-  collation: utf8mb4_unicode_ci
+  encoding: utf8
+  
