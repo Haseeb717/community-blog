@@ -8,5 +8,7 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :images
   accepts_nested_attributes_for :comments
 
+  validates :title, :description, :presence => true
+
   acts_as_likeable
 end

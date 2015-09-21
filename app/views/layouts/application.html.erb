@@ -15,10 +15,17 @@
         <div class="header-container">
           <div class="row">
             <div class="col-md-12">
-              <div class="upper-header-content">
+              <div class="upper-header-content dropdown">
                 <ul>
                   <li><a href="#" class="user-link"><%= current_user.first_name + current_user.last_name %></a></li>
-                  <li><a href="#" class="setting-link"><span></span></a></li>
+                  <li class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+                    <a href="#" class="setting-link"><span></span></a>
+                    <ul class="dropdown dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                      <li role="presentation">
+                        <a role="menuitem" tabindex="-1" href="#">Java</a>
+                      </li>
+                    </ul>
+                  </li>
                   <li><a href="#" class="question-link"><span></span></a></li>
                 </ul>
               </div>
@@ -72,6 +79,16 @@
         </nav>
       </div>
     </div>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-info">
+        <a href="#" data-dismiss="alert" class="close">×</a>
+          <ul>
+            <li style="list-style-type:none;">
+              <%= value %>
+            </li>
+          </ul>
+      </div>
+    <% end %>
   </header>
   <!-- header -->
   <% end %>

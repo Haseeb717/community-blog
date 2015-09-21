@@ -16,7 +16,7 @@
     src: url('source sans pro/sourcesanspro-semibold-webfont.eot?#iefix') format('embedded-opentype'),
          url('source sans pro/sourcesanspro-semibold-webfont.woff2') format('woff2'),
          url('source sans pro/sourcesanspro-semibold-webfont.woff') format('woff'),
-         url('source sans pro/sourcesanspro-semibold-webfont.ttf') format('truetype'),
+         url('source sans pro/sourcesanspro-semibold-webfont.ttf') fosrmat('truetype'),
          url('source sans pro/sourcesanspro-semibold-webfont.svg#source_sans_prosemibold') format('svg');
     font-weight: normal;
     font-style: normal;
@@ -72,6 +72,11 @@
   text-align: center;
   background-size: 100% 100%;
   padding: 70px 0px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 .login-page .login-section-bg{
   display: inline-block;
@@ -110,7 +115,7 @@
 	background: url('image-user.png') no-repeat;
 	background-position: 6px 10px;
 }
-.login-page .login-section input.field-user:focus{
+.login-page .login-section input.field-password:focus{
 	background: url('image-user-h.png') no-repeat;
 	background-position: 6px 10px;
 	-moz-transition: .4s linear;
@@ -128,6 +133,7 @@
   -webkit-transition: .4s ease-out;
   transition: .4s linear;
 }
+
 .login-page .login-link{
 	width: 100%;
 	float: left;
@@ -251,9 +257,7 @@
   border: 0;
   border-radius: 0;
 }
-#devise-error li{
-  list-style: none;
-}
+
 
 /*============================ Header ==================================*/
 
@@ -508,7 +512,7 @@ header .navbar-brand{
   transition: .4s linear;
 }
 .home-page .content-bottom-like ul li a.icon-dislike{
-  background: url('.img-6.png') no-repeat;
+  background: url('img-6.png') no-repeat;
   display: block;
   width: 37px;
   height: 37px;

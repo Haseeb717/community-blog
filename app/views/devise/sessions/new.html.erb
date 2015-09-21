@@ -1,12 +1,14 @@
 <div class="login-page">
+    
     <div class="container">
       <div class="row">
         <div class="col-md-12">
+          <%= devise_error_messages! %>
           <div class="login-section-bg">
             <div class="login-section">
 
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-              <%= devise_error_messages! %>
+              
               <div class="form-group form-login">
                 <%= f.email_field :email, placeholder: "Email Address", id: "exampleInputName2",class: "form-control field-user", autocomplete: "off", autofocus: true %>
               </div>

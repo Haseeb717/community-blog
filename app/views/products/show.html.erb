@@ -1,16 +1,38 @@
 <p id="notice"><%= notice %></p>
-
+<p>
+  <% @product.images.each do |product_image| %>
+    <%= image_tag product_image.avatar.url %>
+  <% end %>
+</p>
 <p>
   <strong>Title:</strong>
   <%= @product.title %>
 </p>
-
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+<p>
+  <strong>Pros:</strong>
+  <%= @product.title %>
+</p>
+<p>
+  <strong>Cons:</strong>
+  <%= @product.title %>
+</p>
+<p>
+  <strong>Price:</strong>
+  <%= @product.title %>
+</p>
 <%= form_for @product , url: product_comments_product_path(@product), :method => :post do |f| %>
   <%= f.fields_for :comments, @product.comments.build do |comment| %>
     <%= comment.text_area :description %>
   <% end %>
-  <%= f.submit %>
+  <%= f.submit "Add comment" %>
 <% end %>
 
+<% @product.comments.each do |product_comment| %>
+    <li><%= product_comment.description %></li>
+<% end %>
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

@@ -1,21 +1,24 @@
+
 <div class="login-page">
-    <div class="container">
+  <div class="container">
       <div class="row">
         <div class="col-md-12">
+          <% flash.each do |key, value| %>
+            <div class="alert alert-info">
+              <a href="#" data-dismiss="alert" class="close">×</a>
+                <ul>
+                  <li style="list-style-type:none;">
+                    <%= value %>
+                  </li>
+                </ul>
+            </div>
+          <% end %>
+          <%= devise_error_messages! %>
           <div class="login-section-bg">
             <div class="login-section">
-              <% flash.each do |key, value| %>
-                <div class="alert alert-info">
-                  <a href="#" data-dismiss="alert" class="close">×</a>
-                    <ul>
-                      <li>
-                        <%= value %>
-                      </li>
-                    </ul>
-                </div>
-              <% end %>
+              
               <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-                <%= devise_error_messages! %>
+                
 
                 <div class="form-group form-login">
                   <%= f.email_field :email, placeholder: "Email Address", id: "exampleInputName2",class: "form-control field-user", autocomplete: "off" , autofocus: true %>

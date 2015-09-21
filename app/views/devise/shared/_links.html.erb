@@ -7,7 +7,7 @@
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <span>Don't have an account?  </span><%= link_to "Create one now.", new_registration_path(resource_name), class: "create-account" %><br />
+  <span>Don't have an account?  </span><%= link_to "Create one now", new_registration_path(resource_name), class: "create-account" %><br />
 <% end -%>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
