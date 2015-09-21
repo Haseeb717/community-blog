@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  #layout :layout_by_resource
 
   protected
 
@@ -12,4 +13,13 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:first_name, :last_name, :email, :password, :password_confirmation, :remember_me) }
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password) }
   end
+
+  # def layout_by_resource
+  #   if devise_controller? && resource_name == :user && action_name == 'new'
+  #     "devise"
+  #   else
+  #     "application"
+  #   end
+  # end
+
 end

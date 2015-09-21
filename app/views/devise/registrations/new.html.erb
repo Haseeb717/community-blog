@@ -7,7 +7,7 @@
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <div class="form-group form-login">
               <%= devise_error_messages! %>
-              <%= f.text_field :first_name, placeholder: "First Name", id: "exampleInputName2",class: "form-control field-user", autocomplete: "off" %>
+              <%= f.text_field :first_name, placeholder: "First Name", id: "exampleInputName2",class: "form-control field-user", autocomplete: "off", autofocus: true %>
             </div>
             <div class="form-group form-login">
               <%= f.text_field :last_name, placeholder: "Last Name", id: "exampleInputName2",class: "form-control field-user", autocomplete: "off" %>
@@ -25,7 +25,7 @@
               <%= f.submit "Sign Up" , id: "login-btn" %>
             </div>
           <% end -%>
-          <div class="Or-option">
+          <!-- <div class="Or-option">
             <p>
               <span>or</span>
             </p>
@@ -35,7 +35,7 @@
               <i class="fa fa-facebook-official"></i>
               <span>SignUp With Facebook</span>
             </a>
-          </div>
+          </div> -->
           <div class="others-link">
             <%= render "devise/shared/links" %>
           </div>

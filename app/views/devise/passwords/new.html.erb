@@ -5,7 +5,7 @@
           <div class="login-section-bg">
             <div class="login-section">
               <% flash.each do |key, value| %>
-                <div class="alert alert-<%= key %>">
+                <div class="alert alert-info">
                   <a href="#" data-dismiss="alert" class="close">×</a>
                     <ul>
                       <li>
@@ -25,7 +25,7 @@
                   <%= f.submit "Send instructions", id: "pwd_btn" %>
                 </div>
               <% end %>
-              <div class="Or-option">
+              <!-- <div class="Or-option">
                 <p>
                   <span>or</span>
                 </p>
@@ -35,7 +35,7 @@
                   <i class="fa fa-facebook-official"></i>
                   <span>Login With Facebook</span>
                 </a>
-              </div>
+              </div> -->
               <div class="others-link">
                 <%= render "devise/shared/links" %>
               </div>
