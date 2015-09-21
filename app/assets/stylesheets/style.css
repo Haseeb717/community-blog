@@ -403,6 +403,10 @@ header .navbar-brand{
   padding: 12px 0px 0px 0px;
 }
 
+.logout-link{
+  font-size: 15px !important;
+  padding-left: 0px !important; 
+}
 /*============================ Header ============================*/
 
 .home-page{
@@ -684,7 +688,6 @@ footer .footer-content p{
 .product-page .textfield-block .text-field button:focus{
   border: none;
 }
-
 
 /*============================ Product Page ============================*/
 
