@@ -11,14 +11,25 @@ module DeviseHelper
 
     return '' if resource.errors.empty?  && flash_alerts.empty?
     errors = resource.errors.empty? ? flash_alerts : resource.errors.full_messages
+    
     #messages = resource.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
     messages = errors.map { |msg| content_tag(:li, " #{msg}") }.join
-    html = <<-HTML
+    if !flash[:alert]
+      html = <<-HTML
+      <div class="alert alert-info" style="list-style-type:none;"> <button type="button"
+      class="close" data-dismiss="alert">x</button>
+        #{messages}
+      </div>
+      HTML
+    else
+      html = <<-HTML
     <div class="alert alert-danger"> <button type="button"
     class="close" data-dismiss="alert">x</button>
       #{messages}
     </div>
     HTML
+    end
+    
 
     html.html_safe
   end
