@@ -1,1 +1,114 @@
-<h1>Home</h1>
+
+<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+<!-- /.home-page -->
+  <div class="home-page">
+    <div class="container">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-info">
+          <a href="#" data-dismiss="alert" class="close">×</a>
+            <ul>
+              <li>
+                <%= value %>
+              </li>
+            </ul>
+        </div>
+      <% end %>
+      <h2 class="homepage-heading">Feed</h2>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="home-content">
+            <div class="home-option-content">
+              <div class="content-top">
+                <div class="content-top-heading">
+                  <h2>Product Title</h2>
+                </div>
+                <div class="content-top-rating">
+                  <ul>
+                    <li><a href="#"><span></span></a></li>
+                    <li><a href="#"><span></span></a></li>
+                    <li><a href="#"><span></span></a></li>
+                    <li><a href="#"><span></span></a></li>
+                    <li><a href="#"><span></span></a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="content-img">
+                <%= image_tag("img-7.png", options={alt: "Logo"}) %>
+              </div>
+              <div class="content-bottom">
+                <div class="content-bottom-like">
+                  <ul>
+                    <li><a href="#" class="icon-like"><span></span></a></li>
+                    <li><a href="#" class="icon-dislike"><span></span></a></li>
+                  </ul>
+                </div>
+                <div class="content-bottom-date">
+                  <a href="#">09/09/2015</a>
+                  <%= link_to image_tag("img-8.png", options={alt: "Logo"}) %>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="home-comment">
+              <div class="home-comment-content">
+                <div class="home-comment-person">
+                  <h3 class="comment-person-first">Ashley Doe</h3>
+                </div>
+                <div class="home-comment-descrip">
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="home-content">
+            <div class="home-option-content">
+              <div class="content-top">
+                <div class="content-top-heading">
+                  <h2>Product Title</h2>
+                </div>
+                <div class="content-top-rating">
+                  <ul>
+                    <li><a href="#"><span></span></a></li>
+                    <li><a href="#"><span></span></a></li>
+                    <li><a href="#"><span></span></a></li>
+                    <li><a href="#"><span></span></a></li>
+                    <li><a href="#"><span></span></a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="content-img">
+                <%= image_tag("img-11.png", options={alt: "img"})%>
+              </div>
+              <div class="content-bottom">
+                <div class="content-bottom-like">
+                  <ul>
+                    <li><a href="#" class="icon-like"><span></span></a></li>
+                    <li><a href="#" class="icon-dislike"><span></span></a></li>
+                  </ul>
+                </div>
+                <div class="content-bottom-date">
+                  <a href="#">26/10/2015</a>
+                  <%= link_to image_tag("img-8.png", options={alt: "Logo"}) %>
+                </div>
+              </div>
+            </div>
+            <div class="home-comment">
+              <div class="home-comment-content">
+                <div class="home-comment-person">
+                  <h3 class="comment-person-second">Tom Doe</h3>
+                </div>
+                <div class="home-comment-descrip">
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.home-page -->

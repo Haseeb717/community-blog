@@ -10,7 +10,7 @@
           <%= f.hidden_field :reset_password_token %>
 
             <div class="form-group form-login">
-              <%= f.password_field :password, autocomplete: "off", placeholder: "Password", id: "exampleInputEmail2", class: "form-control field-password" %>
+              <%= f.password_field :password, autocomplete: "off", placeholder: "Password", id: "exampleInputEmail2", class: "form-control field-password", autofocus: true %>
             </div>
             <div class="form-group form-login">
               <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Password Confirmation", id: "exampleInputEmail2", class: "form-control field-password" %>

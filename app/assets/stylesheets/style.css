@@ -141,6 +141,7 @@
 	font-family: 'source_sans_prosemibold';
 	text-decoration: none;
 }
+
 .login-page .Or-option{
 	width: 100%;
 	float: left;
@@ -212,7 +213,10 @@
 .login-page .others-link a.create-account{
 	color: #3b5998;
 }
-
+.login-page .others-link a.create-account:hover
+{
+  color: #121B2E;
+}
 #login-btn{
 	text-transform: uppercase;
   color: #fff;
@@ -242,6 +246,10 @@
   background:#3b5998;
   padding:10px 15px;
   text-align:center;
+}
+#login-btn:focus,#pwd_btn:focus{
+  border: 0;
+  border-radius: 0;
 }
 #devise-error li{
   list-style: none;
