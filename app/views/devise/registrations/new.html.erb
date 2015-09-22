@@ -1,9 +1,9 @@
-<%= devise_error_messages! %>
+
 <div class="login-page">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        
+        <%= devise_error_messages! %>
         <div class="login-section-bg">
           <div class="login-section">
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
