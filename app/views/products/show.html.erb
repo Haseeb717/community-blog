@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <p>
   <% @product.images.each do |product_image| %>
-    <%= image_tag product_image.avatar.url %>
+    <%= image_tag product_image.avatar.url(:small) %>
   <% end %>
 </p>
 <p>

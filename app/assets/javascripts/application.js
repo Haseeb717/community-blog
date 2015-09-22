@@ -13,4 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require textext.core
+//= require textext.plugin.ajax
+//= require textext.plugin.autocomplete
+//= require textext.plugin.tags
+//= require products
+//= require user

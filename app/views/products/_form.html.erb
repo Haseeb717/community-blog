@@ -1,13 +1,15 @@
 <%= form_for(@product, html: { multipart: true }) do |f| %>
   <% if @product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
-
-      <ul>
+    <div class="col-md-12">
+      <div class="alert alert-danger">
+      <a href="#" data-dismiss="alert" class="close">×</a>
       <% @product.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+            <ul>
+              <li style="">
+                <%= msg %>
+              </li>
+            </ul>
       <% end %>
-      </ul>
     </div>
   <% end %>
   
@@ -20,9 +22,9 @@
           <h2>Product</h2>
           <div class="text-field">
             <%= f.fields_for :images do |photo| %>
-              <%= photo.file_field :avatar,class: "form-control" %>
+              <%= photo.file_field :avatar,class: "form-control product-img" %>
             <% end %>
-            <button>Add New Image</button>
+            <button style="display:none;" id="add-img">Add More Images</button>
           </div>
           <div class="text-field">
             <%= f.label :title %><br>
@@ -42,7 +44,7 @@
           </div>
           <div class="text-field">
             <label>Category</label>
-            <input type="text" class="form-control" id="exampleInputName1" placeholder="#product">
+            <input type="text" class="form-control" id="category", placeholder="#product">
           </div>
           <div class="text-field">
             <%= f.label :price %><br>
@@ -63,4 +65,36 @@
   <!-- /.product-page -->
 <% end %>
 
-  
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".product-img:file").first().on('change' ,function(){
+      var a = ($(this).val());
+      if(a.length != 0){
+        $("#add-img").show();
+      }
+    });
+
+    $("#add-img").click(function(e){
+      var last_one = $(".product-img:last").val();
+      if(last_one.length!=0){
+        e.preventDefault();
+        var count = $(".product-img").length;
+        var name = "product[images_attributes]["+count+"][avatar]";
+        var d_field = '<input class="form-control product-img" style="margin-top:10px;" type="file" name="'+name+'">';
+        var el = $('.product-img:last');
+        $(el).after(d_field);
+      }
+      else{
+        e.preventDefault();
+        alert("Fill previous one first")
+      }
+    });
+  });
+  $('#category').textext({
+        plugins : 'tags autocomplete ajax',
+        tagsItems : [ 'Basic', 'JavaScript', 'PHP', 'Scala' ],
+        prompt : 'Add one...',
+        
+    });
+
+</script>  
