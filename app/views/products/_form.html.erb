@@ -24,6 +24,7 @@
             <%= f.fields_for :images do |photo| %>
               <%= photo.file_field :avatar,class: "form-control product-img" %>
             <% end %>
+            
             <button style="display:none;" id="add-img">Add More Images</button>
           </div>
           <div class="text-field">

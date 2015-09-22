@@ -1,5 +1,113 @@
 
-<%= render 'form' %>
+<%= form_for(@product, html: { multipart: true }) do |f| %>
+  <% if @product.errors.any? %>
+    <div class="col-md-12">
+      <div class="alert alert-danger">
+      <a href="#" data-dismiss="alert" class="close">×</a>
+      <% @product.errors.full_messages.each do |msg| %>
+            <ul>
+              <li style="">
+                <%= msg %>
+              </li>
+            </ul>
+      <% end %>
+    </div>
+  <% end %>
+  
+  <!-- /.product-page -->
+  <div class="product-page">
+    
+    <section class="textfiled-section">
+      <div class="container">
+        <div class="textfield-block">
+          <h2>Product</h2>
+          <div class="text-field">
+            <%= f.fields_for :images, @product.images.build do |photo| %>
+              <%= photo.file_field :avatar,class: "form-control product-img" %>
+            <% end %>
+            <% if !@product.images.nil? || !@product.images.empty? %>
+              <% @product.images.each do |img| %>
+                  <% if img.avatar_file_name %>
+                    <%= image_tag img.avatar.url(:small) %>
+                    <%= link_to 'Delete', image_path(img.id), {:method => :delete, :confirm => 'Are you sure?'} %>
+                  <% end %>
+              <% end %>
+            <% end %>
+            <button style="display:none;" id="add-img">Add More Images</button>
+          </div>
+          <div class="text-field">
+            <%= f.label :title %><br>
+            <%= f.text_field :title, class: "form-control", id:"exampleInputName2" %>
+          </div>
+          <div class="text-field">
+            <%= f.label :description %><br>
+            <%= f.text_area :description , class: "form-control", rows:'5' %>
+          </div>
+          <div class="text-field">
+            <%= f.label :pros %><br>
+            <%= f.text_area :pros , class: "form-control", rows:'2' %>
+          </div>
+          <div class="text-field">
+            <%= f.label :cons %><br>
+            <%= f.text_area :cons , class: "form-control", rows:'2' %>
+          </div>
+          <div class="text-field">
+            <label>Category</label>
+            <input type="text" class="form-control" id="category", placeholder="#product">
+          </div>
+          <div class="text-field">
+            <%= f.label :price %><br>
+            <%= f.text_field :price, class: "form-control", id:"exampleInputName2" %>
+          </div>
+          <div class="text-field">
+            <label>Link To Product</label>
+            <%= f.text_field :link, class: "form-control", id: "exampleInputName2",placeholder: "www.product.com"%>
+          </div>
+          <div class="text-field">
+            <%= f.submit "Create Product" , class: "form-control", id: "create-product" %>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+  <!-- /.product-page -->
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".product-img:file").first().on('change' ,function(){
+      var a = ($(this).val());
+      if(a.length != 0){
+        $("#add-img").show();
+      }
+    });
+
+    $("#add-img").click(function(e){
+      var last_one = $(".product-img:last").val();
+      if(last_one.length!=0){
+        e.preventDefault();
+        var count = $(".product-img").length;
+        var name = "product[images_attributes]["+count+"][avatar]";
+        var d_field = '<input class="form-control product-img" style="margin-top:10px;" type="file" name="'+name+'">';
+        var el = $('.product-img:last');
+        $(el).after(d_field);
+      }
+      else{
+        e.preventDefault();
+        alert("Fill previous one first")
+      }
+    });
+  });
+  // $('#category').textext({
+  //       plugins : 'tags autocomplete ajax',
+  //       tagsItems : [ 'Basic', 'JavaScript', 'PHP', 'Scala' ],
+  //       prompt : 'Add one...',
+        
+    // });
+
+</script>  
+
 
 <%= link_to 'Show', @product %> |
 <%= link_to 'Back', products_path %>
