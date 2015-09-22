@@ -10,7 +10,5 @@
  *
  *= require_self
  *= require_tree .
- *= require textext.core
- *= require textext.plugin.tags
- *= require textext.plugin.autocomplete
+ 
  */
