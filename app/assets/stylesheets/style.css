@@ -257,7 +257,21 @@
   border: 0;
   border-radius: 0;
 }
-
+#create-product{
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 22px;
+  font-family: 'source_sans_prosemibold';
+  text-decoration: none;
+  padding-left: 0px;
+  height: auto;
+  border:0;
+  width:auto;
+  border-radius: 7px;
+  background:#3b5998;
+  padding:10px 15px;
+  text-align:center;
+}
 
 /*============================ Header ==================================*/
 
@@ -334,6 +348,30 @@ header .upper-header-content ul li a.setting-link:hover{
 }
 header .upper-header-content ul li a.question-link:hover{
   background: url('img-3-h.png') no-repeat;
+}
+header .setting-menu{
+  background-color: #f6f6f6;
+  padding: 10px 0 !important;
+  border: none;
+  left: -90px;
+}
+header .setting-menu li:first-child{
+ position: static !important;
+}
+header .setting-menu li:first-child a{
+  width: 100%;
+  float: left;
+}
+header .setting-menu li{
+  padding-left: 0px !important;
+  float: left;
+  width: 100%;
+}
+header .setting-menu li a{
+  color: #3b5998 !important;
+  float: left;
+  padding: 0 10px !important;
+  font-size: 17px !important;
 }
 header .main-header{
   width: 100%;
