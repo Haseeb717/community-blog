@@ -14,6 +14,9 @@ $(document).ready(function(){
 //     var el = $('.product-img:last');
 //     $(el).after(d_field);
 //   });
+
+
+
   $(".icon-like").click(function() {
     var id = $("#product_id").val();
     var url_link = '/products/'+id+'/product_likes_and_dislikes';
