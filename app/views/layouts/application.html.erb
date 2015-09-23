@@ -24,6 +24,7 @@
                     <a href="#" class="dropdown-toggle setting-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
                     <ul class="dropdown-menu setting-menu">
                       <li><%= link_to('Logout', destroy_user_session_path, :method => :delete , class: 'logout-link') %></li>
+                      <li><%= link_to('Create Product', new_product_path , class: 'logout-link') %></li>
                       <li><a href="#">Profile Settings</a></li>
                     </ul>
                   </li>
