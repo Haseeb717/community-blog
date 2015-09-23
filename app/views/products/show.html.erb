@@ -1,38 +1,210 @@
+<input type="hidden" value=<%= @product.id %> id="product_id">
 <p id="notice"><%= notice %></p>
-<p>
-  <% @product.images.each do |product_image| %>
-    <%= image_tag product_image.avatar.url(:small) %>
-  <% end %>
-</p>
-<p>
-  <strong>Title:</strong>
-  <%= @product.title %>
-</p>
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-<p>
-  <strong>Pros:</strong>
-  <%= @product.pros %>
-</p>
-<p>
-  <strong>Cons:</strong>
-  <%= @product.cons %>
-</p>
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
-<%= form_for @product , url: product_comments_product_path(@product), :method => :post do |f| %>
-  <%= f.fields_for :comments, @product.comments.build do |comment| %>
-    <%= comment.text_area :description %>
-  <% end %>
-  <%= f.submit "Add comment" %>
-<% end %>
 
-<% @product.comments.each do |product_comment| %>
-    <li><%= product_comment.description %></li>
-<% end %>
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<!-- /.product-page-detail -->
+  <div class="product-page-detail">
+    <div class="container">
+
+      <section class="product-carousel">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators product-slider-indicators">
+            <% count=0 %>
+            <% @product.images.each do |image| %>
+              <li data-target="#carousel-example-generic" data-slide-to=<%= count %> class="active">
+                <%= image_tag(image.avatar.url(:med)) %>
+              </li>
+              <% count=count+1 %>
+            <% end %>
+            <!-- <li data-target="#carousel-example-generic" data-slide-to="0" class="active">
+              <%= image_tag("thumbnail-img-1.png", options={alt: "Logo"}) %>
+            </li>
+            <li data-target="#carousel-example-generic" data-slide-to="1">
+              <%= image_tag("thumbnail-img-2.png", options={alt: "Logo"}) %>
+            </li>
+            <li data-target="#carousel-example-generic" data-slide-to="2">
+              <%= image_tag("thumbnail-img-3.png", options={alt: "Logo"}) %>
+            </li>
+            <li data-target="#carousel-example-generic" data-slide-to="3">
+              <%= image_tag("thumbnail-img-4.png", options={alt: "Logo"}) %>
+            </li> -->
+          </ol>
+          <div class="carousel-inner product-carousel-inner" role="listbox">
+            <% active=0 %>
+            <% @product.images.each do |image| %>
+              <% if active == 0 %>
+                <div class="item active">
+              <% else %>
+                <div class="item">
+              <% end %>
+                <%= image_tag(image.avatar.url, class: "style_image") %>
+              </div>
+              <% active=active+1 %>
+            <% end %>
+          </div>
+        </div>
+      </section>
+      <section class="product-details">
+        <div class="container-product-details">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="product-details-rating">
+                <p>Rating:</p>
+                <ul>
+                  <li><a href="#"><span></span></a></li>
+                  <li><a href="#"><span></span></a></li>
+                  <li><a href="#"><span></span></a></li>
+                  <li><a href="#"><span></span></a></li>
+                  <li><a href="#"><span></span></a></li>
+                </ul>
+              </div>
+              <div class="product-details-like">
+                <ul>
+                  <li><a href="#" class="icon-like" id="like"><span></span></a></li>
+                  <li><a href="#" class="icon-dislike" id="dislike"><span></span></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="product-details-date">
+                <%= link_to @product.created_at.strftime("%d/%m/%Y") %>
+                <%= image_tag("img-8.png", options={alt: "Logo"}) %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="product-descrip">
+        <div class="container-product-descrip">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="product-descrip-detail">
+                <div class="product-detail">
+                  <h3>Title</h3>
+                  <div class="product-detail-bg">
+                    <p><%= @product.title %></p>
+                  </div>
+                </div>
+                <div class="product-detail">
+                  <h3>Description</h3>
+                  <div class="product-detail-bg">
+                    <p><%= @product.description %></p>
+                  </div>
+                </div>
+                <div class="product-detail">
+                  <% unless @product.pros.empty? %>
+                    <h3>Pros</h3>
+                    <div class="product-detail-bg">
+                      <p><%= @product.pros %></p>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="product-detail">
+                  <% unless @product.cons.empty? %>
+                  <h3>Cons</h3>
+                    <div class="product-detail-bg">
+                      <p><%= @product.cons %></p>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="product-detail">
+                  <h3>Category</h3>
+                  <div class="product-detail-bg">
+                    <span class="label label-primary">Category 1</span>
+                    <span class="label label-primary">Category 2</span>
+                    <span class="label label-primary">Category 3</span>
+                    <span class="label label-primary">Category 4</span>
+                  </div>
+                </div>
+                <div class="product-detail">
+                  <% unless @product.price.nil? %>
+                  <h3>Price</h3>
+                    <div class="product-detail-bg">
+                      <p><%= @product.price %></p>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="product-detail">
+                  <% unless @product.link.empty? %>
+                    <h3>Link To Product</h3>
+                    <div class="product-detail-bg">
+                      <%= link_to @product.link %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="product-descrip-imgs">
+                <h3>Similar Products From User</h3>
+                <div class="product-imgs-scroll">
+                  <ul>
+                    <li><%= link_to image_tag("product-img-1.png") %></li>
+                    <li><%= link_to image_tag("product-img-2.png") %></li>
+                    <li><%= link_to image_tag("product-img-3.png") %></li>
+                    <li><%= link_to image_tag("product-img-4.png") %></li>
+                    <li><%= link_to image_tag("product-img-1.png") %></li>
+                    <li><%= link_to image_tag("product-img-2.png") %></li>
+                    <li><%= link_to image_tag("product-img-3.png") %></li>
+                    <li><%= link_to image_tag("product-img-4.png") %></li>
+                    <li><%= link_to image_tag("product-img-1.png") %></li>
+                    <li><%= link_to image_tag("product-img-2.png") %></li>
+                    <li><%= link_to image_tag("product-img-3.png") %></li>
+                    <li><%= link_to image_tag("product-img-4.png") %></li>
+                    <li><%= link_to image_tag("product-img-1.png") %></li>
+                    <li><%= link_to image_tag("product-img-2.png") %></li>
+                    <li><%= link_to image_tag("product-img-3.png") %></li>
+                    <li><%= link_to image_tag("product-img-4.png") %></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="product-comment">
+        <div class="container-product-comment">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="product-comment-detail">
+                <h3>Comments</h3>
+                <% @product.comments.each do |product_comment| %>
+                    <div class="product-comment-info">
+                      <div class="product-comment-user">
+                        <span><%= image_tag("img-12.png") %></span>
+                        <h3>User Name</h3>
+                      </div>
+                      <div class="product-comment-date">
+                        <%= link_to product_comment.created_at.strftime("%d/%m/%Y") %>
+                        <a href="#"><%= image_tag("img-8.png") %></a>
+                      </div>
+                    </div>
+                    <div class="product-comment-body">
+                      <div class="text-field">
+                        <textarea class="form-control" rows="5"><%= product_comment.description %></textarea>
+                      </div>
+                    </div>
+                <% end %>
+                
+              </div>
+
+              <div class="product-comment-detail under-comment">
+                
+                <div class="product-comment-body">
+                  <div class="text-field">
+                    <%= form_for @product , url: product_comments_product_path(@product), :method => :post do |f| %>
+                      <%= f.fields_for :comments, @product.comments.build do |comment| %>
+                        <%= comment.text_area :description, :class=>"form-control" %>
+                      <% end %>
+                      <%= f.submit "Add comment", :id=>"create-comment" %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+  <!-- /.product-page-detail -->

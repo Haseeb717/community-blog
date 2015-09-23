@@ -7,6 +7,7 @@ Blog::Application.routes.draw do
   resources :products do
     member do
       post 'product_comments'
+      post 'product_likes_and_dislikes'
     end
   end
 

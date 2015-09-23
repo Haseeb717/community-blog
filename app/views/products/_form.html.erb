@@ -1,3 +1,4 @@
+<input type="hidden" value=<%= @product.id %> id="product_id">
 <%= form_for(@product, html: { multipart: true }) do |f| %>
   <% if @product.errors.any? %>
     <div class="col-md-12">
@@ -91,11 +92,7 @@
       }
     });
   });
-  // $('#category').textext({
-  //       plugins : 'tags autocomplete ajax',
-  //       tagsItems : [ 'Basic', 'JavaScript', 'PHP', 'Scala' ],
-  //       prompt : 'Add one...',
-        
-    // });
+  
+
 
 </script>  

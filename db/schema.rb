@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150918100541) do
+ActiveRecord::Schema.define(version: 20150923115831) do
 
-  create_table "active_admin_comments", force: true do |t|
+  create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
     t.text     "body"
     t.string   "resource_id",   null: false
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20150918100541) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
 
-  create_table "admin_users", force: true do |t|
+  create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -46,13 +46,13 @@ ActiveRecord::Schema.define(version: 20150918100541) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
-  create_table "categories", force: true do |t|
+  create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "category_products", force: true do |t|
+  create_table "category_products", force: :cascade do |t|
     t.integer  "category_id"
     t.integer  "product_id"
     t.datetime "created_at"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20150918100541) do
   add_index "category_products", ["category_id"], name: "index_category_products_on_category_id"
   add_index "category_products", ["product_id"], name: "index_category_products_on_product_id"
 
-  create_table "comments", force: true do |t|
+  create_table "comments", force: :cascade do |t|
     t.text     "description"
     t.integer  "commentable_id"
     t.string   "commentable_type"
@@ -71,10 +71,10 @@ ActiveRecord::Schema.define(version: 20150918100541) do
     t.integer  "user_id"
   end
 
-  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
+  add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
-  create_table "follows", force: true do |t|
+  create_table "follows", force: :cascade do |t|
     t.string   "follower_type"
     t.integer  "follower_id"
     t.string   "followable_type"
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20150918100541) do
   add_index "follows", ["followable_id", "followable_type"], name: "fk_followables"
   add_index "follows", ["follower_id", "follower_type"], name: "fk_follows"
 
-  create_table "images", force: true do |t|
+  create_table "images", force: :cascade do |t|
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -96,20 +96,21 @@ ActiveRecord::Schema.define(version: 20150918100541) do
     t.datetime "updated_at"
   end
 
-  add_index "images", ["imageable_id", "imageable_type"], name: "index_images_on_imageable_id_and_imageable_type"
+  add_index "images", ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
 
-  create_table "likes", force: true do |t|
+  create_table "likes", force: :cascade do |t|
     t.string   "liker_type"
     t.integer  "liker_id"
     t.string   "likeable_type"
     t.integer  "likeable_id"
     t.datetime "created_at"
+    t.string   "type"
   end
 
   add_index "likes", ["likeable_id", "likeable_type"], name: "fk_likeables"
   add_index "likes", ["liker_id", "liker_type"], name: "fk_likes"
 
-  create_table "mentions", force: true do |t|
+  create_table "mentions", force: :cascade do |t|
     t.string   "mentioner_type"
     t.integer  "mentioner_id"
     t.string   "mentionable_type"
@@ -120,7 +121,7 @@ ActiveRecord::Schema.define(version: 20150918100541) do
   add_index "mentions", ["mentionable_id", "mentionable_type"], name: "fk_mentionables"
   add_index "mentions", ["mentioner_id", "mentioner_type"], name: "fk_mentions"
 
-  create_table "products", force: true do |t|
+  create_table "products", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.text     "pros"
@@ -133,7 +134,7 @@ ActiveRecord::Schema.define(version: 20150918100541) do
     t.integer  "user_id"
   end
 
-  create_table "ratings", force: true do |t|
+  create_table "ratings", force: :cascade do |t|
     t.integer  "rate_able_id"
     t.string   "rate_able_type"
     t.datetime "created_at"
@@ -141,15 +142,15 @@ ActiveRecord::Schema.define(version: 20150918100541) do
     t.integer  "rate"
   end
 
-  add_index "ratings", ["rate_able_id", "rate_able_type"], name: "index_ratings_on_rate_able_id_and_rate_able_type"
+  add_index "ratings", ["rate_able_type", "rate_able_id"], name: "index_ratings_on_rate_able_type_and_rate_able_id"
 
-  create_table "tags", force: true do |t|
+  create_table "tags", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "user_tags", force: true do |t|
+  create_table "user_tags", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "tag_id"
     t.datetime "created_at"
@@ -159,7 +160,7 @@ ActiveRecord::Schema.define(version: 20150918100541) do
   add_index "user_tags", ["tag_id"], name: "index_user_tags_on_tag_id"
   add_index "user_tags", ["user_id"], name: "index_user_tags_on_user_id"
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy,:product_comments]
+  before_action :set_product, only: [:show, :edit, :update, :destroy,:product_comments,:product_likes_and_dislikes]
 
   respond_to :html
 
@@ -24,8 +24,16 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.save
-    respond_with(@product)
+    respond_to do |format|
+      if @product.save
+        format.html { redirect_to @product, notice: 'Welcome! Your account has been created successfully. A confirmation link has been sent to your email address.' }
+        format.json { render json:  @product, status: :created, location: @company }
+      else
+        @product.images.build
+        format.html { render action: "new" }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def update
@@ -43,6 +51,21 @@ class ProductsController < ApplicationController
     comment.save
     @product.comments << comment
     respond_with(@product)
+  end
+
+  def product_likes_and_dislikes
+    current_user.like!(@product)
+    type = params["type"]
+    update = Like.where(:liker_id=>current_user.id , :likeable_id=>@product.id)
+    update.first.update_attributes(:type=>type)
+    render :json => {:message => 'success'}
+  end
+
+  def product_categories
+    @category = Category.pluck(:name)
+    respond_to do |format|
+      format.json { render json: @category }
+    end
   end
 
   private

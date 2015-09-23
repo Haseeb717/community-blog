@@ -27,9 +27,9 @@
             <% end %>
             <% if !@product.images.nil? || !@product.images.empty? %>
               <% @product.images.each do |img| %>
-                  <% if img.avatar_file_name %>
+                  <% if img.avatar_file_name && img.persisted? %>
                     <%= image_tag img.avatar.url(:small) %>
-                    <%= link_to 'Delete', image_path(img.id), {:method => :delete, :confirm => 'Are you sure?'} %>
+                    <%= link_to 'Delete', image_path(img), {:method => :delete, :confirm => 'Are you sure?'} %>
                   <% end %>
               <% end %>
             <% end %>
@@ -64,7 +64,7 @@
             <%= f.text_field :link, class: "form-control", id: "exampleInputName2",placeholder: "www.product.com"%>
           </div>
           <div class="text-field">
-            <%= f.submit "Create Product" , class: "form-control", id: "create-product" %>
+            <%= f.submit "Update Product" , class: "form-control", id: "create-product" %>
           </div>
         </div>
       </div>
@@ -107,7 +107,3 @@
     // });
 
 </script>  
-
-
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
