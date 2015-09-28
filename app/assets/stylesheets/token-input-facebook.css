@@ -75,6 +75,7 @@ div.token-input-dropdown-facebook {
     position: absolute;
     background-color: #fff;
     overflow: hidden;
+    width: 500px;
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;

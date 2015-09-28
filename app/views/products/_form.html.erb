@@ -45,7 +45,7 @@
             <%= f.text_area :cons , class: "form-control", rows:'2' %>
           </div>
           <div>
-              <label>Category</label>
+              <label id="category_label">Category</label>
               <%= f.text_field :abc, class: "form-control", id:"category", placeholder:"#product" %>
           <div>
           
@@ -94,7 +94,14 @@
         alert("Fill previous one first")
       }
     });
-
+    
+    $(function() {
+      $("#category").tokenInput("/products/product_categories.json", {
+        crossDomain: false,
+        prePopulate: $("#category").data("pre"),
+        theme: "facebook"
+      });
+    });
     
   });
   

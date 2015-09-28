@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Welcome! Your account has been created successfully. A confirmation link has been sent to your email address.' }
+        format.html { redirect_to @product, notice: 'Product created successfully' }
         format.json { render json:  @product, status: :created, location: @company }
       else
         format.html { render action: "new" }
@@ -36,8 +36,15 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product.update(product_params)
-    respond_with(@product)
+    respond_to do |format|
+      if @product.update(product_params)
+        format.html { redirect_to @product, notice: 'Product updated successfully' }
+        format.json { render json:  @product, status: :created, location: @company }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy

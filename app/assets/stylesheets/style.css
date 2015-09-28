@@ -1023,6 +1023,15 @@ footer .footer-content p{
   width: 100%;
   height: 500px;
 }
+#category_label{
+  color: #3b5998;
+  font-size: 27px;
+  font-family: 'latoregular';
+  text-shadow: none;
+  margin: 0;
+  font-weight: normal;
+  margin-bottom: 5px;
+}
 /*============================ Product Page Detail ============================*/
 
 

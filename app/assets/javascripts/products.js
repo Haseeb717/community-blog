@@ -17,13 +17,7 @@ $(document).ready(function(){
     });
   });
 
-    $(function() {
-      $("#category").tokenInput("/products/product_categories.json", {
-        crossDomain: false,
-        prePopulate: $("#category").data("pre"),
-        theme: "facebook"
-      });
-    });
+    
 
     
 
