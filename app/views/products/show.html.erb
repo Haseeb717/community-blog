@@ -13,18 +13,6 @@
               </li>
               <% count=count+1 %>
             <% end %>
-            <!-- <li data-target="#carousel-example-generic" data-slide-to="0" class="active">
-              <%= image_tag("thumbnail-img-1.png", options={alt: "Logo"}) %>
-            </li>
-            <li data-target="#carousel-example-generic" data-slide-to="1">
-              <%= image_tag("thumbnail-img-2.png", options={alt: "Logo"}) %>
-            </li>
-            <li data-target="#carousel-example-generic" data-slide-to="2">
-              <%= image_tag("thumbnail-img-3.png", options={alt: "Logo"}) %>
-            </li>
-            <li data-target="#carousel-example-generic" data-slide-to="3">
-              <%= image_tag("thumbnail-img-4.png", options={alt: "Logo"}) %>
-            </li> -->
           </ol>
           <div class="carousel-inner product-carousel-inner" role="listbox">
             <% active=0 %>
@@ -106,13 +94,14 @@
                   <% end %>
                 </div>
                 <div class="product-detail">
-                  <h3>Category</h3>
-                  <div class="product-detail-bg">
-                    <% @product.categories.each do |category| %>
-                      <span class="label label-primary"><%= category.name %></span>
-                    <% end %>
-                    
-                  </div>
+                  <% if !@product.categories.empty? %>
+                    <h3>Category</h3>
+                    <div class="product-detail-bg">
+                        <% @product.categories.each do |category| %>
+                          <span class="label label-primary"><%= category.name %></span>
+                        <% end %>
+                    </div>
+                  <% end %>
                 </div>
                 <div class="product-detail">
                   <% unless @product.price.nil? %>
