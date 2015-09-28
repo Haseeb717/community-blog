@@ -57,6 +57,7 @@
               </div>
               <div class="product-details-like">
                 <ul>
+
                   <li><a href="#" class="icon-like" id="like"><span></span></a></li>
                   <li><a href="#" class="icon-dislike" id="dislike"><span></span></a></li>
                 </ul>
@@ -107,10 +108,10 @@
                 <div class="product-detail">
                   <h3>Category</h3>
                   <div class="product-detail-bg">
-                    <span class="label label-primary">Category 1</span>
-                    <span class="label label-primary">Category 2</span>
-                    <span class="label label-primary">Category 3</span>
-                    <span class="label label-primary">Category 4</span>
+                    <% @product.categories.each do |category| %>
+                      <span class="label label-primary"><%= category.name %></span>
+                    <% end %>
+                    
                   </div>
                 </div>
                 <div class="product-detail">

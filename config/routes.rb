@@ -8,6 +8,10 @@ Blog::Application.routes.draw do
     member do
       post 'product_comments'
       post 'product_likes_and_dislikes'
+      
+    end
+    collection do
+      get 'product_categories'
     end
   end
 

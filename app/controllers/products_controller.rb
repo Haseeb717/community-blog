@@ -29,7 +29,6 @@ class ProductsController < ApplicationController
         format.html { redirect_to @product, notice: 'Welcome! Your account has been created successfully. A confirmation link has been sent to your email address.' }
         format.json { render json:  @product, status: :created, location: @company }
       else
-        @product.images.build
         format.html { render action: "new" }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
@@ -57,14 +56,20 @@ class ProductsController < ApplicationController
     current_user.like!(@product)
     type = params["type"]
     update = Like.where(:liker_id=>current_user.id , :likeable_id=>@product.id)
-    update.first.update_attributes(:type=>type)
+    if type=="Like"
+      update.first.update_attributes(:flag=>true)
+    else
+      update.first.update_attributes(:flag=>false)
+    end
+
     render :json => {:message => 'success'}
   end
 
   def product_categories
-    @category = Category.pluck(:name)
+    category = Category.where("name like ?", "%#{params[:q]}%")
     respond_to do |format|
-      format.json { render json: @category }
+      format.html
+      format.json { render :json => category.map(&:attributes) }
     end
   end
 
@@ -74,7 +79,7 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:title,:description,:pros,:cons,:price,:link, images_attributes: [:avatar])
+      params.require(:product).permit(:title,:description,:pros,:cons,:price,:link,:abc, images_attributes: [:avatar])
     end
 
     def comment_params
