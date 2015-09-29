@@ -14,7 +14,6 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @product.images.build
     respond_with(@product)
   end
 
@@ -54,9 +53,17 @@ class ProductsController < ApplicationController
 
   def product_comments
     comment = Comment.new(comment_params)
-    comment.save
-    @product.comments << comment
-    respond_with(@product)
+    respond_to do |format|
+      if comment.save
+        @product.comments << comment
+        current_user.comments << comment
+        format.html { redirect_to @product, notice: 'Comment added successfully' }
+        format.json { render json:  @product, status: :created, location: @company }
+      else
+        format.html { render action: "show", notice: 'Comment not added. Try Again' }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def product_likes_and_dislikes

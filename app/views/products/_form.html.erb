@@ -22,7 +22,7 @@
         <div class="textfield-block">
           <h2>Product</h2>
           <div class="text-field">
-            <%= f.fields_for :images do |photo| %>
+            <%= f.fields_for :images,@product.images.build do |photo| %>
               <%= photo.file_field :avatar,class: "form-control product-img" %>
             <% end %>
             
@@ -71,6 +71,7 @@
 <% end %>
 
 <script type="text/javascript">
+
   $(document).ready(function(){
     $(".product-img:file").first().on('change' ,function(){
       var a = ($(this).val());
@@ -105,7 +106,5 @@
     
   });
   
-
-
 </script>  
 

@@ -1015,6 +1015,16 @@ footer .footer-content p{
   box-shadow: none;
   background-color: #fcfcfc;
 }
+.product-page-detail .product-comment-body p{
+    background-color: #fcfcfc;
+    padding: 15px;
+    margin: 0px;
+    min-height: 80px;
+    border-radius: 0px;
+    color: #3b5998;
+    font-size: 18px;
+    font-family: 'latoregular';
+}
 .product-page-detail .under-comment{
   padding-left: 80px;
   padding-top: 0px;

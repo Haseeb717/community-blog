@@ -7,7 +7,7 @@
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators product-slider-indicators">
             <% count=0 %>
-            <% @product.images.each do |image| %>
+            <% @product.images.limit(4).each do |image| %>
               <li data-target="#carousel-example-generic" data-slide-to=<%= count %> class="active">
                 <%= image_tag(image.avatar.url(:med)) %>
               </li>
@@ -16,13 +16,13 @@
           </ol>
           <div class="carousel-inner product-carousel-inner" role="listbox">
             <% active=0 %>
-            <% @product.images.each do |image| %>
+            <% @product.images.limit(4).each do |image| %>
               <% if active == 0 %>
                 <div class="item active">
               <% else %>
                 <div class="item">
               <% end %>
-                <%= image_tag(image.avatar.url, class: "style_image") %>
+            <%= image_tag(image.avatar.url, class: "style_image") %>
               </div>
               <% active=active+1 %>
             <% end %>
@@ -153,41 +153,56 @@
         <div class="container-product-comment">
           <div class="row">
             <div class="col-md-12">
-              <div class="product-comment-detail">
-                <h3>Comments</h3>
-                <% @product.comments.each do |product_comment| %>
-                    <div class="product-comment-info">
-                      <div class="product-comment-user">
-                        <span><%= image_tag("img-12.png") %></span>
-                        <h3>User Name</h3>
-                      </div>
-                      <div class="product-comment-date">
-                        <%= link_to product_comment.created_at.strftime("%d/%m/%Y") %>
-                        <a href="#"><%= image_tag("img-8.png") %></a>
-                      </div>
-                    </div>
-                    <div class="product-comment-body">
-                      <div class="text-field">
-                        <textarea class="form-control" rows="5"><%= product_comment.description %></textarea>
-                      </div>
-                    </div>
-                <% end %>
-                
-              </div>
-
-              <div class="product-comment-detail under-comment">
-                
-                <div class="product-comment-body">
-                  <div class="text-field">
-                    <%= form_for @product , url: product_comments_product_path(@product), :method => :post do |f| %>
-                      <%= f.fields_for :comments, @product.comments.build do |comment| %>
-                        <%= comment.text_area :description, :class=>"form-control" %>
-                      <% end %>
-                      <%= f.submit "Add comment", :id=>"create-comment" %>
+                <% if !@product.comments.empty? %>
+                  <div class="product-comment-detail">
+                    <h3>Comments</h3>
+                    <% @product.comments.each do |product_comment| %>
+                        <div class="product-comment-info">
+                          <div class="product-comment-user">
+                            <span><%= image_tag("img-12.png") %></span>
+                            <h3><%= product_comment.user.first_name + ' ' + product_comment.user.last_name %></h3>
+                          </div>
+                          <div class="product-comment-date">
+                            <%= link_to product_comment.created_at.strftime("%d/%m/%Y") %>
+                            <a href="#"><%= image_tag("img-8.png") %></a>
+                          </div>
+                        </div>
+                        <div class="product-comment-body">
+                          <div class="text-field">
+                            <p><%= product_comment.description %></p>
+                          </div>
+                        </div>
                     <% end %>
                   </div>
-                </div>
-              </div>
+                  <div class="product-comment-detail under-comment">
+                    <div class="product-comment-body">
+                      <div class="text-field">
+                        <%= form_for @product , url: product_comments_product_path(@product), :method => :post do |f| %>
+                          <%= f.fields_for :comments, @product.comments.build do |comment| %>
+                            <%= comment.text_area :description, :class=>"form-control" %>
+                          <% end %>
+                          <%= f.submit "Add More Comments", :id=>"create-comment" %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% else %>
+                  <h3>No Comment</h3>
+                    
+                  <div class="product-comment-detail under-comment" style="padding-top:20px;">
+                    
+                    <div class="product-comment-body">
+                      <div class="text-field">
+                        <%= form_for @product , url: product_comments_product_path(@product), :method => :post do |f| %>
+                          <%= f.fields_for :comments, @product.comments.build do |comment| %>
+                            <%= comment.text_area :description, :class=>"form-control" %>
+                          <% end %>
+                          <%= f.submit "Add comment", :id=>"create-comment" %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
             </div>
           </div>
         </div>
