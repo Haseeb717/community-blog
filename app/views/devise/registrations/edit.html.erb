@@ -1,17 +1,22 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<!-- <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
+  <div class="field">
+    <%= f.fields_for :images,@user.images.build do |photo| %>
+      <%= photo.file_field :avatar %>
+    <% end %>
+  </div>
 
   <div class="field">
     <%= f.label :first_name %><br />
-    <%= f.email_field :first_name, autofocus: true %>
+    <%= f.text_field :first_name, autofocus: true %>
   </div>
 
   <div class="field">
     <%= f.label :last_name %><br />
-    <%= f.email_field :last_name %>
+    <%= f.text_field :last_name %>
   </div>
 
   <div class="field">
@@ -41,10 +46,79 @@
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
-<% end %>
+<% end %> -->
 
-<h3>Cancel my account</h3>
+<!-- <h3>Cancel my account</h3>
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+<%= link_to "Back", :back %> -->
+
+
+<div class="login-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <%= devise_error_messages! %>
+        <div class="login-section-bg">
+          <div class="login-section">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+            <div class="form-group form-login">
+              <%= f.fields_for :images,@user.images.build do |photo| %>
+                <%= photo.file_field :avatar %>
+              <% end %>
+            </div>
+            <% if !current_user.images.nil? || !current_user.images.empty? %>
+              <% current_user.images.each do |img| %>
+                  <% if img.avatar_file_name && img.persisted? %>
+                    <%= image_tag img.avatar.url(:small) %>
+                    <%= link_to 'Delete', image_path(img.id), {:method => :delete, :confirm => 'Are you sure?'} %>
+                  <% end %>
+              <% end %>
+            <% end %>
+            <div class="form-group form-login">
+              
+              <%= f.text_field :first_name, placeholder: "First Name", id: "exampleInputName2",class: "form-control field-user", autocomplete: "off", autofocus: true %>
+            </div>
+            <div class="form-group form-login">
+              <%= f.text_field :last_name, placeholder: "Last Name", id: "exampleInputName2",class: "form-control field-user", autocomplete: "off" %>
+            </div>
+            <div class="form-group form-login">
+              <%= f.email_field :email, placeholder: "Email Address", id: "exampleInputName2",class: "form-control field-user", autocomplete: "off" %>
+            </div>
+            <div class="form-group form-login">
+              <%= f.password_field :password, autocomplete: "off", placeholder: "Password", id: "exampleInputEmail2", class: "form-control field-password" %>
+            </div>
+            <div class="form-group form-login">
+              <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Password Confirmation", id: "exampleInputEmail2", class: "form-control field-password" %>
+            </div>
+
+            <div class="form-group form-login" >
+              <%= f.password_field :current_password, autocomplete: "off", placeholder: "Current Confirmation", id: "exampleInputEmail2", class: "form-control field-password" %>
+            </div>
+            <div class="login-link">
+              <%= f.submit "Update" , id: "login-btn" %>
+            </div>
+          <% end -%>
+          <!-- <div class="Or-option">
+            <p>
+              <span>or</span>
+            </p>
+          </div>
+          <div class="facebook-link">
+            <a href="#">
+              <i class="fa fa-facebook-official"></i>
+              <span>SignUp With Facebook</span>
+            </a>
+          </div> -->
+          <div class="others-link">
+            <%= render "devise/shared/links" %>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  <div>
+</div>
+

@@ -159,11 +159,17 @@
                     <% @product.comments.each do |product_comment| %>
                         <div class="product-comment-info">
                           <div class="product-comment-user">
-                            <span><%= image_tag("img-12.png") %></span>
+                            <span>
+                                <% if product_comment.user.images.nil? || product_comment.user.images.empty? %>
+                                  <%= image_tag("img-12.png") %>
+                                <% else %>
+                                  <%= image_tag current_user.images.last.avatar.url(:small), class: "comment-pic" %>
+                                <% end %>
+                              </span>
                             <h3><%= product_comment.user.first_name + ' ' + product_comment.user.last_name %></h3>
                           </div>
                           <div class="product-comment-date">
-                            <%= link_to product_comment.created_at.strftime("%d/%m/%Y") %>
+                            <%= link_to product_comment.created_at.strftime("%d/%m/%Y") + " at " + product_comment.created_at.strftime("%H:%M") %>
                             <a href="#"><%= image_tag("img-8.png") %></a>
                           </div>
                         </div>

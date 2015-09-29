@@ -338,10 +338,20 @@ header .upper-header-content ul li a:hover{
   transition: .4s linear;
 }
 header .upper-header-content ul li a.user-link{
-  background: url('img-1.png') no-repeat;
   width: 30px;
   height: 30px;
   margin-right: 15px;
+}
+.profile-img{
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  border-radius: 50%;
+}
+.comment-pic{
+  height: 66px;
+  width: 66px;
+  border-radius: 50%;
 }
 header .upper-header-content ul li a.setting-link{
   background: url('img-2.png') no-repeat;
@@ -355,9 +365,7 @@ header .upper-header-content ul li a.question-link{
   height: 30px;
   display: block;
 }
-header .upper-header-content ul li a.user-link:hover{
-  background: url('img-1-h.png') no-repeat;
-}
+
 header .upper-header-content ul li a.setting-link:hover{
   background: url('img-2-h.png') no-repeat;
 }
