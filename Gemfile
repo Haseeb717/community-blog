@@ -3,9 +3,8 @@ source 'http://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 
-# Use sqlite3 as the database for Active Record
+# Use mysql2 as the database for Active Record
 gem 'mysql2', '~> 0.3.18'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -14,7 +13,6 @@ gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
-
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -23,14 +21,28 @@ gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
-
+gem 'friendly_id'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# Use devise for authentication
 gem 'devise'
+
+# Use activeadmin for admin panel
 gem 'activeadmin', github: 'activeadmin'
+
+# Use socialization for liking and following
 gem "socialization"
+
+# Use paperclip for images
 gem 'paperclip'
+
+# inline text editing
+gem 'best_in_place'
+
+
+
+# Use debugger
 gem 'pry'
 gem 'non-stupid-digest-assets', '~> 1.0.4'
 
