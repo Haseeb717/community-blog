@@ -74,14 +74,14 @@
                 <div class="product-detail">
                   <h3>Description</h3>
                   <div class="product-detail-bg">
-                    <p><%= @product.description %></p>
+                    <p><%= simple_format h @product.description %></p>
                   </div>
                 </div>
                 <div class="product-detail">
                   <% unless @product.pros.empty? %>
                     <h3>Pros</h3>
                     <div class="product-detail-bg">
-                      <p><%= @product.pros %></p>
+                      <p><%= simple_format h @product.pros %></p>
                     </div>
                   <% end %>
                 </div>
@@ -89,7 +89,7 @@
                   <% unless @product.cons.empty? %>
                   <h3>Cons</h3>
                     <div class="product-detail-bg">
-                      <p><%= @product.cons %></p>
+                      <p><%= simple_format h @product.cons %></p>
                     </div>
                   <% end %>
                 </div>
@@ -115,7 +115,7 @@
                   <% unless @product.link.empty? %>
                     <h3>Link To Product</h3>
                     <div class="product-detail-bg">
-                      <%= link_to @product.link %>
+                      <%= link_to "http://"+@product.link, "http://"+@product.link , target: "_blank" %>
                     </div>
                   <% end %>
                 </div>
@@ -175,7 +175,15 @@
                         </div>
                         <div class="product-comment-body">
                           <div class="text-field">
-                            <p><%= product_comment.description %></p>
+                            <p><%= best_in_place product_comment, :description %></p>
+                            <% if product_comment.user == current_user %>
+                              <span class="edit_dlt_options">
+                                <%= link_to 'Delete', comment_path(product_comment.id), {:method => :delete, :confirm => 'Are you sure?'} %>
+                              </span>
+                              <span class="edit_dlt_options">
+                                <%= link_to 'Edit', edit_comment_path(product_comment.id) %>
+                              </span>
+                            <% end %> 
                           </div>
                         </div>
                     <% end %>

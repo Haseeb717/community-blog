@@ -629,7 +629,6 @@ header .navbar-brand{
   color: #3b5998;
   font-size: 21px;
   font-family: 'latosemibold';
-  padding-left: 84px;
   padding-top: 21px;
 }
 .home-page .home-comment-descrip{
@@ -648,10 +647,12 @@ header .navbar-brand{
   color: #49659f;
   margin: 0px;
 }
-.home-page .comment-person-first{
-  background: url('img-9.png') no-repeat;
+.home-page .comment-person-first img{
   height: 65px;
-  display: block;
+  width: 65px;
+  border-radius: 50%;
+  margin-right: 15px;
+  border:2px solid white;
 }
 .home-page .comment-person-second{
   background: url('img-12.png') no-repeat !important;
@@ -1049,6 +1050,22 @@ footer .footer-content p{
   margin: 0;
   font-weight: normal;
   margin-bottom: 5px;
+}
+.edit_dlt_options{
+    padding: 15px;
+    color: #3b5998;
+    font-size: 18px;
+    font-family: 'latoregular';
+}
+.best_in_place{
+  background-color: #fcfcfc;
+  padding: 15px;
+  margin: 0px;
+  min-height: 80px;
+  border-radius: 0px;
+  color: #3b5998;
+  font-size: 18px;
+  font-family: 'latoregular';
 }
 /*============================ Product Page Detail ============================*/
 

@@ -25,6 +25,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     respond_to do |format|
       if @product.save
+        current_user.products << @product
         format.html { redirect_to @product, notice: 'Product created successfully' }
         format.json { render json:  @product, status: :created, location: @company }
       else
@@ -89,7 +90,7 @@ class ProductsController < ApplicationController
 
   private
     def set_product
-      @product = Product.find(params[:id])
+      @product = Product.friendly.find(params[:id])
     end
 
     def product_params

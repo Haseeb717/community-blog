@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_action :set_image, only: [:destroy]
+  before_action :set_image, only: [:destroy,]
 
   
 
@@ -7,10 +7,8 @@ class ImagesController < ApplicationController
   # DELETE /images/1.json
   def destroy
     @image.destroy
-    respond_to do |format|
-      format.html { redirect_to products_url }
-      format.json { head :no_content }
-    end
+    session[:return_to] ||= request.referer
+    destroy! { session.delete(:return_to) }
   end
 
   private
