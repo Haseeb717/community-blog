@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @products = Product.all
     respond_with(@product)
   end
 

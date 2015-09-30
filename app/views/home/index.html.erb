@@ -10,7 +10,7 @@
                 <div class="home-option-content">
                   <div class="content-top">
                     <div class="content-top-heading">
-                      <h2><%= product.title %></h2>
+                      <h2><%= link_to product.title, product_path(product.id) %></h2>
                     </div>
                     <div class="content-top-rating">
                       <ul>
@@ -48,7 +48,13 @@
                   <div class="home-comment">
                     <div class="home-comment-content">
                       <div class="home-comment-person">
-                        <h3 class="comment-person-first"><%= image_tag product.comments.last.user.images.last.avatar.url(:small) %><%= product.comments.last.user.first_name + " " + product.comments.last.user.last_name %> </h3>
+                        <h3 class="comment-person-first">
+                          <% if product.comments.last.user.images.nil? || product.comments.last.user.images.empty? %>
+                            <%= image_tag("user.png", class: "comment-pic") %>
+                          <% else %>
+                            <%= image_tag product.comments.last.user.images.last.avatar.url(:small) %>
+                          <% end %>
+                          <%= product.comments.last.user.first_name + " " + product.comments.last.user.last_name %> </h3>
                       </div>
                       <div class="home-comment-descrip">
                         <p><%= product.comments.last.description %></p>

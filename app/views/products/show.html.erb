@@ -126,22 +126,14 @@
                 <h3>Similar Products From User</h3>
                 <div class="product-imgs-scroll">
                   <ul>
-                    <li><%= link_to image_tag("product-img-1.png") %></li>
-                    <li><%= link_to image_tag("product-img-2.png") %></li>
-                    <li><%= link_to image_tag("product-img-3.png") %></li>
-                    <li><%= link_to image_tag("product-img-4.png") %></li>
-                    <li><%= link_to image_tag("product-img-1.png") %></li>
-                    <li><%= link_to image_tag("product-img-2.png") %></li>
-                    <li><%= link_to image_tag("product-img-3.png") %></li>
-                    <li><%= link_to image_tag("product-img-4.png") %></li>
-                    <li><%= link_to image_tag("product-img-1.png") %></li>
-                    <li><%= link_to image_tag("product-img-2.png") %></li>
-                    <li><%= link_to image_tag("product-img-3.png") %></li>
-                    <li><%= link_to image_tag("product-img-4.png") %></li>
-                    <li><%= link_to image_tag("product-img-1.png") %></li>
-                    <li><%= link_to image_tag("product-img-2.png") %></li>
-                    <li><%= link_to image_tag("product-img-3.png") %></li>
-                    <li><%= link_to image_tag("product-img-4.png") %></li>
+                    <% @products.each do |p| %>
+                      <% if p.images.nil? || p.images.empty? %>
+                        <li><%= link_to image_tag("product-img-1.png",), product_path(p.id) %></li>
+                      <% else %>
+                        <li><%= link_to image_tag(p.images.first.avatar.url, class: "same_image"), product_path(p.id) %></li>
+                      <% end %>
+                    <% end %>
+                    
                   </ul>
                 </div>
               </div>
@@ -161,9 +153,9 @@
                           <div class="product-comment-user">
                             <span>
                                 <% if product_comment.user.images.nil? || product_comment.user.images.empty? %>
-                                  <%= image_tag("img-12.png") %>
+                                  <%= image_tag("user.png", class: "comment-pic") %>
                                 <% else %>
-                                  <%= image_tag current_user.images.last.avatar.url(:small), class: "comment-pic" %>
+                                  <%= image_tag product_comment.user.images.last.avatar.url(:small), class: "comment-pic" %>
                                 <% end %>
                               </span>
                             <h3><%= product_comment.user.first_name + ' ' + product_comment.user.last_name %></h3>

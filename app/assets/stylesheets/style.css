@@ -331,6 +331,10 @@ header .upper-header-content ul li:first-child{
   position: relative;
   bottom: 10px;
 }
+header .upper-header-content ul li:first-child{
+  position: relative;
+  bottom: 10px;
+}
 header .upper-header-content ul li a:hover{
   color: #3b5998;
   -moz-transition: .4s linear;
@@ -1066,6 +1070,10 @@ footer .footer-content p{
   color: #3b5998;
   font-size: 18px;
   font-family: 'latoregular';
+}
+.same_image{
+  width: 150px;
+  height: 84px;
 }
 /*============================ Product Page Detail ============================*/
 
