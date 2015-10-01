@@ -13,7 +13,7 @@
 
                       <h2><%= link_to product.title, product_path(product.title) %></h2>
                     </div>
-                    <div class="content-top-rating">
+                    <!-- <div class="content-top-rating">
                       <ul>
                         <li><a href="#"><span></span></a></li>
                         <li><a href="#"><span></span></a></li>
@@ -21,7 +21,7 @@
                         <li><a href="#"><span></span></a></li>
                         <li><a href="#"><span></span></a></li>
                       </ul>
-                    </div>
+                    </div> -->
                   </div>
                   <div class="content-img">
                     <% if product.images.nil? || product.images.empty? %>
@@ -34,8 +34,12 @@
                   <div class="content-bottom">
                     <div class="content-bottom-like">
                       <ul>
-                        <li><a href="#" class="icon-like"><span></span></a></li>
-                        <li><a href="#" class="icon-dislike"><span></span></a></li>
+                        <% if current_user.likes?(product) %>
+                          <li><a class="dislike" id=<%= "#{product.id}" %> ></a><span class="like_count"><%= product.likers(User).count %></span></li>
+                        <% else %> 
+                          <li><a class="like" id=<%= "#{product.id}" %> ></a><span class="like_count"><%= product.likers(User).count %></span></li>
+                        <% end -%>
+                        
                       </ul>
                     </div>
                     <div class="content-bottom-date">
@@ -51,11 +55,12 @@
                       <div class="home-comment-person">
                         <h3 class="comment-person-first">
                           <% if product.comments.last.user.images.nil? || product.comments.last.user.images.empty? %>
-                            <%= image_tag("user.png") %>
+                            <span><%= image_tag("user.png") %></span>
                           <% else %>
-                            <%= image_tag product.comments.last.user.images.last.avatar.url(:small) %>
+                            <span><%= image_tag product.comments.last.user.images.last.avatar.url(:small) %></span>
                           <% end %>
-                          <%= product.comments.last.user.first_name + " " + product.comments.last.user.last_name %> </h3>
+                          <i><%= product.comments.last.user.first_name + " " + product.comments.last.user.last_name %> </i>
+                        </h3>
                       </div>
                       <div class="home-comment-descrip">
                         <p><%= product.comments.last.description %></p>
@@ -75,3 +80,26 @@
     </div>
   </div>
   <!-- /.home-page -->
+  <script type="text/javascript">
+    $(".content-bottom-like ul li a").click(function() {
+        var id = $(this).attr('id');
+        var url_link = '/products/'+id+'/product_likes_and_dislikes';
+        var current_id = $(this).attr('class');
+        $.ajax({
+            url: url_link,
+            type: "POST",
+            data: {type: current_id},
+            success: function (data) {
+                alert("Updated");
+                if(current_id = "like"){
+                    $("#"+id).removeClass(current_id).addClass('like'); 
+                }
+                else{
+                    $("#"+id).removeClass(current_id).addClass('dislike');
+                }
+                
+            }
+        });
+    });
+
+  </script>

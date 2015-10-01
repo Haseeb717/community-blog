@@ -1,5 +1,5 @@
 class CommentsController < InheritedResources::Base
-  respond_to :html
+  respond_to :html,:json
   actions :destroy,:edit,:update
 
   def edit

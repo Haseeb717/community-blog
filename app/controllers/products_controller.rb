@@ -69,15 +69,12 @@ class ProductsController < ApplicationController
   end
 
   def product_likes_and_dislikes
-    current_user.like!(@product)
     type = params["type"]
-    update = Like.where(:liker_id=>current_user.id , :likeable_id=>@product.id)
-    if type=="Like"
-      update.first.update_attributes(:flag=>true)
+    if type=="like"
+      current_user.like!(@product)
     else
-      update.first.update_attributes(:flag=>false)
+      current_user.unlike!(@product)
     end
-
     render :json => {:message => 'success'}
   end
 

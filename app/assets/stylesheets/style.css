@@ -315,8 +315,9 @@ header .upper-header-content ul{
 }
 header .upper-header-content ul li{
   list-style: none;
-  display: inline-block;
+  display: inline-table;
   padding-left: 10px;
+  vertical-align: top;
 }
 header .upper-header-content ul li a{
   color: #bfbfbf;
@@ -326,14 +327,6 @@ header .upper-header-content ul li a{
 }
 header .upper-header-content ul li:first-child a{
   padding-left: 44px;
-}
-header .upper-header-content ul li:first-child{
-  position: relative;
-  bottom: 10px;
-}
-header .upper-header-content ul li:first-child{
-  position: relative;
-  bottom: 10px;
 }
 header .upper-header-content ul li a:hover{
   color: #3b5998;
@@ -567,35 +560,35 @@ header .navbar-brand{
   float: left;
   margin-right: 30px;
 }
-.home-page .content-bottom-like ul li a.icon-like{
+.like{
   background: url('img-5.png') no-repeat;
   display: block;
+  float: left;
   width: 37px;
   height: 37px;
 }
-.home-page .content-bottom-like ul li a.icon-like:hover{
+.like:hover{
   background: url('img-5-h.png') no-repeat;
   display: block;
   width: 37px;
+  float: left;
   height: 37px;
   -moz-transition: .4s linear;
   -webkit-transition: .4s ease-out;
   transition: .4s linear;
 }
-.home-page .content-bottom-like ul li a.icon-dislike{
-  background: url('img-6.png') no-repeat;
+.dislike{
+  background: url('img-5-h.png') no-repeat;
   display: block;
+  float: left;
   width: 37px;
   height: 37px;
 }
-.home-page .content-bottom-like ul li a.icon-dislike:hover{
-  background: url('img-6-h.png') no-repeat;
-  display: block;
-  width: 37px;
-  height: 37px;
-  -moz-transition: .4s linear;
-  -webkit-transition: .4s ease-out;
-  transition: .4s linear;
+.like_count{
+  margin: 15px;
+  color: #3b5998;
+  font-size: 27px;
+  font-family: 'latobold';
 }
 .home-page .content-bottom-date{
   width: 50%;
@@ -621,14 +614,14 @@ header .navbar-brand{
 .home-page .home-comment-content{
   width: 100%;
   float: left;
-  padding: 20px 40px 40px 40px;
+  padding: 20px 20px 40px 20px;
   background-color: #ededed;
   border-radius: 10px;
   margin-top: 50px;
   text-align: left;
 }
 .home-page .home-comment-person{
-  width: 100%;
+  width: 22%;
   float: left;
 }
 .home-page .home-comment-person h3{
@@ -638,7 +631,7 @@ header .navbar-brand{
   padding-top: 21px;
 }
 .home-page .home-comment-descrip{
-  width: 100%;
+  width: 78%;
   float: left;
   background-color: #fff;
   border-radius: 8px;
@@ -664,6 +657,12 @@ header .navbar-brand{
   background: url('img-12.png') no-repeat !important;
   height: 65px;
   display: block;
+}
+.home-page .comment-person-first span{
+  width: 100%;
+  float: left;
+  padding-bottom: 15px;
+  padding-left: 22px;
 }
 
 /*============================ Footer ============================*/
@@ -883,7 +882,7 @@ footer .footer-content p{
   color: #3b5998;
   text-decoration: none;
 }
-.product-page-detail .product-details-date a:first-child{
+.product-page-detail .product-details-date a{
   margin-right: 10px;
   position: relative;
   top: 5px;
@@ -1040,6 +1039,22 @@ footer .footer-content p{
     font-size: 18px;
     font-family: 'latoregular';
 }
+.product-page-detail .product-comment-body .best_in_place > * {
+  color: #3b5998;
+  border: 0;
+}
+.product-page-detail .product-comment-body input{
+    background-color: #fcfcfc;
+    padding: 15px;
+    margin: 0px;
+    min-height: 80px;
+    border-radius: 0px;
+    color: #3b5998;
+    font-size: 18px;
+    font-family: 'latoregular';
+    width: 100%;
+    border: 0px;
+}
 .product-page-detail .under-comment{
   padding-left: 80px;
   padding-top: 0px;
@@ -1063,16 +1078,7 @@ footer .footer-content p{
     font-size: 18px;
     font-family: 'latoregular';
 }
-.best_in_place{
-  background-color: #fcfcfc;
-  padding: 15px;
-  margin: 0px;
-  min-height: 80px;
-  border-radius: 0px;
-  color: #3b5998;
-  font-size: 18px;
-  font-family: 'latoregular';
-}
+
 
 /*============================ Product Page Detail ============================*/
 
@@ -1176,6 +1182,13 @@ footer .footer-content p{
   }
   .product-page-detail .product-carousel-inner img{
     height: auto;
+  }
+  .home-page .home-comment-person{
+    width: 100%;
+    text-align: center;
+  }
+  .home-page .home-comment-descrip{
+    width: 100%;
   }
 }
 @media(max-width:480px){

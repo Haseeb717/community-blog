@@ -33,7 +33,7 @@
         <div class="container-product-details">
           <div class="row">
             <div class="col-md-6">
-              <div class="product-details-rating">
+              <!-- <div class="product-details-rating">
                 <p>Rating:</p>
                 <ul>
                   <li><a href="#"><span></span></a></li>
@@ -42,18 +42,25 @@
                   <li><a href="#"><span></span></a></li>
                   <li><a href="#"><span></span></a></li>
                 </ul>
-              </div>
+              </div> -->
               <div class="product-details-like">
                 <ul>
-
-                  <li><a href="#" class="icon-like" id="like"><span></span></a></li>
-                  <li><a href="#" class="icon-dislike" id="dislike"><span></span></a></li>
+                  <% if current_user.likes?(@product) %>
+                    <li><a class="dislike" id=<%= "#{@product.id}" %> ></a><span class="like_count"><%= @product.likers(User).count %></span></li>
+                  <% else %> 
+                    <li><a class="like" id=<%= "#{@product.id}" %> ></a><span class="like_count"><%= @product.likers(User).count %></span></li>
+                  <% end -%>
                 </ul>
               </div>
             </div>
             <div class="col-md-6">
               <div class="product-details-date">
+                <% if @product.user == current_user %>
+                  <%= link_to('Edit Product', edit_product_path,  ) %>
+                <% end %>
+                
                 <%= link_to @product.created_at.strftime("%d/%m/%Y") %>
+                
                 <%= image_tag("img-8.png", options={alt: "Logo"}) %>
               </div>
             </div>
@@ -167,14 +174,15 @@
                         </div>
                         <div class="product-comment-body">
                           <div class="text-field">
-                            <p><%= best_in_place product_comment, :description %></p>
+                            
                             <% if product_comment.user == current_user %>
+                              <p><%= best_in_place product_comment, :description, :nil => "Click me to add content!"  %></p>
                               <span class="edit_dlt_options">
                                 <%= link_to 'Delete', comment_path(product_comment.id), {:method => :delete, :confirm => 'Are you sure?'} %>
                               </span>
-                              <span class="edit_dlt_options">
-                                <%= link_to 'Edit', edit_comment_path(product_comment.id) %>
-                              </span>
+                              <span class="edit_dlt_options"></span>
+                            <% else %>
+                              <p><%= product_comment.description %></p>
                             <% end %> 
                           </div>
                         </div>
@@ -217,3 +225,26 @@
     </div>
   </div>
   <!-- /.product-page-detail -->
+  <script type="text/javascript">
+    $(".content-bottom-like ul li a").click(function() {
+        var id = $(this).attr('id');
+        var url_link = '/products/'+id+'/product_likes_and_dislikes';
+        var current_id = $(this).attr('class');
+        $.ajax({
+            url: url_link,
+            type: "POST",
+            data: {type: current_id},
+            success: function (data) {
+                if(current_id = "like"){
+                    $("#"+id).removeClass(current_id).addClass('like'); 
+                }
+                else{
+                    $("#"+id).removeClass(current_id).addClass('dislike');
+                }
+                
+            }
+        });
+    });
+
+
+  </script>
