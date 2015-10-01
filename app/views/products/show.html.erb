@@ -115,7 +115,7 @@
                   <% unless @product.link.empty? %>
                     <h3>Link To Product</h3>
                     <div class="product-detail-bg">
-                      <%= link_to "http://"+@product.link, "http://"+@product.link , target: "_blank" %>
+                      <%= link_to @product.link, "http://"+@product.link , target: "_blank" %>
                     </div>
                   <% end %>
                 </div>
@@ -130,7 +130,7 @@
                       <% if p.images.nil? || p.images.empty? %>
                         <li><%= link_to image_tag("product-img-1.png",), product_path(p.id) %></li>
                       <% else %>
-                        <li><%= link_to image_tag(p.images.first.avatar.url, class: "same_image"), product_path(p.id) %></li>
+                        <li><%= link_to image_tag(p.images.first.avatar.url(:med), class: "same_image"), product_path(p) %></li>
                       <% end %>
                     <% end %>
                     

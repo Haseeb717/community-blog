@@ -7,8 +7,9 @@ class ImagesController < ApplicationController
   # DELETE /images/1.json
   def destroy
     @image.destroy
-    session[:return_to] ||= request.referer
-    destroy! { session.delete(:return_to) }
+    flash[:notice] = "Image Successfully deleted"
+    redirect_to :back
+
   end
 
   private
