@@ -1,6 +1,6 @@
-// $(document).ready(function(){
+ $(document).ready(function(){
 
-//     jQuery(".best_in_place").best_in_place();
+    jQuery(".best_in_place").best_in_place();
 
 //     // $(".like").click(function() {
 //     //     var id = $("#product_id").val();
@@ -41,5 +41,5 @@
 
     
 
-// });
+ });
 
