@@ -1,0 +1,320 @@
+<div class="profile-page">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="profile-left-block">
+            <div class="person-block">
+              <% if current_user.images.nil? || current_user.images.empty? %>
+                <%= image_tag("user.png", class: "profile-pic") %>
+              <% else %>
+                <%= image_tag(current_user.images.last.avatar.url(:profile), class: "profile-pic") %>
+              <% end %>
+              <div class="person-block-rating">
+                <ul>
+                  <li><a href="#"><span></span></a></li>
+                  <li><a href="#"><span></span></a></li>
+                  <li><a href="#"><span></span></a></li>
+                  <li><a href="#"><span></span></a></li>
+                  <li><a href="#"><span></span></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="categories-block">
+              <h4 class="left-blocks-heading">Popular Categories</h4>
+              <ul>
+                <li><a href="#">All</a></li>
+                <% @categories.each do |category| %>
+                  <li><%= link_to category.name %></li>
+                <% end %>
+                
+              </ul>
+            </div>
+            <div class="tag-block">
+              <h4 class="left-blocks-heading">Tag Cloud</h4>
+              <ul>
+                <li><a href="#">#Hashtag #Hashtag</a></li>
+                <li><a href="#">#Hashtag #Hashtag</a></li>
+                <li><a href="#">#Hashtag #Hashtag</a></li>
+                <li><a href="#">#Hashtag #Hashtag</a></li>
+                <li><a href="#">#Hashtag #Hashtag</a></li>
+                <li><a href="#">#Hashtag #Hashtag</a></li>
+              </ul>
+            </div>
+            <div class="followers-block">
+              <h4 class="left-blocks-heading">Followers</h4>
+              <ul>
+                <li><a href="#"><%= image_tag("profile-img-2.png") %></a></li>
+                <li><a href="#"><%= image_tag("profile-img-3.png") %></a></li>
+                <li><a href="#"><%= image_tag("profile-img-2.png") %></a></li>
+                <li><a href="#"><%= image_tag("profile-img-2.png") %></a></li>
+                <li><a href="#"><%= image_tag("profile-img-3.png") %></a></li>
+                <li><a href="#"><%= image_tag("profile-img-2.png") %></a></li>
+                <li><a href="#"><%= image_tag("profile-img-2.png") %></a></li>
+                <li><a href="#"><%= image_tag("profile-img-3.png") %></a></li>
+                <li><a href="#"><%= image_tag("profile-img-2.png") %></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="profile-right-block">
+            <h2>Favorites</h2>
+            <div class="profile-product">
+              <div class="profile-img-content">
+                <div id="carousel-example-generic" class="carousel slide product-img-carousel" data-ride="carousel">
+                  <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                      <div class="profile-product-img">
+                        <%= image_tag("profile-img-4.png") %>
+                      </div>
+                      <div class="profile-img-list">
+                        <ul>
+                          <li><a href="#"><%= image_tag("profile-img-5.png") %></a></li>
+                          <li><a href="#"><%= image_tag("profile-img-5.png") %></a></li>
+                          <li><a href="#"><%= image_tag("profile-img-5.png") %></a></li>
+                          <li><a href="#"><%= image_tag("profile-img-5.png") %></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="profile-product-img">
+                        <%= image_tag("profile-img-4.png") %>
+                      </div>
+                      <div class="profile-img-list">
+                        <ul>
+                          <li><a href="#"><%= image_tag("profile-img-5.png") %></a></li>
+                          <li><a href="#"><%= image_tag("profile-img-5.png") %></a></li>
+                          <li><a href="#"><%= image_tag("profile-img-5.png") %></a></li>
+                          <li><a href="#"><%= image_tag("profile-img-5.png") %></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="profile-product-img">
+                        <%= image_tag("profile-img-4.png") %>
+                      </div>
+                      <div class="profile-img-list">
+                        <ul>
+                          <li><a href="#"><%= image_tag("profile-img-5.png") %></a></li>
+                          <li><a href="#"><%= image_tag("profile-img-5.png") %></a></li>
+                          <li><a href="#"><%= image_tag("profile-img-5.png") %></a></li>
+                          <li><a href="#"><%= image_tag("profile-img-5.png") %></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="profile-product-img">
+                        <%= image_tag("profile-img-4.png") %>
+                      </div>
+                      <div class="profile-img-list">
+                        <ul>
+                          <li><a href="#"><%= image_tag("profile-img-5.png") %></a></li>
+                          <li><a href="#"><%= image_tag("profile-img-5.png") %></a></li>
+                          <li><a href="#"><%= image_tag("profile-img-5.png") %></a></li>
+                          <li><a href="#"><%= image_tag("profile-img-5.png") %></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="profile-detail-content">
+                <div id="carousel-example-generic-1" class="carousel slide product-detail-carousel" data-ride="carousel">
+                  <ol class="carousel-indicators">
+                    <% count=0 %>
+                    <% @products.limit(8).each do |product| %>
+                      <li data-target="#carousel-example-generic-1" data-slide-to=<%= count %> class="active"></li>
+                      <% count=count+1 %>
+                    <% end %>
+<!--                     <li data-target="#carousel-example-generic-1" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic-1" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic-1" data-slide-to="2"></li>
+                    <li data-target="#carousel-example-generic-1" data-slide-to="3"></li>
+                    <li data-target="#carousel-example-generic-1" data-slide-to="4"></li>
+                    <li data-target="#carousel-example-generic-1" data-slide-to="5"></li> -->
+                  </ol>
+                  <div class="carousel-inner" role="listbox">
+                    <% active=0 %>
+                    <% @products.limit(8).each do |product| %>
+                      <% if active == 0 %>
+                        <div class="item active">
+                      <% else %>
+                        <div class="item">
+                      <% end %>
+                        <div class="profile-product-detail">
+                          <h3><%= product.title+":" %></h3>
+                          <div class="profile-product-descrip">
+                            <p><%= product.description %></p>
+                          </div>
+                        </div>
+                      </div>
+                      <% active=active+1 %>
+                    <% end %>
+                    <!-- <div class="item active">
+                      
+                    <div class="item">
+                      <div class="profile-product-detail">
+                        <h3>Product Title:</h3>
+                        <div class="profile-product-rating">
+                          <p>Product rating:</p>
+                          <ul>
+                            <li><a href="#"><span></span></a></li>
+                            <li><a href="#"><span></span></a></li>
+                            <li><a href="#"><span></span></a></li>
+                            <li><a href="#"><span></span></a></li>
+                            <li><a href="#"><span></span></a></li>
+                          </ul>
+                        </div>
+                        <div class="profile-product-descrip">
+                          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also took a galley of type and scrambled it to make a type specimen book.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="profile-product-detail">
+                        <h3>Product Title:</h3>
+                        <div class="profile-product-rating">
+                          <p>Product rating:</p>
+                          <ul>
+                            <li><a href="#"><span></span></a></li>
+                            <li><a href="#"><span></span></a></li>
+                            <li><a href="#"><span></span></a></li>
+                            <li><a href="#"><span></span></a></li>
+                            <li><a href="#"><span></span></a></li>
+                          </ul>
+                        </div>
+                        <div class="profile-product-descrip">
+                          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also took a galley of type and scrambled it to make a type specimen book.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="profile-product-detail">
+                        <h3>Product Title:</h3>
+                        <div class="profile-product-rating">
+                          <p>Product rating:</p>
+                          <ul>
+                            <li><a href="#"><span></span></a></li>
+                            <li><a href="#"><span></span></a></li>
+                            <li><a href="#"><span></span></a></li>
+                            <li><a href="#"><span></span></a></li>
+                            <li><a href="#"><span></span></a></li>
+                          </ul>
+                        </div>
+                        <div class="profile-product-descrip">
+                          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also took a galley of type and scrambled it to make a type specimen book.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="profile-product-detail">
+                        <h3>Product Title:</h3>
+                        <div class="profile-product-rating">
+                          <p>Product rating:</p>
+                          <ul>
+                            <li><a href="#"><span></span></a></li>
+                            <li><a href="#"><span></span></a></li>
+                            <li><a href="#"><span></span></a></li>
+                            <li><a href="#"><span></span></a></li>
+                            <li><a href="#"><span></span></a></li>
+                          </ul>
+                        </div>
+                        <div class="profile-product-descrip">
+                          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also took a galley of type and scrambled it to make a type specimen book.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="profile-product-detail">
+                        <h3>Product Title:</h3>
+                        <div class="profile-product-rating">
+                          <p>Product rating:</p>
+                          <ul>
+                            <li><a href="#"><span></span></a></li>
+                            <li><a href="#"><span></span></a></li>
+                            <li><a href="#"><span></span></a></li>
+                            <li><a href="#"><span></span></a></li>
+                            <li><a href="#"><span></span></a></li>
+                          </ul>
+                        </div>
+                        <div class="profile-product-descrip">
+                          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also took a galley of type and scrambled it to make a type specimen book.</p>
+                        </div>
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="profile-rating-content">
+              <ul>
+                <li><a href="#"><i class="fa fa-list-ul"></i><span>Sort By</span></a></li>
+                <li><a href="#"><i class="fa fa-filter"></i></a></li>
+                <li>
+                  <select class="form-control select-option">
+                    <option>Product Rating</option>
+                    <option>Product Rating 1</option>
+                    <option>Product Rating 2</option>
+                    <option>Product Rating 3</option>
+                    <option>Product Rating 4</option>
+                    <option>Product Rating 5</option>
+                  </select>
+                </li>
+                <li>
+                  <select class="form-control select-option">
+                    <option>User Rating</option>
+                    <option>User Rating 1</option>
+                    <option>User Rating 2</option>
+                    <option>User Rating 3</option>
+                    <option>User Rating 4</option>
+                    <option>User Rating 5</option>
+                  </select>
+                </li>
+              </ul>
+            </div>
+            <% @products.each do |product| %>
+              <div class="profile-product">
+                <div class="profile-img-content">
+                  <div class="profile-product-img">
+                    <% if product.images.nil? || product.images.empty? %>
+                      <%= image_tag("images.png",:class=>"product_profile_img") %>
+                    <% else %>
+                      <%= image_tag(product.images.first.avatar.url, :class=>"product_profile_img") %>
+                    <% end %>
+                  </div>
+                  <div class="profile-img-list">
+                    <ul>
+                      <% product.images.limit(4).each do |product_image| %>
+                        <li><%= link_to image_tag product_image.avatar.url %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
+                <div class="profile-detail-content">
+                  <div class="profile-product-detail">
+                    <h3><%= product.title + ":" %></h3>
+                    <!-- <div class="profile-product-rating">
+                      <p>Product rating:</p>
+                      <ul>
+                        <li><a href="#"><span></span></a></li>
+                        <li><a href="#"><span></span></a></li>
+                        <li><a href="#"><span></span></a></li>
+                        <li><a href="#"><span></span></a></li>
+                        <li><a href="#"><span></span></a></li>
+                      </ul>
+                    </div> -->
+                    <div class="profile-product-descrip">
+                      <p><%= product.description %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+
+
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

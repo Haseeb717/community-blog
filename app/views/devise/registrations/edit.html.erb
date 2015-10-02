@@ -1,4 +1,4 @@
-<!-- <h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -46,7 +46,7 @@
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
-<% end %> -->
+<% end %>
 
 <!-- <h3>Cancel my account</h3>
 
@@ -88,14 +88,14 @@
               <%= f.email_field :email, placeholder: "Email Address", id: "exampleInputName2",class: "form-control field-user", autocomplete: "off" %>
             </div>
             <div class="form-group form-login">
-              <%= f.password_field :password, autocomplete: "off", placeholder: "Password", id: "exampleInputEmail2", class: "form-control field-password" %>
+              <%= f.password_field :password, autocomplete: "off", placeholder: "Password", id: "exampleInputEmail2", class: "form-control field-password" %><i>(leave blank if you don't want to change it)</i>
             </div>
             <div class="form-group form-login">
               <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Password Confirmation", id: "exampleInputEmail2", class: "form-control field-password" %>
             </div>
 
             <div class="form-group form-login" >
-              <%= f.password_field :current_password, autocomplete: "off", placeholder: "Current Confirmation", id: "exampleInputEmail2", class: "form-control field-password" %>
+              <%= f.password_field :current_password, autocomplete: "off", placeholder: "Current Password", id: "exampleInputEmail2", class: "form-control field-password" %>
             </div>
             <div class="login-link">
               <%= f.submit "Update" , id: "login-btn" %>

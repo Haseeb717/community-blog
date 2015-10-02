@@ -22,7 +22,7 @@
               <% else %>
                 <div class="item">
               <% end %>
-            <%= image_tag(image.avatar.url, class: "style_image") %>
+              <%= image_tag(image.avatar.url, class: "style_image") %>
               </div>
               <% active=active+1 %>
             <% end %>
@@ -135,7 +135,7 @@
                   <ul>
                     <% @products.each do |p| %>
                       <% if p.images.nil? || p.images.empty? %>
-                        <li><%= link_to image_tag("product-img-1.png",), product_path(p.id) %></li>
+                        <li><%= link_to image_tag("product-img-1.png"), product_path(p.id) %></li>
                       <% else %>
                         <li><%= link_to image_tag(p.images.first.avatar.url(:med), class: "same_image"), product_path(p) %></li>
                       <% end %>

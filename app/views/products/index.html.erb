@@ -17,6 +17,12 @@
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= form_for(product, :url=>update_featured_product_path(product)) do |f| %>
+            <%= f.radio_button :feature, product.id %> 
+            <%= f.label :feature, 'Featured', :value => product.id %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

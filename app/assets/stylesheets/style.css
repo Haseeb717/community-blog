@@ -1079,8 +1079,295 @@ footer .footer-content p{
     font-family: 'latoregular';
 }
 
-
 /*============================ Product Page Detail ============================*/
+
+/*===================================================================================*/
+/*================================ Profile Page Start ===============================*/
+/*===================================================================================*/
+
+.profile-page{
+  float: left;
+  width: 100%;
+  padding: 50px 0px;
+}
+.profile-page .profile-left-block{
+  float: left;
+  width: 100%;
+}
+.profile-page .person-block{
+  float: left;
+  width: 100%;
+  text-align: center;
+}
+.profile-page .person-block .profile-pic{
+  width: 263px;
+  height: 263px;
+  border-radius: 50%;
+}
+.profile-page .person-block img{
+  width: 100%;
+}
+.profile-page .person-block h2{
+  font-size: 27px;
+  color: #3b5998;
+  font-family: 'latobold';
+  margin: 15px 0px 0px 0px;
+}
+.profile-page .person-block-rating{
+  width: 100%;
+  float: left;
+  padding-top: 12px;
+}
+.profile-page .person-block-rating ul{
+  margin: 0px;
+  padding: 0px;
+}
+.profile-page .person-block-rating ul li{
+  list-style: none;
+  display: inline-block;
+  background: url('profile-img-12.png') no-repeat;
+  width: 23px;
+  height: 23px;
+}
+.profile-page .person-block-rating ul li:hover{
+  background: url('profile-img-12-h.png') no-repeat;
+  -moz-transition: .4s linear;
+  -webkit-transition: .4s ease-out;
+  transition: .4s linear;
+}
+.profile-page .categories-block{
+  float: left;
+  width: 100%;
+  padding-top: 50px;
+  padding-left: 60px;
+}
+.profile-page .left-blocks-heading{
+  font-size: 17px;
+  font-family: 'latobold';
+  color: #3b5998;
+  margin: 0px;
+}
+.profile-page .categories-block ul{
+  margin: 12px 0px 0px 0px;
+  padding: 0px;
+}
+.profile-page .categories-block ul li{
+  list-style: none;
+}
+.profile-page .categories-block ul li a{
+  color: #bfbfbf;
+  font-size: 17px;
+  font-family: 'latoregular';
+  text-decoration: none;
+}
+.profile-page .tag-block{
+  float: left;
+  width: 100%;
+  padding-top: 22px;
+  padding-left: 60px;
+}
+.profile-page .tag-block ul{
+  margin: 12px 0px 0px 0px;
+  padding: 0px;
+}
+.profile-page .tag-block ul li{
+  list-style: none;
+}
+.profile-page .tag-block ul li a{
+  color: #bfbfbf;
+  font-size: 17px;
+  font-family: 'latoregular';
+  text-decoration: none;
+}
+.profile-page .followers-block{
+  float: left;
+  width: 100%;
+  padding-top: 22px;
+  padding-left: 60px;
+}
+.profile-page .followers-block ul{
+  margin: 30px 0px 0px 0px;
+  padding: 0px;
+  width: 100%;
+  float: left;
+}
+.profile-page .followers-block ul li{
+  list-style: none;
+  float: left;
+  width: 33%;
+  height: 60px;
+}
+.profile-page .profile-right-block{
+  float: left;
+  width: 100%;
+}
+
+.profile-page .profile-right-block h2{
+  margin: 0px;
+  font-size: 27px;
+  font-family: 'latobold';
+  color: #3b5998;
+}
+.profile-page .profile-product{
+  float: left;
+  width: 100%;
+  margin-top: 30px;
+  padding: 25px 20px 30px 20px;
+  border: 2px solid #ededed;
+  border-radius: 10px;
+}
+.profile-page .profile-product-img{
+  width: 100%;
+  float: left;
+  text-align: center;
+  min-height: 146px;
+}
+.profile-page .profile-product-img .product_profile_img{
+  max-width: 200px;
+}
+.profile-page .profile-img-list ul{
+  margin: 18px 0px 0px 0px;
+  padding: 0px;
+  width: 100%;
+  float: left;
+  text-align: center;
+}
+.profile-page .profile-img-list ul li{
+  list-style: none;
+  display: inline-block;
+  margin: 0 2px;
+}
+.profile-page .profile-img-list ul li a{
+  background-color: #fff;
+  padding: 10px 3px;
+  border: 1px solid #969696;
+  border-radius: 10px;
+  float: left;
+  width: 44px;
+  height: 44px;
+}
+.profile-page .profile-img-list ul li img{
+  max-width: 36px;
+}
+.profile-page .product-detail-carousel ol{
+  left: 97%;
+  top: 100%;
+  width: 35%;
+}
+.profile-page .product-detail-carousel ol li{
+  width: 26px;
+  height: 4px;
+  background-color: #bcbcbc;
+  border-radius: 1px;
+}
+.profile-page .product-detail-carousel ol .active{
+  background-color: #848484;
+  margin: 1px 0px;
+}
+.profile-page .profile-product-detail{
+  width: 100%;
+  float: left;
+  padding-left: 22px;
+}
+.profile-page .profile-product-detail h3{
+  font-size: 21px;
+  color: #3b5998;
+  font-family: 'latobold';
+  margin: 0px;
+}
+.profile-page .profile-img-content{
+  width: 30%;
+  float: left;
+}
+.profile-page .profile-detail-content{
+  width: 70%;
+  float: left;
+}
+.profile-page .profile-product-rating{
+  float: left;
+  width: 100%;
+  padding-top: 20px;
+}
+.profile-page .profile-product-rating p{
+  font-size: 21px;
+  color: #3b5998;
+  font-family: 'latobold';
+  margin: 0px 6px 0px 0px;
+  float: left;
+}
+.profile-page .profile-product-rating ul{
+  margin: 10px 0px 0px 0px;
+  padding: 0px;
+}
+.profile-page .profile-product-rating ul li{
+  list-style: none;
+  display: inline-block;
+  background: url('profile-img-13.png') no-repeat;
+  width: 15px;
+  height: 15px;
+}
+.profile-page .profile-product-rating ul li:hover{
+  background: url('profile-img-13-h.png') no-repeat;
+  -moz-transition: .4s linear;
+  -webkit-transition: .4s ease-out;
+  transition: .4s linear;
+}
+.profile-page .profile-product-descrip{
+  width: 100%;
+  float: left;
+  margin-top: 20px;
+  overflow-y: scroll;
+  height: 120px;
+}
+.profile-page .profile-product-descrip p{
+  color: #49659f;
+  font-size: 17px;
+  font-family: 'latosemibold';
+  margin: 0px;
+}
+.profile-page .profile-rating-content{
+  width: 100%;
+  float: left;
+  padding-top: 50px;
+}
+.profile-page .profile-rating-content ul{
+  margin: 0px;
+  padding: 0px;
+}
+.profile-page .profile-rating-content ul li{
+  list-style: none;
+  float: left;
+  margin-left: 15px;
+}
+.profile-page .profile-rating-content ul li a{
+  font-size: 17px;
+  color: #3b5998;
+  font-family: 'latobold';
+  text-decoration: none;
+}
+.profile-page .profile-rating-content ul li a span{
+  margin: 0px 0px 0px 15px;
+}
+.profile-page .profile-rating-content ul li a i{
+  color: #3b5998;
+  font-size: 22px;
+}
+.profile-page .profile-rating-content .select-option{
+  background-color: transparent;
+  border: 1px solid #3b5998;
+  border-radius: 10px;
+  height: 28px;
+  width: 160px;
+  padding: 3px 8px;
+  text-indent: 3px;
+}
+.profile-page .profile-rating-content ul li:first-child{
+  margin-left: 0px;
+}
+
+/*===================================================================================*/
+/*================================ Profile Page Close ===============================*/
+/*===================================================================================*/
 
 
 @media(max-width:1200px){
@@ -1092,6 +1379,13 @@ footer .footer-content p{
   .product-page-detail .product-slider-indicators{
     left: 86%;
     width: 44%;
+  }
+  .profile-page .product-detail-carousel ol{
+    left: 89%;
+    width: 43%;
+  }
+  .profile-page .profile-img-list ul li{
+    margin: 0px 1px;
   }
 }
 @media(max-width:991px){
@@ -1114,6 +1408,17 @@ footer .footer-content p{
   .product-page-detail .product-slider-indicators{
     width: 59%;
     left: 72%;
+  }
+  .profile-page .categories-block,
+  .profile-page .tag-block,
+  .profile-page .followers-block{
+    padding-left: 0px;
+  }
+  .profile-page .profile-product-img ul li{
+    margin: 0px;
+  }
+  .results-rating-content{
+    margin-top: 30px;
   }
 }
 @media(max-width:768px){
@@ -1190,6 +1495,37 @@ footer .footer-content p{
   .home-page .home-comment-descrip{
     width: 100%;
   }
+  .profile-page .profile-product-img{
+    width: 100%;
+  }
+  .profile-page .profile-product-detail{
+    width: 100%;
+    padding-left: 0px;
+    padding-top: 20px;
+  }
+  .profile-page .profile-img-content{
+    width: 100%;
+  }
+  .profile-page .profile-detail-content{
+    width: 100%;
+  }
+  .profile-page .product-detail-carousel ol{
+    display: none;
+  }
+
+}
+@media(max-width:550px){
+  .profile-page .profile-rating-content ul li{
+    margin-left: 7px;
+  }
+  .results-comment-user{
+    width: 100%;
+  }
+  .results-rating-user{
+    width: 100% !important;
+    text-align: left;
+    padding-top: 10px !important;
+  }
 }
 @media(max-width:480px){
   .home-page .content-top-heading{
@@ -1226,6 +1562,18 @@ footer .footer-content p{
   .product-page-detail .under-comment{
     padding-left: 30px;
   }
+  .profile-page .profile-rating-content .select-option{
+    margin-top: 10px;
+  }
+  .profile-page .profile-rating-content ul li{
+    width: 50%;
+    float: left;
+    margin-left: 0px;
+  }
+  .results-rating-content ul li{
+    width: auto !important;
+    margin-left: 10px !important;
+  }
 }
 @media(max-width:360px){
   .login-page .facebook-link a span{
@@ -1236,5 +1584,15 @@ footer .footer-content p{
   }
   header .upper-header-content ul li a.user-link{
     margin-right: 5px;
+  }
+  .profile-page .profile-product-detail h3,
+  .profile-page .profile-product-rating p{
+    font-size: 18px;
+  }
+  .profile-page .profile-rating-content ul li{
+    width: 100%;
+  }
+  .results-rating-content ul li{
+    margin-top: 10px;
   }
 }

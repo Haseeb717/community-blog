@@ -86,6 +86,10 @@ class ProductsController < ApplicationController
     end
   end
 
+  def update_featured
+    binding.pry
+  end
+
   private
     def set_product
       @product = Product.friendly.find(params[:id])
