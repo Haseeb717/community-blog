@@ -942,7 +942,7 @@ footer .footer-content p{
   width: 100%;
   float: left;
   height: auto;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .product-page-detail .product-imgs-scroll ul{
   margin: 0px;
@@ -1052,7 +1052,7 @@ footer .footer-content p{
   border: 0px;
 }
 .product-page-detail .under-comment{
-  padding-left: 80px;
+  padding-left: 0px;
   padding-top: 0px;
 }
 .style_image{
