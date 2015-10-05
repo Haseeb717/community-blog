@@ -90,7 +90,9 @@ class ProductsController < ApplicationController
   def update_featured
     # false all featured products
     f_product = Product.where(:feature=>true)
-    f_product.first.update_attributes(:feature=>false)
+    if !f_product.nil
+      f_product.first.update_attributes(:feature=>false)
+    end
 
     # update product to featured
     product = Product.find(params[:id])
