@@ -337,7 +337,7 @@ header .upper-header-content ul li a:hover{
 header .upper-header-content ul li a.user-link{
   width: 30px;
   height: 30px;
-  margin-right: 15px;
+  
 }
 .profile-img{
   width: 30px;
@@ -624,24 +624,34 @@ header .navbar-brand{
   text-align: left;
 }
 .home-page .home-comment-person{
-  width: 22%;
+  width: 20%;
   float: left;
+  text-align: center;
+}
+.home-page .home-comment-person span{
+  float: left;
+  width: 100%;
+}
+.home-page .home-comment-person span img{
+  width: 65px;
+  height: 65px;
+  border: 1px solid #fff;
+  border-radius: 50%;
 }
 .home-page .home-comment-person h3{
   color: #3b5998;
   font-size: 21px;
   font-family: 'latosemibold';
-  padding-top: 21px;
+  margin: 0px;
 }
 .home-page .home-comment-descrip{
-  width: 78%;
+  width: 80%;
   float: left;
   background-color: #fff;
   border-radius: 8px;
   border-left: 2px solid #dedede;
   border-top: 2px solid #dedede;
   padding: 25px;
-  margin-top: 35px;
 }
 .home-page .home-comment-descrip p{
   font-size: 19px;
@@ -649,23 +659,10 @@ header .navbar-brand{
   color: #49659f;
   margin: 0px;
 }
-.home-page .comment-person-first img{
-  height: 65px;
-  width: 65px;
-  border-radius: 50%;
-  margin-right: 15px;
-  border:2px solid white;
-}
 .home-page .comment-person-second{
   background: url('img-12.png') no-repeat !important;
   height: 65px;
   display: block;
-}
-.home-page .comment-person-first span{
-  width: 100%;
-  float: left;
-  padding-bottom: 15px;
-  padding-left: 22px;
 }
 
 /*============================ Footer ============================*/
@@ -944,7 +941,7 @@ footer .footer-content p{
 .product-page-detail .product-imgs-scroll{
   width: 100%;
   float: left;
-  height: 788px;
+  height: auto;
   overflow-y: scroll;
 }
 .product-page-detail .product-imgs-scroll ul{
@@ -987,26 +984,27 @@ footer .footer-content p{
   padding: 15px 30px;
 }
 .product-page-detail .product-comment-user{
-  width: 50%;
+  width: 20%;
   float: left;
+  text-align: center;
 }
 .product-page-detail .product-comment-user h3{
   color: #3b5998;
   font-size: 21px;
   font-family: 'latosemibold';
-  margin: 0px;
+  margin: 10px 0px 0px 0px;
   float: left;
-  padding-top: 20px;
-  padding-left: 20px;
+  padding: 0px;
+  width: 100%;
 }
 .product-page-detail .product-comment-user span{
   float: left;
+  width: 100%;
 }
 .product-page-detail .product-comment-date{
   width: 50%;
   float: left;
   text-align: right;
-  margin-top: 16px;
 }
 .product-page-detail .product-comment-date a{
   font-size: 22px;
@@ -1024,7 +1022,7 @@ footer .footer-content p{
   width: 100%;
   padding: 0px 30px;
 }
-.product-page-detail .product-comment-body textarea{
+.product-page-detail .product-comment-info p{
   padding: 15px;
   font-size: 18px;
   color: #3b5998;
@@ -1033,31 +1031,25 @@ footer .footer-content p{
   box-shadow: none;
   background-color: #fcfcfc;
 }
-.product-page-detail .product-comment-body p{
-    background-color: #fcfcfc;
-    padding: 15px;
-    margin: 0px;
-    min-height: 80px;
-    border-radius: 0px;
-    color: #3b5998;
-    font-size: 18px;
-    font-family: 'latoregular';
+.product-page-detail .text-field{
+  float: left;
+  width: 80%;
 }
-.product-page-detail .product-comment-body .best_in_place > * {
+.product-page-detail .best_in_place > * {
   color: #3b5998;
   border: 0;
 }
-.product-page-detail .product-comment-body input{
-    background-color: #fcfcfc;
-    padding: 15px;
-    margin: 0px;
-    min-height: 80px;
-    border-radius: 0px;
-    color: #3b5998;
-    font-size: 18px;
-    font-family: 'latoregular';
-    width: 100%;
-    border: 0px;
+.product-page-detail input{
+  background-color: #fcfcfc;
+  padding: 15px;
+  margin: 0px;
+  min-height: 80px;
+  border-radius: 0px;
+  color: #3b5998;
+  font-size: 18px;
+  font-family: 'latoregular';
+  width: 100%;
+  border: 0px;
 }
 .product-page-detail .under-comment{
   padding-left: 80px;
@@ -1077,10 +1069,21 @@ footer .footer-content p{
   margin-bottom: 5px;
 }
 .edit_dlt_options{
-    padding: 15px;
-    color: #3b5998;
-    font-size: 18px;
-    font-family: 'latoregular';
+  float: left;
+  width: 50%;
+}
+.edit_dlt_options span{
+  font-family: 'latosemibold';
+  color: #3b5998;
+  font-size: 22px;
+}
+.edit_dlt_options span a{
+  color: #3b5998
+}
+.content-none-display span{
+  width: 20%;
+  float: left;
+  visibility: hidden;
 }
 
 /*============================ Product Page Detail ============================*/
@@ -1476,7 +1479,9 @@ footer .footer-content p{
     padding-left: 0px;
     padding-top: 20px;
   }
-  .product-page-detail .product-comment-user,
+  .product-page-detail .product-comment-user{
+    width: 100%;
+  }
   .product-page-detail .product-comment-date{
     width: 100%;
     text-align: left;
@@ -1517,7 +1522,10 @@ footer .footer-content p{
   .profile-page .product-detail-carousel ol{
     display: none;
   }
-
+  .product-page-detail .text-field{
+    width: 100%;
+    margin-top: 20px;
+  }
 }
 @media(max-width:550px){
   .profile-page .profile-rating-content ul li{
@@ -1530,6 +1538,9 @@ footer .footer-content p{
     width: 100% !important;
     text-align: left;
     padding-top: 10px !important;
+  }
+  .edit_dlt_options{
+    width: 100%;
   }
 }
 @media(max-width:480px){

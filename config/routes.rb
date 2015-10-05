@@ -16,7 +16,7 @@ Blog::Application.routes.draw do
       post 'update_featured'
     end
   end
-  get 'home/profile' => 'home#profile'
+  get '/profile' => 'home#profile'
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

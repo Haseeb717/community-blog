@@ -12,13 +12,13 @@
                   <div class="content-top">
                     <div class="content-top-heading">
 
-                      <h2><%= link_to product.title, product_path(product.title) %></h2>
+                      <h2><%= link_to product.title, product_path(product) %></h2>
                     </div>
-                    <div class="content-top-rating">
+                    <!-- <div class="content-top-rating">
                       <ul>
                         <li><a href="#"><span></span></a></li>
                       </ul>
-                    </div>
+                    </div> -->
                   </div>
                   <div class="content-img">
                     <% if product.images.nil? || product.images.empty? %>

@@ -159,37 +159,38 @@
                         <div class="product-comment-info">
                           <div class="product-comment-user">
                             <span>
-                                <% if product_comment.user.images.nil? || product_comment.user.images.empty? %>
-                                  <%= image_tag("user.png", class: "comment-pic") %>
-                                <% else %>
-                                  <%= image_tag product_comment.user.images.last.avatar.url(:small), class: "comment-pic" %>
-                                <% end %>
-                              </span>
+                              <% if product_comment.user.images.nil? || product_comment.user.images.empty? %>
+                                <%= image_tag("user.png", class: "comment-pic") %>
+                              <% else %>
+                                <%= image_tag product_comment.user.images.last.avatar.url(:small), class: "comment-pic" %>
+                              <% end %>
+                            </span>
                             <h3><%= product_comment.user.first_name + ' ' + product_comment.user.last_name %></h3>
                           </div>
-                          <div class="product-comment-date">
-                            <%= link_to product_comment.created_at.strftime("%d/%m/%Y") + " at " + product_comment.created_at.strftime("%H:%M") %>
-                            <a href="#"><%= image_tag("img-8.png") %></a>
-                          </div>
-                        </div>
-                        <div class="product-comment-body">
                           <div class="text-field">
                             
                             <% if product_comment.user == current_user %>
                               <p><%= best_in_place product_comment, :description, :nil => "Click me to add content!"  %></p>
-                              <span class="edit_dlt_options">
-                                <%= link_to 'Delete', comment_path(product_comment.id), {:method => :delete, :confirm => 'Are you sure?'} %>
-                              </span>
-                              <span class="edit_dlt_options"></span>
+                              <div class="edit_dlt_options">
+                                <span>
+                                  <%= link_to 'Delete', comment_path(product_comment.id), {:method => :delete, :confirm => 'Are you sure?'} %>
+                                </span>
+                              </div>
                             <% else %>
                               <p><%= product_comment.description %></p>
-                            <% end %> 
+                              <div class="edit_dlt_options" style="visibility:hidden;"><span>fdsf</span></div>
+                            <% end %>
+                            <div class="product-comment-date">
+                              <%= link_to product_comment.created_at.strftime("%d/%m/%Y") + " at " + product_comment.created_at.strftime("%H:%M") %>
+                              <a href="#"><%= image_tag("img-8.png") %></a>
+                            </div>
                           </div>
                         </div>
                     <% end %>
                   </div>
                   <div class="product-comment-detail under-comment">
                     <div class="product-comment-body">
+                      <div class="content-none-display"><span>span</span></div>
                       <div class="text-field">
                         <%= form_for @product , url: product_comments_product_path(@product), :method => :post do |f| %>
                           <%= f.fields_for :comments, @product.comments.build do |comment| %>
@@ -204,8 +205,8 @@
                   <h3>No Comment</h3>
                     
                   <div class="product-comment-detail under-comment" style="padding-top:20px;">
-                    
                     <div class="product-comment-body">
+                      <div class="content-none-display"><span>span</span></div>
                       <div class="text-field">
                         <%= form_for @product , url: product_comments_product_path(@product), :method => :post do |f| %>
                           <%= f.fields_for :comments, @product.comments.build do |comment| %>
