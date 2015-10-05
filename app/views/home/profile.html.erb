@@ -115,7 +115,7 @@
                     <% @featured_products.each do |product| %>
                       <div class="item active">
                         <div class="profile-product-detail">
-                          <h3><%= product.title+":" %></h3>
+                          <h3><%= link_to product.title+":", product_path(product) %></h3>
                           <div class="profile-product-descrip">
                             <p><%= product.description %></p>
                           </div>
@@ -172,7 +172,7 @@
                 </div>
                 <div class="profile-detail-content">
                   <div class="profile-product-detail">
-                    <h3><%= product.title + ":" %></h3>
+                    <h3><%= link_to product.title + ":",product_path(product) %></h3>
                     <!-- <div class="profile-product-rating">
                       <p>Product rating:</p>
                       <ul>
