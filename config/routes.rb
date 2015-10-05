@@ -9,10 +9,11 @@ Blog::Application.routes.draw do
     member do
       post 'product_comments'
       post 'product_likes_and_dislikes'
-      post 'update_featured'
+      
     end
     collection do
       get 'product_categories'
+      post 'update_featured'
     end
   end
   get 'home/profile' => 'home#profile'

@@ -24,7 +24,7 @@
                     <% else %>
                       <%= image_tag current_user.images.last.avatar.url(:thumb), class: "profile-img" %>
                     <% end %>
-                    <%= current_user.first_name + current_user.last_name %></a>
+                    <%= link_to current_user.first_name + current_user.last_name, home_profile_path %></a>
                   </li>
                   <li class="dropdown">
                     <a href="#" class="dropdown-toggle setting-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>

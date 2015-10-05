@@ -88,7 +88,17 @@ class ProductsController < ApplicationController
   end
 
   def update_featured
-    binding.pry
+    # false all featured products
+    f_product = Product.where(:feature=>true)
+    f_product.first.update_attributes(:feature=>false)
+
+    # update product to featured
+    product = Product.find(params[:id])
+    if product.update_attributes(:feature=>true)
+      render :json => {:message => 'success'}
+    else
+      render :json => {:message => 'error'}
+    end
   end
 
   private

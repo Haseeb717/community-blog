@@ -776,9 +776,10 @@ footer .footer-content p{
   height: 500px;  
 }
 .product-page-detail .product-slider-indicators{
-  left: 93.5%;
+  left: 93%;
   bottom: -120px;
   width: 37%;
+  text-align: right;
 }
 .product-page-detail .product-slider-indicators .active{
   margin: 0px;
@@ -1227,6 +1228,7 @@ footer .footer-content p{
 }
 .profile-page .profile-product-img .product_profile_img{
   max-width: 200px;
+  min-height: 146px;
 }
 .profile-page .profile-img-list ul{
   margin: 18px 0px 0px 0px;
@@ -1319,7 +1321,7 @@ footer .footer-content p{
   width: 100%;
   float: left;
   margin-top: 20px;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 120px;
 }
 .profile-page .profile-product-descrip p{
@@ -1410,7 +1412,7 @@ footer .footer-content p{
   }
   .product-page-detail .product-slider-indicators{
     width: 59%;
-    left: 72%;
+    left: 71%;
   }
   .profile-page .categories-block,
   .profile-page .tag-block,
