@@ -91,12 +91,13 @@
             type: "POST",
             data: {type: current_id},
             success: function (data) {
-                alert("Updated");
-                if(current_id = "like"){
-                    $("#"+id).removeClass(current_id).addClass('like'); 
+                if(current_id == "dislike"){
+                    $("#"+id).removeClass(current_id).addClass('like');
+                    $("#"+id).siblings('.like_count').html(data.count);
                 }
                 else{
                     $("#"+id).removeClass(current_id).addClass('dislike');
+                    $("#"+id).siblings('.like_count').html(data.count);
                 }
                 
             }

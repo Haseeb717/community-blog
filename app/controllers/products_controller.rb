@@ -75,7 +75,8 @@ class ProductsController < ApplicationController
     else
       current_user.unlike!(@product)
     end
-    render :json => {:message => 'success'}
+    count  = @product.likers(User).count
+    render :json => {:message => 'success',:count=>count}
   end
 
   def product_categories

@@ -566,6 +566,7 @@ header .navbar-brand{
   float: left;
   width: 37px;
   height: 37px;
+  cursor: pointer;
 }
 .like:hover{
   background: url('img-5-h.png') no-repeat;
@@ -573,6 +574,7 @@ header .navbar-brand{
   width: 37px;
   float: left;
   height: 37px;
+  cursor: pointer;
   -moz-transition: .4s linear;
   -webkit-transition: .4s ease-out;
   transition: .4s linear;
@@ -583,6 +585,7 @@ header .navbar-brand{
   float: left;
   width: 37px;
   height: 37px;
+  cursor: pointer;
 }
 .like_count{
   margin: 15px;
