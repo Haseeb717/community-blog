@@ -90,7 +90,8 @@ class ProductsController < ApplicationController
   def update_featured
     # false all featured products
     f_product = Product.where(:feature=>true)
-    if !f_product.nil
+    binding.pry
+    if !f_product.empty?
       f_product.first.update_attributes(:feature=>false)
     end
 
