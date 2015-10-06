@@ -462,7 +462,9 @@ header .form-chk li:last-child{
 header .navbar-brand{
   padding: 12px 0px 0px 0px;
 }
-
+header #search_submit{
+  display: none;
+}
 .logout-link{
   font-size: 15px !important;
   padding-left: 0px !important; 
@@ -1034,6 +1036,10 @@ footer .footer-content p{
 .product-page-detail .text-field{
   float: left;
   width: 80%;
+}
+.product-page-detail .text-field span{
+  width: 100%;
+  display: block;
 }
 .product-page-detail .best_in_place > * {
   color: #3b5998;

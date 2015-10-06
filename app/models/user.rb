@@ -12,6 +12,11 @@ class User < ActiveRecord::Base
   has_many :ratings, as: :rate_able
   has_many :images, as: :imageable
   
+  searchable do
+    text :first_name, :boost => 5
+    text :last_name
+  end
+
   accepts_nested_attributes_for :images
 
 end

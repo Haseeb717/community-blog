@@ -173,6 +173,7 @@
                               <p><%= best_in_place product_comment, :description, :nil => "Click me to add content!"  %></p>
                               <div class="edit_dlt_options">
                                 <span>
+                                  
                                   <%= link_to 'Delete', comment_path(product_comment.id), {:method => :delete, :confirm => 'Are you sure?'} %>
                                 </span>
                               </div>

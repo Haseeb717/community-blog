@@ -53,36 +53,44 @@
               </button>
               <%= link_to image_tag("logo.png", options={alt: "Logo"}), root_url, :class => "navbar-brand" %>
             </div>
+            <%= form_tag('/search', method: :get) do %>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Search by hashtag, user, product,..">
-                  <i class="fa fa-search"></i>
+                <div class="form-group" style="margin-bottom:0;padding-bottom:0;">
+                  
+                    <p>
+                      <%= text_field_tag :search, params[:search],:class=>"form-control",:placeholder=>"Search by hashtag, user, product,.." %>
+                        <i class="fa fa-search"></i>
+                      <%= submit_tag "Search", :name => nil, :id=>"search_submit" %>
+                    </p>
+                  
+                  
                 </div>
                 <ul class="form-chk">
+                  <% @type ||= "product" %>
                   <li>
                     <label class="checkbox-inline">
-                      <input type="checkbox" id="inlineCheckbox1" value="option1"> Hashtag
+                      <%= radio_button_tag 'type', 'hashtag', @type == "hashtag" ? true : false %>  Hashtag
                     </label>
                   </li>
                   <li>
                     <label class="checkbox-inline">
-                      <input type="checkbox" id="inlineCheckbox2" value="option2"> User
+                      <%= radio_button_tag 'type', 'user', @type == "user" ? true : false %> User
                     </label>
                   </li>
                   <li>
                     <label class="checkbox-inline">
-                      <input type="checkbox" id="inlineCheckbox3" value="option3"> Product
+                      <%= radio_button_tag 'type', 'product', @type == "product" ? true : false %> Product
                     </label>
                   </li>
                   <li>
                     <label class="checkbox-inline">
-                      <input type="checkbox" id="inlineCheckbox3" value="option3"> Category
+                      <%= radio_button_tag 'type', 'category', @type == "category" ? true : false %> Category
                     </label>
                   </li>
                 </ul>
-              </form>
+
             </div>
+            <% end %>
           </div>
         </nav>
       </div>
@@ -114,6 +122,7 @@
         </div>
       </div>
     </div>
+    
   </footer>
   <!-- footer -->
   <% end %>

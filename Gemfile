@@ -5,6 +5,7 @@ gem 'rails', '4.2.4'
 
 # Use mysql2 as the database for Active Record
 gem 'mysql2', '~> 0.3.18'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -40,7 +41,9 @@ gem 'paperclip'
 # inline text editing
 gem 'best_in_place'
 
-
+# searching
+gem 'sunspot_rails'
+gem 'sunspot_solr'
 
 # Use debugger
 gem 'pry'

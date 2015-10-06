@@ -9,6 +9,22 @@ class Product < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :images, as: :imageable
 
+  searchable do
+    text :title, :boost => 5
+    text :description
+    # text :comments do
+    #   comments.map(&:description)
+    # end
+    # text :categories do 
+    #   categories.map(&:name).compact.join(" ")
+    # end
+    # text :user do
+    #   user.first_name
+    #   user.last_name
+    # end
+    
+  end
+
   accepts_nested_attributes_for :images
   accepts_nested_attributes_for :comments
 
