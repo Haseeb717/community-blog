@@ -15,12 +15,13 @@ class HomeController < ApplicationController
     if params["type"] == "user"
       @search = Sunspot.search(User) do
         fulltext params[:search]
+        paginate :page => 2, :per_page => 1
       end
       @search_products = Array.new
       @search.results.each do |result|
         @search_products += result.products
       end
-      @type = "users"
+      @type = "user"
 
     elsif params["type"] == "product"
       @search = Sunspot.search(Product) do
