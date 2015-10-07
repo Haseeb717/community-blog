@@ -21,8 +21,9 @@ class HomeController < ApplicationController
   def search
 
     if params["type"] == "user"
-      @search = Sunspot.search(User) do |s|
-        s.fulltext params[:search]
+      @search = Sunspot.search(User) do 
+        fulltext params[:search]
+        paginate(:page => params[:page] || 1, :per_page => 2)
       end
       @search_products = Array.new
       @search.results.each do |result|
@@ -34,6 +35,7 @@ class HomeController < ApplicationController
     elsif params["type"] == "product"
       @search = Sunspot.search(Product) do
         fulltext params[:search]
+        paginate(:page => params[:page] || 1, :per_page => 2)
       end
       @search_products = @search.results
       @type = "product"
@@ -41,6 +43,7 @@ class HomeController < ApplicationController
     elsif params["type"] == "category"
       @search = Sunspot.search(Category) do
         fulltext params[:search]
+        paginate(:page => params[:page] || 1, :per_page => 2)
       end
       @search_products = Array.new
       @search.results.each do |result|
@@ -53,7 +56,7 @@ class HomeController < ApplicationController
       @type = "hashtag"
     end
 
-     
+
   end
 
 end

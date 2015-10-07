@@ -62,7 +62,7 @@ class ProductsController < ApplicationController
         format.html { redirect_to @product, notice: 'Comment added successfully' }
         format.json { render json:  @product, status: :created, location: @company }
       else
-        format.html { render action: "show", notice: 'Comment not added. Try Again' }
+        format.html { redirect_to @product, alert: 'Empty Comment not added. Try Again' }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end

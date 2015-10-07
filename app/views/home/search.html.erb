@@ -76,7 +76,7 @@
             </div>
           </div>
         <% end %>
-
+        <%= paginate @search.hits %>
         <% if @search_products.nil? || @search_products.empty? %>
           <h2>No records found</h2>
         <% end %>
