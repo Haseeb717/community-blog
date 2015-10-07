@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   respond_to :html
 
   def index
-    @products = Product.all
+    @products = current_user.products.all
     respond_with(@products)
   end
 
@@ -89,7 +89,7 @@ class ProductsController < ApplicationController
 
   def update_featured
     # false all featured products
-    f_product = Product.where(:feature=>true)
+    f_product = current_user.products.where(:feature=>true)
     if !f_product.empty?
       f_product.first.update_attributes(:feature=>false)
     end

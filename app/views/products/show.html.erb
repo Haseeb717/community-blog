@@ -155,17 +155,19 @@
                 <% if !@product.comments.empty? %>
                   <div class="product-comment-detail">
                     <h3>Comments</h3>
-                    <% @product.comments.each do |product_comment| %>
+                    <% product_comments = @product.comments.all.page(params[:page]).per(3) %>
+                    <% product_comments.each do |product_comment| %>
                         <div class="product-comment-info">
                           <div class="product-comment-user">
                             <span>
                               <% if product_comment.user.images.nil? || product_comment.user.images.empty? %>
-                                <%= image_tag("user.png", class: "comment-pic") %>
+                                <%= link_to image_tag("user.png", class: "comment-pic"),profile_path(product_comment.user) %>
                               <% else %>
-                                <%= image_tag product_comment.user.images.last.avatar.url(:small), class: "comment-pic" %>
+                                <%= link_to image_tag(product_comment.user.images.last.avatar.url(:small), class: "comment-pic"
+                                ),profile_path(product_comment.user) %>
                               <% end %>
                             </span>
-                            <h3><%= product_comment.user.first_name + ' ' + product_comment.user.last_name %></h3>
+                            <h3><%= link_to product_comment.user.first_name + ' ' + product_comment.user.last_name, profile_path(product_comment.user) %></h3>
                           </div>
                           <div class="text-field">
                             
@@ -182,12 +184,15 @@
                               <div class="edit_dlt_options" style="visibility:hidden;"><span>fdsf</span></div>
                             <% end %>
                             <div class="product-comment-date">
-                              <%= link_to product_comment.created_at.strftime("%d/%m/%Y") + " at " + product_comment.created_at.strftime("%H:%M") %>
-                              <a href="#"><%= image_tag("img-8.png") %></a>
+                              <span style="width:auto;display:inline;"><%= product_comment.created_at.strftime("%d/%m/%Y") + " at " + product_comment.created_at.strftime("%H:%M") %></span>
+                              <span style="width:auto;display:inline;"><%= image_tag("img-8.png") %></span>
                             </div>
                           </div>
                         </div>
                     <% end %>
+                    <div style="text-align:center;">
+                      <%= paginate product_comments %>
+                    </div>
                   </div>
                   <div class="product-comment-detail under-comment">
                     <div class="product-comment-body">

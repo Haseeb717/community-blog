@@ -4,10 +4,10 @@
         <div class="col-md-3">
           <div class="profile-left-block">
             <div class="person-block">
-              <% if current_user.images.nil? || current_user.images.empty? %>
+              <% if @user.images.nil? || @user.images.empty? %>
                 <%= image_tag("user.png", class: "profile-pic") %>
               <% else %>
-                <%= image_tag(current_user.images.last.avatar.url(:profile), class: "profile-pic") %>
+                <%= image_tag(@user.images.last.avatar.url(:profile), class: "profile-pic") %>
               <% end %>
               <div class="person-block-rating">
                 <ul>
@@ -58,79 +58,82 @@
         </div>
         <div class="col-md-9">
           <div class="profile-right-block">
-            <h2>Favorites</h2>
-            <div class="profile-product">
-              <div class="profile-img-content">
-                <div id="carousel-example-generic" class="carousel slide product-img-carousel" data-ride="carousel">
-                  <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                      <div class="profile-product-img">
-                        <% if @featured_products.first.images.nil? || @featured_products.first.images.empty? %>
-                          <%= image_tag("images.png",:class=>"product_profile_img") %>
-                        <% else %>
-                          <%= image_tag(@featured_products.first.images.first.avatar.url, :class=>"product_profile_img") %>
-                        <% end %>
-                      </div>
-                      <div class="profile-img-list">
-                        <ul>
-                          <% @featured_products.first.images.limit(4).each do |product| %>
-                            <li><%= link_to image_tag product.avatar.url %></li>
-                          <% end %>
-                        </ul>
-                      </div>
-                    </div>
-                    <!-- <div class="item">
-                      <div class="profile-product-img">
-                        <%= image_tag("profile-img-4.png") %>
-                      </div>
-                      <div class="profile-img-list">
-                        <ul>
-                          <li><a href="#"><%= image_tag("profile-img-5.png") %></a></li>
-                          <li><a href="#"><%= image_tag("profile-img-5.png") %></a></li>
-                          <li><a href="#"><%= image_tag("profile-img-5.png") %></a></li>
-                          <li><a href="#"><%= image_tag("profile-img-5.png") %></a></li>
-                        </ul>
-                      </div>
-                    </div> -->
-                    
-                  </div>
-                </div>
-              </div>
-              <div class="profile-detail-content">
-                <div id="carousel-example-generic-1" class="carousel slide product-detail-carousel" data-ride="carousel">
-                  <ol class="carousel-indicators">
-                    <% count=0 %>
-                    <% @featured_products.each do |product| %>
-                      <li data-target="#carousel-example-generic-1" data-slide-to=<%= count %> class="active"></li>
-                      <% count=count+1 %>
-                    <% end %>
-<!--                     <li data-target="#carousel-example-generic-1" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-example-generic-1" data-slide-to="1"></li>
-                    <li data-target="#carousel-example-generic-1" data-slide-to="2"></li>
-                    <li data-target="#carousel-example-generic-1" data-slide-to="3"></li>
-                    <li data-target="#carousel-example-generic-1" data-slide-to="4"></li>
-                    <li data-target="#carousel-example-generic-1" data-slide-to="5"></li> -->
-                  </ol>
-                  <div class="carousel-inner" role="listbox">
-                    <% @featured_products.each do |product| %>
+            <% if @featured_products.nil? || @featured_products.empty? %>
+            <% else %>
+              <h2>Favorites</h2>
+              <div class="profile-product">
+                <div class="profile-img-content">
+                  <div id="carousel-example-generic" class="carousel slide product-img-carousel" data-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
                       <div class="item active">
-                        <div class="profile-product-detail">
-                          <h3><%= link_to product.title+":", product_path(product) %></h3>
-                          <div class="profile-product-descrip">
-                            <p><%= product.description %></p>
-                          </div>
+                        <div class="profile-product-img">
+                          <% if @featured_products.first.images.nil? || @featured_products.first.images.empty? %>
+                            <%= image_tag("images.png",:class=>"product_profile_img") %>
+                          <% else %>
+                            <%= image_tag(@featured_products.first.images.first.avatar.url, :class=>"product_profile_img") %>
+                          <% end %>
+                        </div>
+                        <div class="profile-img-list">
+                          <ul>
+                            <% @featured_products.first.images.limit(4).each do |product| %>
+                              <li><%= link_to image_tag product.avatar.url %></li>
+                            <% end %>
+                          </ul>
                         </div>
                       </div>
-                    <% end %>
+                      <!-- <div class="item">
+                        <div class="profile-product-img">
+                          <%= image_tag("profile-img-4.png") %>
+                        </div>
+                        <div class="profile-img-list">
+                          <ul>
+                            <li><a href="#"><%= image_tag("profile-img-5.png") %></a></li>
+                            <li><a href="#"><%= image_tag("profile-img-5.png") %></a></li>
+                            <li><a href="#"><%= image_tag("profile-img-5.png") %></a></li>
+                            <li><a href="#"><%= image_tag("profile-img-5.png") %></a></li>
+                          </ul>
+                        </div>
+                      </div> -->
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="profile-detail-content">
+                  <div id="carousel-example-generic-1" class="carousel slide product-detail-carousel" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                      <% count=0 %>
+                      <% @featured_products.each do |product| %>
+                        <li data-target="#carousel-example-generic-1" data-slide-to=<%= count %> class="active"></li>
+                        <% count=count+1 %>
+                      <% end %>
+                      <!-- <li data-target="#carousel-example-generic-1" data-slide-to="0" class="active"></li>
+                      <li data-target="#carousel-example-generic-1" data-slide-to="1"></li>
+                      <li data-target="#carousel-example-generic-1" data-slide-to="2"></li>
+                      <li data-target="#carousel-example-generic-1" data-slide-to="3"></li>
+                      <li data-target="#carousel-example-generic-1" data-slide-to="4"></li>
+                      <li data-target="#carousel-example-generic-1" data-slide-to="5"></li>  -->
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                      <% @featured_products.each do |product| %>
+                        <div class="item active">
+                          <div class="profile-product-detail">
+                            <h3><%= link_to product.title+":", product_path(product) %></h3>
+                            <div class="profile-product-descrip">
+                              <p><%= product.description %></p>
+                            </div>
+                          </div>
+                        </div>
+                      <% end %>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            <% end %>
             <div class="profile-rating-content">
               <ul>
                 <li><a href="#"><i class="fa fa-list-ul"></i><span>Sort By</span></a></li>
                 <li><a href="#"><i class="fa fa-filter"></i></a></li>
-                <li>
+                <!-- <li>
                   <select class="form-control select-option">
                     <option>Product Rating</option>
                     <option>Product Rating 1</option>
@@ -139,7 +142,7 @@
                     <option>Product Rating 4</option>
                     <option>Product Rating 5</option>
                   </select>
-                </li>
+                </li> -->
                 <li>
                   <select class="form-control select-option">
                     <option>User Rating</option>
@@ -190,9 +193,8 @@
                 </div>
               </div>
             
-
-
             <% end %>
+            <%= paginate @products %>
           </div>
         </div>
       </div>

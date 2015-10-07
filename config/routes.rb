@@ -16,7 +16,7 @@ Blog::Application.routes.draw do
       post 'update_featured'
     end
   end
-  get '/profile' => 'home#profile'
+  get '/profile/:id' => 'home#profile', as: "profile"
   get '/search' => 'home#search'
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

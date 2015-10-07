@@ -600,13 +600,13 @@ header #search_submit{
   float: left;
   text-align: right;
 }
-.home-page .content-bottom-date a{
+.home-page .content-bottom-date span{
   font-size: 22px;
   font-family: 'latosemibold';
   color: #3b5998;
   text-decoration: none;
 }
-.home-page .content-bottom-date a:first-child{
+.home-page .content-bottom-date span:first-child{
   margin-right: 10px;
   position: relative;
   top: 5px;
@@ -637,7 +637,7 @@ header #search_submit{
 .home-page .home-comment-person span img{
   width: 65px;
   height: 65px;
-  border: 1px solid #fff;
+  border: 2px solid #fff;
   border-radius: 50%;
 }
 .home-page .home-comment-person h3{
@@ -649,17 +649,35 @@ header #search_submit{
 .home-page .home-comment-descrip{
   width: 80%;
   float: left;
+}
+.home-page .home-comment-descrip .text-field{
   background-color: #fff;
   border-radius: 8px;
   border-left: 2px solid #dedede;
   border-top: 2px solid #dedede;
-  padding: 25px;
+  padding: 15px;
 }
 .home-page .home-comment-descrip p{
   font-size: 19px;
   font-family: 'latoregular';
   color: #49659f;
   margin: 0px;
+}
+.home-page .home-comment-descrip .product-comment-date {
+  width: 100%;
+  float: left;
+  text-align: right;
+}
+.home-page .home-comment-descrip .product-comment-date span:first-child {
+    position: relative;
+    top: 5px;
+    margin-right: 10px;
+}
+.home-page .home-comment-descrip .product-comment-date span {
+  font-size: 22px;
+  font-family: 'latosemibold';
+  color: #3b5998;
+  text-decoration: none;
 }
 .home-page .comment-person-second{
   background: url('img-12.png') no-repeat !important;
@@ -1008,13 +1026,13 @@ footer .footer-content p{
   float: left;
   text-align: right;
 }
-.product-page-detail .product-comment-date a{
+.product-page-detail .product-comment-date span{
   font-size: 22px;
   font-family: 'latosemibold';
   color: #3b5998;
   text-decoration: none
 }
-.product-page-detail .product-comment-date a:first-child{
+.product-page-detail .product-comment-date span:first-child{
   position: relative;
   top: 5px;
   margin-right: 10px;

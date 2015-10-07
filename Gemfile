@@ -22,7 +22,7 @@ gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
-gem 'friendly_id'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
@@ -44,6 +44,12 @@ gem 'best_in_place'
 # searching
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+
+# friendly urls
+gem 'friendly_id'
+
+# for pagination
+gem 'kaminari'
 
 # Use debugger
 gem 'pry'
