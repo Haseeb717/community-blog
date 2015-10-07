@@ -53,7 +53,8 @@ class HomeController < ApplicationController
       @type = "hashtag"
     end
 
-      
+    else
+      @message = true    
   end
 
 end

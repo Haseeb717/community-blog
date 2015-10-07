@@ -155,6 +155,9 @@
                 </li>
               </ul>
             </div>
+            <% if @products.nil? || @products.empty? %>
+              <h2 style="text-align:center;">No Products found</h2>
+            <% end %>
             <% @products.each do |product| %>
               <div class="profile-product">
                 <div class="profile-img-content">
