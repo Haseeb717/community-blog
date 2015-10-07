@@ -14,7 +14,7 @@ class HomeController < ApplicationController
       # end
     end
     # @featured_products = Product.where(:feature=>true) 
-    @products = @user.products.all.order('created_at DESC').page(params[:page]).per(5)
+    @products = @user.products.all.order('created_at DESC').page(params[:page]).per(2)
     @categories = Category.all
   end 
 
@@ -23,7 +23,7 @@ class HomeController < ApplicationController
     if params["type"] == "user"
       @search = Sunspot.search(User) do 
         fulltext params[:search]
-        paginate(:page => params[:page] || 1, :per_page => 2)
+        paginate(:page => params[:page] || 1, :per_page => 1)
       end
       @search_products = Array.new
       @search.results.each do |result|
@@ -35,7 +35,7 @@ class HomeController < ApplicationController
     elsif params["type"] == "product"
       @search = Sunspot.search(Product) do
         fulltext params[:search]
-        paginate(:page => params[:page] || 1, :per_page => 2)
+        paginate(:page => params[:page] || 1, :per_page => 1)
       end
       @search_products = @search.results
       @type = "product"
@@ -43,7 +43,7 @@ class HomeController < ApplicationController
     elsif params["type"] == "category"
       @search = Sunspot.search(Category) do
         fulltext params[:search]
-        paginate(:page => params[:page] || 1, :per_page => 2)
+        paginate(:page => params[:page] || 1, :per_page => 1)
       end
       @search_products = Array.new
       @search.results.each do |result|
