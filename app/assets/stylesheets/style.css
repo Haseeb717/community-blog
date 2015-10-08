@@ -273,9 +273,9 @@
   text-align:center;
 }
 #create-comment{
-    float: right;
-    margin-top: 10px;
-    color: #fff;
+  float: right;
+  margin-top: 10px;
+  color: #fff;
   font-size: 22px;
   font-family: 'source_sans_prosemibold';
   text-decoration: none;
@@ -1165,6 +1165,25 @@ footer .footer-content p{
   -moz-transition: .4s linear;
   -webkit-transition: .4s ease-out;
   transition: .4s linear;
+}
+.profile-page .person-block #follow_button{
+    margin-top: 10px;
+    color: #fff;
+    font-size: 22px;
+    font-family: 'source_sans_prosemibold';
+    text-decoration: none;
+    padding-left: 0px;
+    height: auto;
+    border: 1px solid #398439;
+    width: auto;
+    border-radius: 3px;
+    background: #398439;
+    padding: 5px 10px;
+    text-align: center;
+}
+.profile-page .person-block #follow_button:focus{
+  border: 0;
+  border-radius: 0;
 }
 .profile-page .categories-block{
   float: left;

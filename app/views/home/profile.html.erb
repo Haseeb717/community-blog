@@ -1,3 +1,4 @@
+<input type="hidden" value=<%= @user.id %> id="user_id">
 <div class="profile-page">
     <div class="container">
       <div class="row">
@@ -17,8 +18,19 @@
                   <li><a href="#"><span></span></a></li>
                   <li><a href="#"><span></span></a></li>
                 </ul>
+
+              </div>
+              <div style="">
+                <% if @user != current_user %>
+                  <% if current_user.follows?(@user) %>
+                    <input type="button" value="Unfollow" class="unfollow" id="follow_button">
+                  <% else %>
+                    <input type="button" value="Follow" class="follow" id="follow_button">
+                  <% end %>
+                <% end %>
               </div>
             </div>
+            <div
             <div class="categories-block">
               <h4 class="left-blocks-heading">Popular Categories</h4>
               <ul>
@@ -43,15 +55,16 @@
             <div class="followers-block">
               <h4 class="left-blocks-heading">Followers</h4>
               <ul>
-                <li><a href="#"><%= image_tag("profile-img-2.png") %></a></li>
-                <li><a href="#"><%= image_tag("profile-img-3.png") %></a></li>
-                <li><a href="#"><%= image_tag("profile-img-2.png") %></a></li>
-                <li><a href="#"><%= image_tag("profile-img-2.png") %></a></li>
-                <li><a href="#"><%= image_tag("profile-img-3.png") %></a></li>
-                <li><a href="#"><%= image_tag("profile-img-2.png") %></a></li>
-                <li><a href="#"><%= image_tag("profile-img-2.png") %></a></li>
-                <li><a href="#"><%= image_tag("profile-img-3.png") %></a></li>
-                <li><a href="#"><%= image_tag("profile-img-2.png") %></a></li>
+                <% unless @followers.nil? || @followers.empty? %>
+                  <% @followers.take(9).each do |follower| %>
+                    <% if follower.images.nil? || follower.images.empty? %>
+                      <%= link_to image_tag("user.png", class: "profile-img"), profile_path(@user) %>
+                    <% else %>
+                      <%= link_to image_tag(follower.images.last.avatar.url(:thumb), class: "profile-img"),profile_path(@user) %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+                
               </ul>
             </div>
           </div>
@@ -203,3 +216,28 @@
       </div>
     </div>
   </div>
+  <script type="text/javascript">
+    $("#follow_button").click(function() {
+      var id = $(this).attr('id');
+      var user_id = $("#user_id").val();
+      var url_link = '/home/follow';
+      alert(user_id);
+      var current_id = $(this).attr('class');
+      $.ajax({
+          url: url_link,
+          type: "POST",
+          data: {type: current_id, user: user_id},
+          success: function (data) {
+              if(current_id == "follow"){
+                  $("#"+id).removeClass(current_id).addClass('unfollow');
+                  $("#"+id).val("unfollow");
+              }
+              else{
+                  $("#"+id).removeClass(current_id).addClass('follow');
+                  $("#"+id).val("Follow");
+              }
+              
+          }
+      });
+  });
+  </script>

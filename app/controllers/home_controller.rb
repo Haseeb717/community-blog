@@ -16,6 +16,9 @@ class HomeController < ApplicationController
     # @featured_products = Product.where(:feature=>true) 
     @products = @user.products.all.order('created_at DESC').page(params[:page]).per(2)
     @categories = Category.all
+    if @user.followers(User).count > 0 
+      @followers = @user.followers(User)
+    end
   end 
 
   def search
@@ -55,8 +58,12 @@ class HomeController < ApplicationController
       @search_products = Array.new
       @type = "hashtag"
     end
-
-
   end
 
+  def user_following
+    user = User.find(params["user"])
+    current_user.toggle_follow!(user)
+    render :json => {:message => 'success'}
+    
+  end
 end
