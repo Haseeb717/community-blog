@@ -20,6 +20,7 @@
                 </ul>
 
               </div>
+              <div class="user_name"><%= @user.first_name + " " + @user.last_name %></div>
               <div style="">
                 <% if @user != current_user %>
                   <% if current_user.follows?(@user) %>
