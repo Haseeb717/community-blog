@@ -22,7 +22,7 @@
                     <% if current_user.images.nil? || current_user.images.empty? %>
                       <%= link_to image_tag("user.png", class: "profile-img"), profile_path(current_user) %>
                     <% else %>
-                      <%= image_tag current_user.images.last.avatar.url(:thumb), class: "profile-img" %>
+                      <%= link_to image_tag(current_user.images.last.avatar.url(:thumb), class: "profile-img"),profile_path(current_user) %>
                     <% end %>
                     <%= link_to current_user.first_name + current_user.last_name, profile_path(current_user) %></a>
                   </li>

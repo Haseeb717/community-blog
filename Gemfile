@@ -41,15 +41,16 @@ gem 'paperclip'
 # inline text editing
 gem 'best_in_place'
 
+# for pagination
+gem 'kaminari'
+
 # searching
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 
+
 # friendly urls
 gem 'friendly_id'
-
-# for pagination
-gem 'kaminari'
 
 # Use debugger
 gem 'pry'

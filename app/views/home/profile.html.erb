@@ -24,7 +24,7 @@
               <ul>
                 <li><a href="#">All</a></li>
                 <% @categories.each do |category| %>
-                  <li><%= link_to category.name %></li>
+                  <li><%= link_to category.name,search_path(:type=>"category",:search=>category.name) %></li>
                 <% end %>
                 
               </ul>

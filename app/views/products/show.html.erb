@@ -200,7 +200,7 @@
                       <div class="text-field">
                         <%= form_for @product , url: product_comments_product_path(@product), :method => :post do |f| %>
                           <%= f.fields_for :comments, @product.comments.build do |comment| %>
-                            <%= comment.text_area :description, :class=>"form-control", placeholder: "Add comment here.." %>
+                            <%= comment.text_area :description, :required => true, :class=>"form-control", placeholder: "Add comment here.." %>
                           <% end %>
                           <%= f.submit "Add Comment", :id=>"create-comment" %>
                         <% end %>
@@ -216,7 +216,7 @@
                       <div class="text-field">
                         <%= form_for @product , url: product_comments_product_path(@product), :method => :post do |f| %>
                           <%= f.fields_for :comments, @product.comments.build do |comment| %>
-                            <%= comment.text_area :description, :class=>"form-control", placeholder: "Add comment here.." %>
+                            <%= comment.text_area :description, :required => true,:class=>"form-control", placeholder: "Add comment here.." %>
                           <% end %>
                           <%= f.submit "Add comment", :id=>"create-comment" %>
                         <% end %>
