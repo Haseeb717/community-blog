@@ -114,19 +114,19 @@
                 </div>
                 <div class="profile-detail-content">
                   <div id="carousel-example-generic-1" class="carousel slide product-detail-carousel" data-ride="carousel">
-                    <ol class="carousel-indicators">
+                    <!-- <ol class="carousel-indicators">
                       <% count=0 %>
                       <% @featured_products.each do |product| %>
                         <li data-target="#carousel-example-generic-1" data-slide-to=<%= count %> class="active"></li>
                         <% count=count+1 %>
                       <% end %>
-                      <!-- <li data-target="#carousel-example-generic-1" data-slide-to="0" class="active"></li>
+                      <li data-target="#carousel-example-generic-1" data-slide-to="0" class="active"></li>
                       <li data-target="#carousel-example-generic-1" data-slide-to="1"></li>
                       <li data-target="#carousel-example-generic-1" data-slide-to="2"></li>
                       <li data-target="#carousel-example-generic-1" data-slide-to="3"></li>
                       <li data-target="#carousel-example-generic-1" data-slide-to="4"></li>
-                      <li data-target="#carousel-example-generic-1" data-slide-to="5"></li>  -->
-                    </ol>
+                      <li data-target="#carousel-example-generic-1" data-slide-to="5"></li> 
+                    </ol> -->
                     <div class="carousel-inner" role="listbox">
                       <% @featured_products.each do |product| %>
                         <div class="item active">
@@ -169,9 +169,6 @@
                 </li>
               </ul>
             </div>
-            <% if @products.nil? || @products.empty? %>
-              <h2 style="text-align:center;">No Products found</h2>
-            <% end %>
             <% @products.each do |product| %>
               <div class="profile-product">
                 <div class="profile-img-content">
@@ -212,6 +209,11 @@
             
             <% end %>
             <%= paginate @products %>
+          </div>
+          <div class="product-not-found">
+            <% if @products.nil? || @products.empty? %>
+              <h2 style="text-align:center;">No Products found</h2>
+            <% end %>
           </div>
         </div>
       </div>

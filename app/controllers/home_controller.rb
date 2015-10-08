@@ -8,7 +8,7 @@ class HomeController < ApplicationController
     @user = User.find(params["id"])
     if !@user.products.empty?
       @featured_products = @user.products.where(:feature=>true)
-
+      @type = "user"
       # if(!@featured_product)
       #   @featured_product = current_user.products.first.update_attributes() 
       # end
@@ -33,7 +33,12 @@ class HomeController < ApplicationController
       #   @search_products += result.products
       # end
       @type = "user"
-      redirect_to profile_path(@search.results.first)
+      if @search.results.nil? || @search.results.empty?
+        @search_products = @search.results
+      else
+        redirect_to profile_path(@search.results.first)
+      end
+      
 
     elsif params["type"] == "product"
       @search = Sunspot.search(Product) do

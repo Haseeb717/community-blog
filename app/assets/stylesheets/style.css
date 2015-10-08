@@ -1257,9 +1257,11 @@ footer .footer-content p{
   float: left;
   width: 100%;
 }
-
-.profile-page .profile-right-block h2{
-  margin: 0px;
+.profile-page .product-not-found{
+  padding-top: 50px;
+}
+.profile-page .product-not-found h2{
+  margin-top: 100px;
   font-size: 27px;
   font-family: 'latobold';
   color: #3b5998;
