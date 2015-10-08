@@ -6,138 +6,145 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-  <% if !devise_controller? %>
-  <!-- header -->
-  <header>
-    <div class="container">
-      <div class="upper-header">
-        <div class="header-container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="upper-header-content dropdown">
-                <ul>
-                  <li><%= link_to('Create Product', new_product_path ) %></li>
-                  <li><a href="#" class="user-link">
-                    <% if current_user.images.nil? || current_user.images.empty? %>
-                      <%= link_to image_tag("user.png", class: "profile-img"), profile_path(current_user) %>
-                    <% else %>
-                      <%= link_to image_tag(current_user.images.last.avatar.url(:thumb), class: "profile-img"),profile_path(current_user) %>
-                    <% end %>
-                    <%= link_to current_user.first_name + current_user.last_name, profile_path(current_user) %></a>
-                  </li>
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle setting-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                    <ul class="dropdown-menu setting-menu">
-                      <li><%= link_to('Logout', destroy_user_session_path, :method => :delete , class: 'logout-link') %></li>
-                      <li><%= link_to('Create Product', new_product_path , class: 'logout-link') %></li>
-                      <li><%= link_to('Edit Profile', edit_user_registration_path , class: 'logout-link') %></li>
-                    </ul>
-                  </li>
-                  <li><a href="#" class="question-link"><span></span></a></li>
-                </ul>
+<% if !devise_controller? %>
+  <body>
+    <!-- header -->
+    <header>
+      <div class="container">
+        <div class="upper-header">
+          <div class="header-container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="upper-header-content dropdown">
+                  <ul>
+                    <li><%= link_to('Create Product', new_product_path ) %></li>
+                    <li><a href="#" class="user-link">
+                      <% if current_user.images.nil? || current_user.images.empty? %>
+                        <%= link_to image_tag("user.png", class: "profile-img"), profile_path(current_user) %>
+                      <% else %>
+                        <%= link_to image_tag(current_user.images.last.avatar.url(:thumb), class: "profile-img"),profile_path(current_user) %>
+                      <% end %>
+                      <%= link_to current_user.first_name + current_user.last_name, profile_path(current_user) %></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle setting-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
+                      <ul class="dropdown-menu setting-menu">
+                        <li><%= link_to('Logout', destroy_user_session_path, :method => :delete , class: 'logout-link') %></li>
+                        <li><%= link_to('Create Product', new_product_path , class: 'logout-link') %></li>
+                        <li><%= link_to('Edit Profile', edit_user_registration_path , class: 'logout-link') %></li>
+                      </ul>
+                    </li>
+                    <li><a href="#" class="question-link"><span></span></a></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="main-header">
-        <nav class="navbar navbar-default">
-          <div class="header-container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <%= link_to image_tag("logo.png", options={alt: "Logo"}), root_url, :class => "navbar-brand" %>
-            </div>
-            <%= form_tag('/search', method: :get) do %>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <div class="form-group" style="margin-bottom:0;padding-bottom:0;">
-                  
-                    <p>
-                      <%= text_field_tag :search, params[:search],:class=>"form-control",:placeholder=>"Search by hashtag, user, product,.." %>
-                        <i class="fa fa-search"></i>
-                      <%= submit_tag "Search", :name => nil, :id=>"search_submit" %>
-                    </p>
-                  
-                  
-                </div>
-                <ul class="form-chk">
-                  <% @type ||= "product" %>
-                  <li>
-                    <label class="checkbox-inline">
-                      <%= radio_button_tag 'type', 'hashtag', @type == "hashtag" ? true : false %>  Hashtag
-                    </label>
-                  </li>
-                  <li>
-                    <label class="checkbox-inline">
-                      <%= radio_button_tag 'type', 'user', @type == "user" ? true : false %> User
-                    </label>
-                  </li>
-                  <li>
-                    <label class="checkbox-inline">
-                      <%= radio_button_tag 'type', 'product', @type == "product" ? true : false %> Product
-                    </label>
-                  </li>
-                  <li>
-                    <label class="checkbox-inline">
-                      <%= radio_button_tag 'type', 'category', @type == "category" ? true : false %> Category
-                    </label>
-                  </li>
-                </ul>
+        <div class="main-header">
+          <nav class="navbar navbar-default">
+            <div class="header-container">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <%= link_to image_tag("logo.png", options={alt: "Logo"}), root_url, :class => "navbar-brand" %>
+              </div>
+              <%= form_tag('/search', method: :get) do %>
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <div class="form-group" style="margin-bottom:0;padding-bottom:0;">
+                    
+                      <p>
+                        <%= text_field_tag :search, params[:search],:class=>"form-control",:placeholder=>"Search by hashtag, user, product,.." %>
+                          <i class="fa fa-search"></i>
+                        <%= submit_tag "Search", :name => nil, :id=>"search_submit" %>
+                      </p>
+                    
+                    
+                  </div>
+                  <ul class="form-chk">
+                    <% @type ||= "product" %>
+                    <li>
+                      <label class="checkbox-inline">
+                        <%= radio_button_tag 'type', 'hashtag', @type == "hashtag" ? true : false %>  Hashtag
+                      </label>
+                    </li>
+                    <li>
+                      <label class="checkbox-inline">
+                        <%= radio_button_tag 'type', 'user', @type == "user" ? true : false %> User
+                      </label>
+                    </li>
+                    <li>
+                      <label class="checkbox-inline">
+                        <%= radio_button_tag 'type', 'product', @type == "product" ? true : false %> Product
+                      </label>
+                    </li>
+                    <li>
+                      <label class="checkbox-inline">
+                        <%= radio_button_tag 'type', 'category', @type == "category" ? true : false %> Category
+                      </label>
+                    </li>
+                  </ul>
 
+              </div>
+              <% end %>
             </div>
-            <% end %>
+          </nav>
+        </div>
+      </div>
+      <% flash.each do |key, value| %>
+        <% if key == "alert" %>
+          <div class="alert alert-danger">
+            <a href="#" data-dismiss="alert" class="close">×</a>
+              <ul>
+                <li style="list-style-type:none;">
+                  <%= value %>
+                </li>
+              </ul>
           </div>
-        </nav>
-      </div>
-    </div>
-    <% flash.each do |key, value| %>
-      <% if key == "alert" %>
-        <div class="alert alert-danger">
-          <a href="#" data-dismiss="alert" class="close">×</a>
-            <ul>
-              <li style="list-style-type:none;">
-                <%= value %>
-              </li>
-            </ul>
-        </div>
-      <% else %>
-        <div class="alert alert-info">
-          <a href="#" data-dismiss="alert" class="close">×</a>
-            <ul>
-              <li style="list-style-type:none;">
-                <%= value %>
-              </li>
-            </ul>
-        </div>
+        <% else %>
+          <div class="alert alert-info">
+            <a href="#" data-dismiss="alert" class="close">×</a>
+              <ul>
+                <li style="list-style-type:none;">
+                  <%= value %>
+                </li>
+              </ul>
+          </div>
 
+        <% end %>
+        
       <% end %>
-      
+    </header>
+    <!-- header -->
     <% end %>
-  </header>
-  <!-- header -->
-  <% end %>
-	<%= yield %>
+  	<%= yield %>
 
-  <% if !devise_controller? %>
-  <!-- footer -->
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="footer-content">
-            <p>All Rights Reseved</p>
+    <% if !devise_controller? %>
+    <!-- footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="footer-content">
+              <p>All Rights Reseved</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      
+    </footer>
+    <!-- footer -->
+
+  </body>
+<% else %>
+  <body class="login-page">
+
     
-  </footer>
-  <!-- footer -->
-  <% end %>
-</body>
+
+  </body>
+<% end %>
 </html>

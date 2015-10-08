@@ -26,19 +26,19 @@ class HomeController < ApplicationController
     if params["type"] == "user"
       @search = Sunspot.search(User) do 
         fulltext params[:search]
-        paginate(:page => params[:page] || 1, :per_page => 1)
+        paginate(:page => params[:page] || 1, :per_page => 3)
       end
-      @search_products = Array.new
-      @search.results.each do |result|
-        @search_products += result.products
-      end
+      # @search_products = Array.new
+      # @search.results.each do |result|
+      #   @search_products += result.products
+      # end
       @type = "user"
-      
+      redirect_to profile_path(@search.results.first)
 
     elsif params["type"] == "product"
       @search = Sunspot.search(Product) do
         fulltext params[:search]
-        paginate(:page => params[:page] || 1, :per_page => 1)
+        paginate(:page => params[:page] || 1, :per_page => 3)
       end
       @search_products = @search.results
       @type = "product"
@@ -46,7 +46,7 @@ class HomeController < ApplicationController
     elsif params["type"] == "category"
       @search = Sunspot.search(Category) do
         fulltext params[:search]
-        paginate(:page => params[:page] || 1, :per_page => 1)
+        paginate(:page => params[:page] || 1, :per_page => 3)
       end
       @search_products = Array.new
       @search.results.each do |result|

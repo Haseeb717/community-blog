@@ -72,11 +72,10 @@
   text-align: center;
   background-size: 100% 100%;
   padding: 70px 0px;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 .login-page .login-section-bg{
   display: inline-block;
@@ -1174,19 +1173,19 @@ footer .footer-content p{
 }
 
 .profile-page .person-block #follow_button{
-    margin-top: 10px;
-    color: #fff;
-    font-size: 22px;
-    font-family: 'source_sans_prosemibold';
-    text-decoration: none;
-    padding-left: 0px;
-    height: auto;
-    border: 1px solid #398439;
-    width: auto;
-    border-radius: 3px;
-    background: #398439;
-    padding: 5px 10px;
-    text-align: center;
+  margin-top: 10px;
+  color: #fff;
+  font-size: 22px;
+  font-family: 'source_sans_prosemibold';
+  text-decoration: none;
+  padding-left: 0px;
+  height: auto;
+  border: 1px solid #398439;
+  width: auto;
+  border-radius: 3px;
+  background: #398439;
+  padding: 5px 10px;
+  text-align: center;
 }
 .profile-page .person-block #follow_button:focus{
   border: 0;
@@ -1426,6 +1425,54 @@ footer .footer-content p{
 /*===================================================================================*/
 /*================================ Profile Page Close ===============================*/
 /*===================================================================================*/
+
+
+
+/*================================ listing products Start ===============================*/
+.listing-products{
+  width: 100%;
+  float: left;
+  margin: 40px 0px;
+}
+.listing-products h2{
+  font-size: 27px;
+  color: #3b5998;
+  margin: 0px;
+  font-family: 'latoregular';
+  text-transform: uppercase;
+  text-align: center;
+}
+.listing-products .listing-products-table{
+  width: 100%;
+  float: left;
+  margin-top: 30px;
+}
+.listing-products .listing-products-table tr th{
+  font-family: 'latoregular';
+  font-size: 16px;  
+}
+.listing-products .listing-products-table tr td{
+  font-family: 'latoregular';
+  font-size: 16px
+}
+.listing-products .listing-products-table tr td a{
+  color: #fff;
+  padding: 8px 13px;
+  border-radius: 5px;
+  font-family: 'latoregular';
+  line-height: 30px;
+  text-decoration: none;
+}
+.listing-products .list-product-show{
+  background-color: #449d44;
+}
+.listing-products .list-product-edit{
+  background-color: #286090;
+}
+.listing-products .list-product-delete{
+  background-color: #d9534f;
+}
+/*================================ listing products Close ===============================*/
 
 
 @media(max-width:1200px){
