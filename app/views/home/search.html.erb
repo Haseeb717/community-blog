@@ -1,7 +1,7 @@
   <div class="home-page">
     <div class="container">
       <h2 class="homepage-heading">Feed</h2>
-        <% @search_products.each do |product| %>
+        <% @products.each do |product| %>
           <div class="row">
             <div class="col-md-12">
               <div class="home-content">
@@ -74,7 +74,7 @@
           </div>
         <% end %>
         <%= paginate @search.hits %>
-        <% if @search_products.nil? || @search_products.empty? %>
+        <% if @products.nil? || @products.empty? %>
           <h2>No records found</h2>
         <% end %>
     </div>

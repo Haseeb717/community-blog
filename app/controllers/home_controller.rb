@@ -26,11 +26,10 @@ class HomeController < ApplicationController
   end 
 
   def search
-
     if params["type"] == "user"
       @search = Sunspot.search(User) do 
         fulltext params[:search]
-        paginate(:page => params[:page] || 1, :per_page => 3)
+        paginate(:page => params[:page] || 1, :per_page => 1)
       end
       # @search_products = Array.new
       # @search.results.each do |result|
@@ -38,7 +37,7 @@ class HomeController < ApplicationController
       # end
       @type = "user"
       if @search.results.nil? || @search.results.empty?
-        @search_products = @search.results
+        @products = @search.results
       else
         redirect_to profile_path(@search.results.first)
       end
@@ -47,25 +46,27 @@ class HomeController < ApplicationController
     elsif params["type"] == "product"
       @search = Sunspot.search(Product) do
         fulltext params[:search]
-        paginate(:page => params[:page] || 1, :per_page => 3)
+        paginate(:page => params[:page] || 1, :per_page => 1)
       end
-      @search_products = @search.results
+      @products = @search.results
       @type = "product"
 
     elsif params["type"] == "category"
       @search = Sunspot.search(Category) do
         fulltext params[:search]
-        paginate(:page => params[:page] || 1, :per_page => 3)
+        paginate(:page => params[:page] || 1, :per_page => 1)
       end
-      @search_products = Array.new
+      @products = Array.new
       @search.results.each do |result|
-        @search_products += result.products
+        @products += result.products
       end
       @type = "category"
 
-    elsif params["type"] == "hashtag"
-      @search_products = Array.new
-      @type = "hashtag"
+    # elsif params["type"] == "hashtag"
+    #   @search_products = Array.new
+    #   @type = "hashtag"
+    else
+      
     end
   end
 

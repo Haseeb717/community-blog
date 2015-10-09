@@ -155,7 +155,7 @@
                 <% if !@product.comments.empty? %>
                   <div class="product-comment-detail">
                     <h3>Comments</h3>
-                    <% product_comments = @product.comments.all.page(params[:page]).per(5) %>
+                    <% product_comments = @product.comments.all.page(params[:page]).per(10) %>
                     <% product_comments.each do |product_comment| %>
                         <div class="product-comment-info">
                           <div class="product-comment-user">
