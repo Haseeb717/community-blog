@@ -2,6 +2,10 @@ class HomeController < ApplicationController
 
   def index
     @products = Product.all.order('created_at DESC').page(params[:page]).per(5)
+    respond_to do |format|
+      format.html
+      format.js 
+    end
   end
   
   def profile
@@ -14,7 +18,7 @@ class HomeController < ApplicationController
       # end
     end
     # @featured_products = Product.where(:feature=>true) 
-    @products = @user.products.all.order('created_at DESC').page(params[:page]).per(2)
+    @products = @user.products.all.order('created_at DESC').page(params[:page]).per(3)
     @categories = Category.all
     if @user.followers(User).count > 0 
       @followers = @user.followers(User)

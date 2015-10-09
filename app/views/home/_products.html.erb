@@ -1,0 +1,71 @@
+<% @products.each do |product| %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="home-content">
+        <div class="home-option-content">
+          <div class="content-top">
+            <div class="content-top-heading">
+
+              <h2><%= link_to product.title, product_path(product) %></h2>
+            </div>
+            <!-- <div class="content-top-rating">
+              <ul>
+                <li><a href="#"><span></span></a></li>
+              </ul>
+            </div> -->
+          </div>
+          <div class="content-img">
+            <% if product.images.nil? || product.images.empty? %>
+              <%= image_tag("img-7.png", options={alt: "Logo"}) %>
+            <% else %>
+              <%= image_tag(product.images.first.avatar.url(:e_large), options={alt: "Logo"}) %>
+            <% end %>
+          </div>
+          <div class="content-bottom">
+            <div class="content-bottom-like">
+              <ul>
+                <% if current_user.likes?(product) %>
+                  <li><a class="dislike" id=<%= "#{product.id}" %> ></a><span class="like_count"><%= product.likers(User).count %></span></li>
+                <% else %> 
+                  <li><a class="like" id=<%= "#{product.id}" %> ></a><span class="like_count"><%= product.likers(User).count %></span></li>
+                <% end -%>
+                
+              </ul>
+            </div>
+            <div class="content-bottom-date">
+              <span><%= product.created_at.strftime("%d/%m/%Y") %></span>
+              <span><%= image_tag("img-8.png", options={alt: "Logo"}) %></span>
+            </div>
+          </div>
+        </div>
+        <% if !product.comments.empty? %>
+          <div class="home-comment">
+            <div class="home-comment-content">
+              <div class="home-comment-person">
+                <h3 class="comment-person-first">
+                  <% if product.comments.last.user.images.nil? || product.comments.last.user.images.empty? %>
+                    <span><%= link_to image_tag("user.png"),profile_path(product.comments.last.user) %></span>
+                  <% else %>
+                    <span><%= link_to image_tag(product.comments.last.user.images.last.avatar.url(:small)),profile_path(product.comments.last.user) %></span>
+                  <% end %>
+                  <%= link_to product.comments.last.user.first_name + " " + product.comments.last.user.last_name, profile_path(product.comments.last.user) %>
+                </h3>
+              </div>
+              <div class="home-comment-descrip">
+                <div class="text-field">
+                  <p><%= product.comments.last.description %></p>
+                </div>
+                <div class="product-comment-date">
+                  <span style="width:auto;display:inline;"><%= product.comments.last.created_at.strftime("%d/%m/%Y") + " at " + product.comments.last.created_at.strftime("%H:%M") %></span>
+                  <span style="width:auto;display:inline;"><img src="/assets/img-8.png" alt="Img 8"></span>
+                </div>  
+              </div>
+              
+            </div>
+          </div>
+        <% end %>
+        
+      </div>
+    </div>
+  </div>
+<% end %>

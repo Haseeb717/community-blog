@@ -1,0 +1,2 @@
+$('.profile_products').append("<%= escape_javascript(render 'profile_products')%>");
+$('#load_more_link').replaceWith("<%= escape_javascript(link_to_next_page(@products,    'Load More', :remote => true, :id=>'load_more_link'))%>");

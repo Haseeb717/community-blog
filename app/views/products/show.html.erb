@@ -155,7 +155,7 @@
                 <% if !@product.comments.empty? %>
                   <div class="product-comment-detail">
                     <h3>Comments</h3>
-                    <% product_comments = @product.comments.all.page(params[:page]).per(3) %>
+                    <% product_comments = @product.comments.all.page(params[:page]).per(5) %>
                     <% product_comments.each do |product_comment| %>
                         <div class="product-comment-info">
                           <div class="product-comment-user">
@@ -169,24 +169,22 @@
                             </span>
                             <h3><%= link_to product_comment.user.first_name + ' ' + product_comment.user.last_name, profile_path(product_comment.user) %></h3>
                           </div>
+                          <div class="product-comment-date">
+                            <span style="width:auto;display:inline;"><%= product_comment.created_at.strftime("%d/%m/%Y") + " at " + product_comment.created_at.strftime("%H:%M") %></span>
+                            <% if product_comment.user == current_user %>
+                              <span>
+                                  <%= link_to 'Delete', comment_path(product_comment.id), {:method => :delete, :confirm => 'Are you sure?'} %>
+                                </span>
+                            <% end %>
+                          </div>
                           <div class="text-field">
                             
                             <% if product_comment.user == current_user %>
                               <p><%= best_in_place product_comment, :description, :nil => "Click me to add content!"  %></p>
-                              <div class="edit_dlt_options">
-                                <span>
-                                  
-                                  <%= link_to 'Delete', comment_path(product_comment.id), {:method => :delete, :confirm => 'Are you sure?'} %>
-                                </span>
-                              </div>
+                              
                             <% else %>
                               <p><%= product_comment.description %></p>
-                              <div class="edit_dlt_options" style="visibility:hidden;"><span>fdsf</span></div>
-                            <% end %>
-                            <div class="product-comment-date">
-                              <span style="width:auto;display:inline;"><%= product_comment.created_at.strftime("%d/%m/%Y") + " at " + product_comment.created_at.strftime("%H:%M") %></span>
-                              <span style="width:auto;display:inline;"><%= image_tag("img-8.png") %></span>
-                            </div>
+                            <% end %>  
                           </div>
                         </div>
                     <% end %>
@@ -196,8 +194,7 @@
                   </div>
                   <div class="product-comment-detail under-comment">
                     <div class="product-comment-body">
-                      <div class="content-none-display"><span>span</span></div>
-                      <div class="text-field">
+                      <div class="new_comment_field">
                         <%= form_for @product , url: product_comments_product_path(@product), :method => :post do |f| %>
                           <%= f.fields_for :comments, @product.comments.build do |comment| %>
                             <%= comment.text_area :description, :required => true, :class=>"form-control", placeholder: "Add comment here.." %>
@@ -212,8 +209,7 @@
                     
                   <div class="product-comment-detail under-comment" style="padding-top:20px;">
                     <div class="product-comment-body">
-                      <div class="content-none-display"><span>span</span></div>
-                      <div class="text-field">
+                      <div class="new_comment_field">
                         <%= form_for @product , url: product_comments_product_path(@product), :method => :post do |f| %>
                           <%= f.fields_for :comments, @product.comments.build do |comment| %>
                             <%= comment.text_area :description, :required => true,:class=>"form-control", placeholder: "Add comment here.." %>
