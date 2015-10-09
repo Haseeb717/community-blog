@@ -5,8 +5,8 @@
     <div class="container main-class">
       <h2 class="homepage-heading">Feed</h2>
       <%= render "products" %>
-      <%= link_to_next_page @products, 'Load More', :remote => true, :id=>"load_more_link" %>
     </div>
+    <%= link_to_next_page @products, 'Load More', :remote => true, :id=>"load_more_link" %>
   </div>
   <!-- /.home-page -->
   <script type="text/javascript">
