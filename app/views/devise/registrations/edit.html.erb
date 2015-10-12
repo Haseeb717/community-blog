@@ -71,9 +71,11 @@
             </div>
             <% if !current_user.images.nil? || !current_user.images.empty? %>
               <% current_user.images.each do |img| %>
-                  <% if img.avatar_file_name && img.persisted? %>
-                    <%= image_tag img.avatar.url(:small) %>
-                    <%= link_to 'Delete', image_path(img.id), {:method => :delete, :confirm => 'Are you sure?'} %>
+                  <% if img.avatar_file_name && img.persisted? %> 
+                    <div class="show_user_images">
+                      <%= image_tag img.avatar.url(:small) %>
+                      <%= link_to 'x', image_path(img.id), {:method => :delete, :confirm => 'Are you sure?'} %>
+                    </div>
                   <% end %>
               <% end %>
             <% end %>

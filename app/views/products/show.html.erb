@@ -59,7 +59,7 @@
                   <%= link_to('Edit Product', edit_product_path,  ) %>
                 <% end %>
                 
-                <%= link_to @product.created_at.strftime("%d/%m/%Y") %>
+                <span><%= @product.created_at.strftime("%d/%m/%Y") %></span>
                 
                 <%= image_tag("img-8.png", options={alt: "Logo"}) %>
               </div>
@@ -70,7 +70,7 @@
       <section class="product-descrip">
         <div class="container-product-descrip">
           <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
               <div class="product-descrip-detail">
                 <div class="product-detail">
                   <h3>Title</h3>
@@ -128,7 +128,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
               <div class="product-descrip-imgs">
                 <h3>Similar Products From User</h3>
                 <div class="product-imgs-scroll">
@@ -144,7 +144,7 @@
                   </ul>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </section>

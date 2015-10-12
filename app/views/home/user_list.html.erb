@@ -1,0 +1,37 @@
+<div class="listing-products">
+  <div class="container">
+    <h2>Listing products</h2>
+    <table class="table table-striped table-bordered listing-products-table">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>First Name</th>
+          <th>Email</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <td><%= product.first_name %></td>
+            <td>
+                <%= product.last_name %>
+            </td>
+            <td>
+                <%= product.email %>
+            </td>
+            <td style="text-align:right;">
+              <%= link_to 'Show', profile_path(product), :class=>"list-product-show" %>
+            </td>
+            
+          </tr>
+        <% end %>
+        <% if @products.nil? || @products.empty? %>
+          <h2>No records found</h2>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @search.hits %>
+  </div>
+</div>

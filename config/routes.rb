@@ -19,6 +19,7 @@ Blog::Application.routes.draw do
   get '/profile/:id' => 'home#profile', as: "profile"
   get '/search' => 'home#search'
   post '/home/follow' => 'home#user_following'
+  get 'home/user' => 'home#user_list'
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

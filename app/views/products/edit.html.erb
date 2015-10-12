@@ -25,14 +25,19 @@
             <%= f.fields_for :images, @product.images.build do |photo| %>
               <%= photo.file_field :avatar,class: "form-control product-img" %>
             <% end %>
-            <% if !@product.images.nil? || !@product.images.empty? %>
-              <% @product.images.each do |img| %>
+            <div id="product_images">
+              <% if !@product.images.nil? || !@product.images.empty? %>
+
+                <% @product.images.each do |img| %>
                   <% if img.avatar_file_name && img.persisted? %>
-                    <%= image_tag img.avatar.url(:small) %>
-                    <%= link_to 'Delete', image_path(img.id), {:method => :delete, :confirm => 'Are you sure?'} %>
+                    <div class="show_product_images">
+                      <%= image_tag img.avatar.url(:small) %>
+                      <%= link_to 'x', image_path(img.id), {:method => :delete, :confirm => 'Are you sure?'} %>
+                    </div>
                   <% end %>
+                <% end %>
               <% end %>
-            <% end %>
+            </div>
             <button style="display:none;" id="add-img">Add More Images</button>
           </div>
           <div class="text-field">

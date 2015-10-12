@@ -27,26 +27,15 @@ class HomeController < ApplicationController
 
   def search
     if params["type"] == "user"
-      @search = Sunspot.search(User) do 
-        fulltext params[:search]
-        paginate(:page => params[:page] || 1, :per_page => 1)
-      end
-      # @search_products = Array.new
-      # @search.results.each do |result|
-      #   @search_products += result.products
-      # end
-      @type = "user"
-      if @search.results.nil? || @search.results.empty?
-        @products = @search.results
-      else
-        redirect_to profile_path(@search.results.first)
+      respond_to do |format|
+        format.html { redirect_to home_user_path(search: params[:search]) }
       end
       
 
     elsif params["type"] == "product"
       @search = Sunspot.search(Product) do
         fulltext params[:search]
-        paginate(:page => params[:page] || 1, :per_page => 1)
+        paginate(:page => params[:page] || 1, :per_page => 2)
       end
       @products = @search.results
       @type = "product"
@@ -54,7 +43,7 @@ class HomeController < ApplicationController
     elsif params["type"] == "category"
       @search = Sunspot.search(Category) do
         fulltext params[:search]
-        paginate(:page => params[:page] || 1, :per_page => 1)
+        paginate(:page => params[:page] || 1, :per_page => 2)
       end
       @products = Array.new
       @search.results.each do |result|
@@ -74,6 +63,14 @@ class HomeController < ApplicationController
     user = User.find(params["user"])
     current_user.toggle_follow!(user)
     render :json => {:message => 'success'}
-    
+  end
+
+  def user_list
+    @search = Sunspot.search(User) do 
+      fulltext params[:search]
+      paginate(:page => params[:page] || 1, :per_page => 15)
+    end
+    @type = "user"
+    @products = @search.results
   end
 end
