@@ -203,9 +203,9 @@
 }
 .login-page .others-link span{
 	color: #bcc9c6;
-    font-size: 13px;
-    font-family: 'source_sans_proregular';
-    margin-top: 14px;
+  font-size: 13px;
+  font-family: 'source_sans_proregular';
+  margin-top: 14px;
 }
 .login-page .others-link a{
 	color: #bcc9c6;
@@ -348,11 +348,11 @@ header .upper-header-content ul li a.user-link{
   border-radius: 50%;
 }
 .comment-pic{
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-    margin-right: 15px;
-    border: 1px solid white;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+  border: 1px solid white;
 }
 header .upper-header-content ul li a.setting-link{
   background: url('img-2.png') no-repeat;
