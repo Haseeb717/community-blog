@@ -50,7 +50,6 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    binding.pry
     @product.destroy
     respond_with(@product)
   end
@@ -106,6 +105,7 @@ class ProductsController < ApplicationController
   end
 
   def delete_product_images
+    @product = Product.find(params[:id])
     images = params[:ids]
     flag = true
     images.each do |image|
@@ -113,11 +113,6 @@ class ProductsController < ApplicationController
       if !img.destroy
         flag = false
       end
-    end
-    if flag
-      render :json => {:message => 'success'}
-    else
-      render :json => {:message => 'error'}
     end
   end
 

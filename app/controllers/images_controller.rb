@@ -6,7 +6,6 @@ class ImagesController < ApplicationController
   # DELETE /images/1
   # DELETE /images/1.json
   def destroy
-    binding.pry
     @image.destroy
     respond_to do |format|
       format.html do
