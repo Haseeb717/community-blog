@@ -3,29 +3,75 @@
   <div class="product-page-detail">
     <div class="container">
 
+      <!-- <section class="product-descrip">
+        <div class="container-product-descrip">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="product-descrip-detail">
+                <div class="product-detail">
+                  <div class="product-detail-bg">
+                    <p><%= @product.title %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="product-descrip-detail">
+                <div class="product-detail">
+                  
+                  <div class="product-detail-bg">
+                    <p><%= @product.user.first_name + " " + @product.user.last_name %></p>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section> -->
       <section class="product-carousel">
+        <div class="product-des">
+          <div class="product-heading">
+            <%= @product.title %>
+          </div>
+          <div class="product-author">
+            <%= @product.user.first_name + " " + @product.user.last_name %>
+          </div>
+        </div>
+        
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators product-slider-indicators">
+          <!-- Indicators -->
+          
+          <ol class="carousel-indicators">
             <% count=0 %>
-            <% @product.images.limit(4).each do |image| %>
-              <li data-target="#carousel-example-generic" data-slide-to=<%= count %> class="active">
-                <%= image_tag(image.avatar.url(:med)) %>
+            <% @product.images.each do |image| %>
+              <% if count == 0 %>
+                <li data-target="#carousel-example-generic" data-slide-to=<%= count %> class="active">
+              <% else %>
+                <li data-target="#carousel-example-generic" data-slide-to=<%= count %> >
+              <% end %>
               </li>
               <% count=count+1 %>
             <% end %>
           </ol>
-          <div class="carousel-inner product-carousel-inner" role="listbox">
-            <% active=0 %>
-            <% @product.images.limit(4).each do |image| %>
-              <% if active == 0 %>
-                <div class="item active">
-              <% else %>
-                <div class="item">
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+              <% active=0 %>
+              <% @product.images.each do |image| %>
+                <% if active == 0 %>
+                  <div class="item active">
+                <% else %>
+                  <div class="item">
+                <% end %>
+                <%= image_tag(image.avatar.url, class: "style_image") %>
+                </div>
+                <% active=active+1 %>
               <% end %>
-              <%= image_tag(image.avatar.url, class: "style_image") %>
-              </div>
-              <% active=active+1 %>
-            <% end %>
+              <% if @product.images.nil? || @product.images.empty? %>
+                <div class="item active">
+                  <%= image_tag("product-img-1.png", class: "style_image") %>
+                </div>
+              <% end %>
           </div>
         </div>
       </section>
@@ -55,9 +101,6 @@
             </div>
             <div class="col-md-6">
               <div class="product-details-date">
-                <% if @product.user == current_user %>
-                  <%= link_to('Edit Product', edit_product_path,  ) %>
-                <% end %>
                 
                 <span><%= @product.created_at.strftime("%d/%m/%Y") %></span>
                 
@@ -72,14 +115,8 @@
           <div class="row">
             <div class="col-md-12">
               <div class="product-descrip-detail">
+                
                 <div class="product-detail">
-                  <h3>Title</h3>
-                  <div class="product-detail-bg">
-                    <p><%= @product.title %></p>
-                  </div>
-                </div>
-                <div class="product-detail">
-                  <h3>Description</h3>
                   <div class="product-detail-bg">
                     <p><%= simple_format h @product.description %></p>
                   </div>
@@ -102,7 +139,6 @@
                 </div>
                 <div class="product-detail">
                   <% if !@product.categories.empty? %>
-                    <h3>Category</h3>
                     <div class="product-detail-bg">
                         <% @product.categories.each do |category| %>
                           <span class="label label-primary"><%= category.name %></span>
@@ -110,7 +146,7 @@
                     </div>
                   <% end %>
                 </div>
-                <div class="product-detail">
+                <!-- <div class="product-detail">
                   <% unless @product.price.nil? %>
                   <h3>Price</h3>
                     <div class="product-detail-bg">
@@ -125,7 +161,7 @@
                       <%= link_to @product.link, "http://"+@product.link , target: "_blank" %>
                     </div>
                   <% end %>
-                </div>
+                </div> -->
               </div>
             </div>
             <!-- <div class="col-md-4">

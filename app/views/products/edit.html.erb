@@ -1,4 +1,4 @@
-
+<input type="hidden" value=<%= @product.id %> id="product_id">
 <%= form_for(@product, html: { multipart: true }) do |f| %>
   <% if @product.errors.any? %>
     <div class="col-md-12">
@@ -25,20 +25,17 @@
             <%= f.fields_for :images, @product.images.build do |photo| %>
               <%= photo.file_field :avatar,class: "form-control product-img" %>
             <% end %>
-            <div id="product_images">
-              <% if !@product.images.nil? || !@product.images.empty? %>
-
-                <% @product.images.each do |img| %>
-                  <% if img.avatar_file_name && img.persisted? %>
-                    <div class="show_product_images">
-                      <%= image_tag img.avatar.url(:small) %>
-                      <%= link_to 'x', image_path(img.id), {:method => :delete, :confirm => 'Are you sure?'} %>
-                    </div>
-                  <% end %>
-                <% end %>
-              <% end %>
+            <div class="product_images_class">
+              <%= render "product_images" %>
             </div>
-            <button style="display:none;" id="add-img">Add More Images</button>
+            <div>
+              <% if @product.images.count > 0 %>
+                <%= button_tag "Delete Images",:type => 'button',:id=>"delete-img" %>
+              <% end %>
+              <!-- <button id="delete-img">Delete Images</button> -->
+              <button style="display:none;" id="add-img">Add More Images</button>
+            </div>
+            
           </div>
           <div class="text-field">
             <%= f.label :title %><br>
@@ -106,6 +103,7 @@
       }
     });
   });
+  
   $(function() {
     $("#category").tokenInput("/products/product_categories.json", {
       crossDomain: false,
@@ -113,5 +111,25 @@
       theme: "facebook"
     });
   });
-
+  
+  $("#delete-img").click(function(e){
+      var checkValues = $('input[name=image_id]:checked').map(function(){
+          return $(this).val();
+      }).get();
+      var id = $("#product_id").val();
+      if(checkValues.length == 0) {
+          alert("Select checkboxe first");
+      }
+      else{
+          $.ajax({
+              url: '/products/delete_product_images',
+              type: 'delete',
+              data: { ids: checkValues, id: id },
+              success:function(data){
+                  
+              }
+          });
+      }
+      
+  });
 </script>  

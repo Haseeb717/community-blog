@@ -758,7 +758,7 @@ footer .footer-content p{
   box-shadow: none;
   background-color: #fcfcfc;
 }
-.product-page .textfield-block .text-field input{
+.product-page .textfield-block .text-field input.form-control{
   width: 100%;
   height: 50px;
   padding: 11px;
@@ -777,7 +777,9 @@ footer .footer-content p{
   color: #fff;
   font-size: 20px;
   float: right;
+  margin-left: 15px;
   margin-top: 9px;
+  outline: none;
 }
 .product-page .textfield-block .text-field button:hover,
 .product-page .textfield-block .text-field button:focus{
@@ -803,7 +805,7 @@ footer .footer-content p{
   width: 100%;
 }
 .show_user_images a,
-.show_product_images a{
+.show_product_images input[type="checkbox"]{
   position: absolute;
   top: 10px;
   right: 10px;
@@ -818,12 +820,17 @@ footer .footer-content p{
   padding-top: 2px;
   opacity: 0.6;
 }
+.show_product_images input[type="checkbox"]{
+  opacity: 1;
+  height: auto;
+  width: auto;
+  right: 15px;
+}
 .show_user_images a{
   top: 0;
   right: 0;
 }
-.show_user_images:hover a,
-.show_product_images:hover a{
+.show_user_images:hover a{
   opacity: 1;
 }
 /*============================ Product Page ============================*/
@@ -992,6 +999,7 @@ footer .footer-content p{
 .product-page-detail .product-detail-bg{
   border-radius: 0px;
   box-shadow: none;
+  margin-bottom: 0px;
 }
 .product-page-detail .product-descrip-imgs{
   width: 100%;
@@ -1557,6 +1565,49 @@ footer .footer-content p{
   opacity: 1;
 }
 /*================================ listing products Close ===============================*/
+
+
+/*-------------------*/
+.carousel-inner{
+  text-align: center;
+}
+.product-carousel img{
+  height: 600px !important;
+}
+.product-carousel{
+  position: relative;
+}
+.product-carousel .product-des{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  z-index: 555;
+  padding: 7px 15px;
+}
+.product-carousel .product-author,
+.product-carousel .product-heading{
+  float: left;
+}
+.product-carousel .product-author{
+  width: 35%;
+}
+.product-carousel .product-heading{
+  width: 65%;
+}
+.product-carousel .product-heading{
+  font-size: 35px;
+}
+.product-carousel .product-author{
+  text-align: right;
+  font-size: 22px;
+  margin-top: 8px;
+}
+
+
+
 
 @media(max-width:1200px){
   .profile-page .categories-block,

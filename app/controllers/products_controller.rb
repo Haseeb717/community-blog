@@ -37,6 +37,7 @@ class ProductsController < ApplicationController
   end
 
   def update
+
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product updated successfully' }
@@ -49,6 +50,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    binding.pry
     @product.destroy
     respond_with(@product)
   end
@@ -97,6 +99,22 @@ class ProductsController < ApplicationController
     # update product to featured
     product = Product.find(params[:id])
     if product.update_attributes(:feature=>true)
+      render :json => {:message => 'success'}
+    else
+      render :json => {:message => 'error'}
+    end
+  end
+
+  def delete_product_images
+    images = params[:ids]
+    flag = true
+    images.each do |image|
+      img = Image.find(image)
+      if !img.destroy
+        flag = false
+      end
+    end
+    if flag
       render :json => {:message => 'success'}
     else
       render :json => {:message => 'error'}

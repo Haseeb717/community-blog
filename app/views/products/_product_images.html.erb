@@ -1,0 +1,10 @@
+<% if !@product.images.nil? || !@product.images.empty? %>
+  <% @product.images.each do |img| %>
+    <% if img.avatar_file_name && img.persisted? %>
+      <label class="show_product_images">
+        <%= image_tag img.avatar.url(:small) %>
+        <%= check_box_tag(:image_id, img.id) %>
+      </label>
+    <% end %>                
+  <% end %>
+<% end %>

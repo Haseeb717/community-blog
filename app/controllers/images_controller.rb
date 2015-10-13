@@ -6,9 +6,17 @@ class ImagesController < ApplicationController
   # DELETE /images/1
   # DELETE /images/1.json
   def destroy
+    binding.pry
     @image.destroy
-    flash[:notice] = "Image Successfully deleted"
-    redirect_to :back
+    respond_to do |format|
+      format.html do
+        flash[:notice] = "Image Successfully deleted"
+        redirect_to :back
+      end
+      format.json do
+        render json: 'success'
+      end
+    end
 
   end
 
