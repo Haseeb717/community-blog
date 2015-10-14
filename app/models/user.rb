@@ -22,4 +22,12 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :images
 
+  def self.user_ids
+    all.map(&:id)
+  end
+
+  def self.products
+    Product.where(user_id: user_ids)
+  end
+
 end

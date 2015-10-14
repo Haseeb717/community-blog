@@ -30,7 +30,7 @@ class HomeController < ApplicationController
     end 
     
     # @featured_products = Product.where(:feature=>true) 
-    @products = @user.products.all.order('created_at DESC').page(params[:page]).per(3)
+    @products = @user.products.all.order('created_at DESC').page(params[:page]).per(1)
     @categories = Category.all
     if @user.followers(User).count > 0 
       @followers = @user.followers(User)
@@ -103,11 +103,14 @@ class HomeController < ApplicationController
     if user.ratings.count > 0
       rate = rate/count
       ratings = rate.round
+      user.update_attributes(:total_rating=>ratings)
     end 
     render :json => {:message => 'success',:rate=>ratings}
   end
 
   def user_sorted_products
-    
+    rating_val = params["rate_val"]
+    @products = Product.joins(:user).where("total_rating > ?", rating_val).order("total_rating DESC")
+   
   end
 end

@@ -37,3 +37,8 @@
   </div>
 
 <% end %>
+<div class="product-not-found">
+  <% if @products.nil? || @products.empty? %>
+    <h2 style="text-align:center;">No Products found</h2>
+  <% end %>
+</div>
