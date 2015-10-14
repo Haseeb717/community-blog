@@ -19,15 +19,19 @@
           
           <ol class="carousel-indicators">
             <% count=0 %>
-            <% @product.images.each do |image| %>
-              <% if count == 0 %>
-                <li data-target="#carousel-example-generic" data-slide-to=<%= count %> class="active">
-              <% else %>
-                <li data-target="#carousel-example-generic" data-slide-to=<%= count %> >
+            <% if @product.images.count > 1 %> 
+              <% @product.images.each do |image| %>
+                <% if count == 0 %>
+                  <li data-target="#carousel-example-generic" data-slide-to=<%= count %> class="active">
+                <% else %>
+                  <li data-target="#carousel-example-generic" data-slide-to=<%= count %> >
+                <% end %>
+                </li>
+                <% count=count+1 %>
               <% end %>
-              </li>
-              <% count=count+1 %>
+
             <% end %>
+            
           </ol>
           <!-- Wrapper for slides -->
           <div class="carousel-inner" role="listbox">
