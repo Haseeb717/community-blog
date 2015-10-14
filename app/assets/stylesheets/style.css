@@ -573,6 +573,35 @@ header #search_submit{
   height: 37px;
   cursor: pointer;
 }
+.ratings{
+  display: block;
+  float: left;
+  width: 23px;
+  height: 23px;
+  cursor: pointer;
+  background: url('profile-img-12.png') no-repeat;
+  
+}
+.filled-ratings{
+  display: block;
+  float: left;
+  width: 23px;
+  height: 23px;
+  cursor: pointer;
+  background: url('profile-img-12-h.png') no-repeat;
+  
+}
+.ratings:hover{
+  display: block;
+  float: left;
+  width: 23px;
+  height: 23px;
+  cursor: pointer;
+  background: url('profile-img-12-h.png') no-repeat;
+  -moz-transition: .4s linear;
+  -webkit-transition: .4s ease-out;
+  transition: .4s linear;
+}
 .like:hover{
   background: url('img-5-h.png') no-repeat;
   display: block;
@@ -1216,7 +1245,6 @@ footer .footer-content p{
 .profile-page .person-block-rating ul li{
   list-style: none;
   display: inline-block;
-  background: url('profile-img-12.png') no-repeat;
   width: 23px;
   height: 23px;
 }
@@ -1605,7 +1633,12 @@ footer .footer-content p{
   font-size: 22px;
   margin-top: 8px;
 }
-
+.product-carousel .product-author a,.product-carousel .product-author a:hover{
+  text-align: right;
+  font-size: 22px;
+  margin-top: 8px;
+  color: #fff;
+}
 
 
 
