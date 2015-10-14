@@ -10,7 +10,7 @@
             <%= @product.title %>
           </div>
           <div class="product-author">
-            <%= @product.user.first_name + " " + @product.user.last_name %>
+            <%= link_to @product.user.first_name + " " + @product.user.last_name, profile_path(@product.user) %>
           </div>
         </div>
         

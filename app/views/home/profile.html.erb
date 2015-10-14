@@ -12,13 +12,19 @@
               <% end %>
               <div class="person-block-rating">
                 <ul>
-                  <li><a href="#"><span></span></a></li>
-                  <li><a href="#"><span></span></a></li>
-                  <li><a href="#"><span></span></a></li>
-                  <li><a href="#"><span></span></a></li>
-                  <li><a href="#"><span></span></a></li>
+                  <% i = 1 %>
+                  <% while i <= @ratings %>
+                    
+                    <li><a class="filled-ratings" id="<%= i %>"></a></li>
+                    <% i = i+1 %>
+                  <% end %>
+                  <% while i <= 5 %>
+                    
+                    <li><a class="ratings" id="<%= i %>"></a></li>
+                    <% i = i+1 %>
+                  <% end %>
+                  
                 </ul>
-
               </div>
               <div class="user_name"><%= @user.first_name + " " + @user.last_name %></div>
               <div style="">
@@ -45,6 +51,7 @@
             <div class="tag-block">
               <h4 class="left-blocks-heading">Tag Cloud</h4>
               <ul>
+                
                 <li><a href="#">#Hashtag #Hashtag</a></li>
                 <li><a href="#">#Hashtag #Hashtag</a></li>
                 <li><a href="#">#Hashtag #Hashtag</a></li>
@@ -160,11 +167,11 @@
                 <li>
                   <select class="form-control select-option">
                     <option>User Rating</option>
-                    <option>User Rating 1</option>
-                    <option>User Rating 2</option>
-                    <option>User Rating 3</option>
-                    <option>User Rating 4</option>
-                    <option>User Rating 5</option>
+                    <option value="1">User Rating 1</option>
+                    <option value="2">User Rating 2</option>
+                    <option value="3">User Rating 3</option>
+                    <option value="4">User Rating 4</option>
+                    <option value="5">User Rating 5</option>
                   </select>
                 </li>
               </ul>
@@ -209,5 +216,30 @@
               
           }
       });
-  });
+    });
+
+    $(".person-block-rating ul li a").click(function() {
+      var id = $(this).attr('id');
+      var user_id = $("#user_id").val();
+      
+      var url_link = '/user/rating';
+      var current_id = $(this).attr('class');
+      $.ajax({
+          url: url_link,
+          type: "POST",
+          data: {rating_val: id, user: user_id},
+          success: function (data) {
+              for (i = 1; i <= data.rate; ++i) { 
+                $("#"+i).removeClass(current_id).addClass('filled-ratings');
+              }
+              for (; i <= 5; ++i) { 
+                $("#"+i).removeClass(current_id).addClass('ratings');
+              }
+              
+              
+          }
+      });
+    });
+
+    
   </script>

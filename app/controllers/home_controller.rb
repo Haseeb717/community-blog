@@ -17,12 +17,25 @@ class HomeController < ApplicationController
       #   @featured_product = current_user.products.first.update_attributes() 
       # end
     end
+    count = 0
+    rate = 0
+    @ratings = 0
+    @user.ratings.each do |rating|
+      rate = rate + rating.rate
+      count = count + 1
+    end
+    if @user.ratings.count > 0
+      rate = rate/count
+      @ratings = rate.round
+    end 
+    
     # @featured_products = Product.where(:feature=>true) 
     @products = @user.products.all.order('created_at DESC').page(params[:page]).per(3)
     @categories = Category.all
     if @user.followers(User).count > 0 
       @followers = @user.followers(User)
     end
+
   end 
 
   def search
@@ -72,5 +85,29 @@ class HomeController < ApplicationController
     end
     @type = "user"
     @products = @search.results
+  end
+
+  def user_ratings
+    rating_val = params["rating_val"]
+    user = User.find(params["user"])
+    rating = Rating.create(:rate=>rating_val)
+    user.ratings << rating
+    count = 0
+    rate = 0
+    ratings = 0
+    
+    user.ratings.each do |rating|
+      rate = rate + rating.rate
+      count = count + 1
+    end
+    if user.ratings.count > 0
+      rate = rate/count
+      ratings = rate.round
+    end 
+    render :json => {:message => 'success',:rate=>ratings}
+  end
+
+  def user_sorted_products
+    
   end
 end
