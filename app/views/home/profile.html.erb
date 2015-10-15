@@ -42,9 +42,11 @@
             <div class="categories-block">
               <h4 class="left-blocks-heading">Popular Categories</h4>
               <ul>
-                <li><a href="#">All</a></li>
-                <% @categories.each do |category| %>
-                  <li><%= link_to category.name,search_path(:type=>"category",:search=>category.name) %></li>
+                <% if @categories.count > 1 %>
+                  <li><%= link_to "All",search_path(:type=>"category",:search=>"") %></li>
+                <% end %>
+                <% @categories.each do |category_name| %>
+                  <li><%= link_to category_name,search_path(:type=>"category",:search=>category_name) %></li>
                 <% end %>
                 
               </ul>
@@ -155,24 +157,19 @@
               <ul>
                 <li><a href="#"><i class="fa fa-list-ul"></i><span>Sort By</span></a></li>
                 <li><a href="#"><i class="fa fa-filter"></i></a></li>
-                <!-- <li>
-                  <select class="form-control select-option">
-                    <option>Product Rating</option>
-                    <option>Product Rating 1</option>
-                    <option>Product Rating 2</option>
-                    <option>Product Rating 3</option>
-                    <option>Product Rating 4</option>
-                    <option>Product Rating 5</option>
-                  </select>
-                </li> -->
                 <li>
-                  <select class="form-control select-option">
+                  <select class="form-control select-option product_like_sort">
+                    <option>Product Rating</option>
+                    <option value="">ASC Order</option>
+                    <option value="DESC">DESC Order</option>
+                  </select>
+                </li>
+                <li>
+                  <select class="form-control select-option user_like_sort">
                     <option>User Rating</option>
-                    <option value="1">User Rating 1</option>
-                    <option value="2">User Rating 2</option>
-                    <option value="3">User Rating 3</option>
-                    <option value="4">User Rating 4</option>
-                    <option value="5">User Rating 5</option>
+                    <option value="">ASC Order</option>
+                    <option value="DESC">DESC Order</option>
+                    
                   </select>
                 </li>
               </ul>
@@ -230,12 +227,19 @@
             type: "POST",
             data: {rating_val: id, user: user_id},
             success: function (data) {
-                for (i = 1; i <= data.rate; ++i) { 
-                  $("#"+i).removeClass(current_id).addClass('filled-ratings');
+                if(data.message == "success"){
+                  for (i = 1; i <= data.rate; ++i) { 
+                    $("#"+i).removeClass(current_id).addClass('filled-ratings');
+                  }
+                  for (; i <= 5; ++i) { 
+                    $("#"+i).removeClass(current_id).addClass('ratings');
+                  }
                 }
-                for (; i <= 5; ++i) { 
-                  $("#"+i).removeClass(current_id).addClass('ratings');
+                else
+                {
+                  alert("You already rate this user");
                 }
+
                 
                 
             }
@@ -244,13 +248,25 @@
       
     });
 
-    $('.select-option').on('change', function() {
+    $('.user_like_sort').on('change', function() {
         var rate_val =  this.value ;
         var url_link = '/home/user_sorted'
         $.ajax({
             url: url_link,
             type: "GET",
             data: {rate_val: rate_val}
+        });
+
+    });
+
+    $('.product_like_sort').on('change', function() {
+        var rate_val =  this.value ;
+        var url_link = '/home/like_sorted';
+        var user_id = $("#user_id").val();
+        $.ajax({
+            url: url_link,
+            type: "GET",
+            data: {rate_val: rate_val,user_id: user_id}
         });
 
     });

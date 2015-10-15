@@ -602,6 +602,7 @@ header #search_submit{
   -webkit-transition: .4s ease-out;
   transition: .4s linear;
 }
+
 .like:hover{
   background: url('img-5-h.png') no-repeat;
   display: block;
@@ -1640,7 +1641,92 @@ footer .footer-content p{
   color: #fff;
 }
 
-
+/*===================================================================================*/
+/*================================ Search Result =================================*/
+/*===================================================================================*/
+.result-search{
+ float: left;
+ font-size: 17px;
+ color: #3b5998;
+ font-family: 'latobold';
+ margin-right: 15px;
+}
+.search-heading{
+ float: left;
+ width: 100%;
+ padding-top: 50px;
+}
+.search-heading label{
+ float: left;
+ font-size: 22px;
+ color: #3b5998;
+ font-family: 'latobold';
+ line-height: 22px;
+}
+.search-result-widget-1 h2{
+ float: left;
+}
+.search-result-widget-1 .person-block-rating{
+ float: right;
+ width: auto;
+}
+/*.search-result-widget-1 .profile-product-descrip{
+ overflow: inherit !important;
+ height: auto !important;
+}*/
+.search-result-widget-1{
+ float: left;
+ width: 100%;
+ padding: 20px;
+ border: 2px solid #ededed;
+ border-radius: 10px;
+ margin-top: 25px;
+}
+.search-result-widget-1 .left-img-block .profile-product-rating ul{
+ float: right;
+}
+.result-search .product-rating {
+    float: left; 
+    width: 100%; 
+    padding-top: 20px;
+}
+#pagination{
+  width: 100%;
+  text-align: right;
+  padding-top: 50px;
+}
+.ratings1{
+  display: block;
+  float: left;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  background: url('profile-img-13.png') no-repeat;
+  
+}
+.filled-ratings1{
+  display: block;
+  float: left;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  background: url('profile-img-13-h.png') no-repeat;
+  
+}
+.ratings1:hover{
+  display: block;
+  float: left;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  background: url('profile-img-13-h.png') no-repeat;
+  -moz-transition: .4s linear;
+  -webkit-transition: .4s ease-out;
+  transition: .4s linear;
+}
+/*===================================================================================*/
+/*================================ EndSearch Result =================================*/
+/*===================================================================================*/
 
 @media(max-width:1200px){
   .profile-page .categories-block,

@@ -30,8 +30,8 @@ class HomeController < ApplicationController
     end 
     
     # @featured_products = Product.where(:feature=>true) 
-    @products = @user.products.all.order('created_at DESC').page(params[:page]).per(1)
-    @categories = Category.all
+    @products = @user.products.all.order('created_at DESC').page(params[:page]).per(3)
+    @categories = @user.products.joins(:categories).uniq.pluck(:name)
     if @user.followers(User).count > 0 
       @followers = @user.followers(User)
     end
@@ -39,6 +39,7 @@ class HomeController < ApplicationController
   end 
 
   def search
+    
     if params["type"] == "user"
       respond_to do |format|
         format.html { redirect_to home_user_path(search: params[:search]) }
@@ -48,7 +49,7 @@ class HomeController < ApplicationController
     elsif params["type"] == "product"
       @search = Sunspot.search(Product) do
         fulltext params[:search]
-        paginate(:page => params[:page] || 1, :per_page => 2)
+        paginate(:page => params[:page] || 1, :per_page => 3)
       end
       @products = @search.results
       @type = "product"
@@ -56,7 +57,7 @@ class HomeController < ApplicationController
     elsif params["type"] == "category"
       @search = Sunspot.search(Category) do
         fulltext params[:search]
-        paginate(:page => params[:page] || 1, :per_page => 2)
+        paginate(:page => params[:page] || 1, :per_page => 3)
       end
       @products = Array.new
       @search.results.each do |result|
@@ -90,27 +91,48 @@ class HomeController < ApplicationController
   def user_ratings
     rating_val = params["rating_val"]
     user = User.find(params["user"])
-    rating = Rating.create(:rate=>rating_val)
-    user.ratings << rating
-    count = 0
-    rate = 0
-    ratings = 0
-    
-    user.ratings.each do |rating|
-      rate = rate + rating.rate
-      count = count + 1
+    flag = user.ratings.where(:user_from=>current_user.id)
+    if flag.empty?
+      rating = Rating.create(:rate=>rating_val,:user_from=>current_user.id)
+      user.ratings << rating
+      count = 0
+      rate = 0
+      ratings = 0
+      
+      user.ratings.each do |rating|
+        rate = rate + rating.rate
+        count = count + 1
+      end
+      if user.ratings.count > 0
+        rate = rate/count
+        ratings = rate.round
+        user.update_attributes(:total_rating=>ratings)
+      end 
+      render :json => {:message => 'success',:rate=>ratings}
+    else
+      render :json => {:message => 'error'}
     end
-    if user.ratings.count > 0
-      rate = rate/count
-      ratings = rate.round
-      user.update_attributes(:total_rating=>ratings)
-    end 
-    render :json => {:message => 'success',:rate=>ratings}
   end
 
   def user_sorted_products
-    rating_val = params["rate_val"]
-    @products = Product.joins(:user).where("total_rating > ?", rating_val).order("total_rating DESC")
-   
+    
+    if !params["rate_val"].empty?
+      @products = Product.joins(:user).order("total_rating DESC")
+    else
+      @products = Product.joins(:user).order("total_rating")
+    end
+    
+    
+  end
+
+  def like_sorted_products
+    user = User.find(params["user_id"])
+    if !params["rate_val"].empty?
+      @products = user.products.order("total_likes DESC")
+    else
+      @products = user.products.order("total_likes")
+    end
+    
+    
   end
 end

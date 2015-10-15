@@ -1,0 +1,43 @@
+<% @products.each do |product| %>
+  <div class="search-result-widget-1">
+    <div class="row">
+      <div class="col-md-4 col-sm-4 left-img-block">
+        <div class="person-block">
+          <% if product.images.count > 0 %>
+            <%= image_tag(product.images.first.avatar.url, options={alt: "Logo"}) %>
+          <% else %>
+            <%= image_tag("thumbnail-img-3.png") %>
+          <% end %>
+          <div class="profile-product-rating">
+            <p>
+              <%= link_to product.user.first_name + " " + product.user.last_name, profile_path(product.user) %>
+            </p>
+            <ul>
+              <% ratings = product.user.total_rating || 0 %>
+              <% i = 1 %>
+              <% while i <= ratings %>
+                <li><a class="filled-ratings1" id="<%= i %>"></a></li>
+                <% i = i+1 %>
+              <% end %>
+              <% while i <= 5 %>
+                <li><a class="ratings1" id="<%= i %>"></a></li>
+                <% i = i+1 %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 col-sm-8">
+        <div class="profile-product-detail">
+          <h3><%= link_to product.title+":", product_path(product) %></h3>
+          <div class="profile-product-descrip">
+            <p><%= product.description %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<% if @products.count < 1 %>
+  <h2 style="padding:50px;">No records found</h2>
+<% end %>

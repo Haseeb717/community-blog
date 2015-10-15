@@ -73,10 +73,12 @@ class ProductsController < ApplicationController
     type = params["type"]
     if type=="like"
       current_user.like!(@product)
+      @product.update_attributes(:total_likes=>@product.likers(User).count)
     else
       current_user.unlike!(@product)
     end
     count  = @product.likers(User).count
+    @product.update_attributes(:total_likes=>@product.likers(User).count)
     render :json => {:message => 'success',:count=>count}
   end
 
