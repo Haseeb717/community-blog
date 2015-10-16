@@ -55,6 +55,10 @@
             <%= f.text_field :price, class: "form-control", id:"exampleInputName2" %>
           </div>
           <div class="text-field">
+            <label id="category_label">Category</label>
+            <%= f.text_field :abc, class: "form-control", id:"hashtags" %>
+          </div>
+          <div class="text-field">
             <label>Link To Product</label>
             <%= f.text_field :link, class: "form-control", id: "exampleInputName2",placeholder: "www.product.com"%>
           </div>
@@ -98,9 +102,13 @@
     $(function() {
       $("#category").tokenInput("/products/product_categories.json", {
         crossDomain: false,
+        preventDuplicates: true,
         prePopulate: $("#category").data("pre"),
         theme: "facebook"
       });
+
+      $("#hashtags").tokenInput();
+
     });
     
   });

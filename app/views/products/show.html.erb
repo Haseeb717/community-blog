@@ -71,9 +71,9 @@
               <div class="product-details-like">
                 <ul>
                   <% if current_user.likes?(@product) %>
-                    <li><a class="dislike" id=<%= "#{@product.id}" %> ></a><span class="like_count"><%= @product.total_likes %></span></li>
+                    <li><a class="dislike" id=<%= "#{@product.id}" %> ></a><span class="like_count"><%= @product.total_likes  || 0%></span></li>
                   <% else %> 
-                    <li><a class="like" id=<%= "#{@product.id}" %> ></a><span class="like_count"><%= @product.total_likes %></span></li>
+                    <li><a class="like" id=<%= "#{@product.id}" %> ></a><span class="like_count"><%= @product.total_likes || 0 %></span></li>
                   <% end -%>
                 </ul>
               </div>
@@ -175,8 +175,8 @@
                         <div class="product-comment-info">
                           <div class="product-comment-user">
                             <span>
-                              <% if product_comment.user.images.nil? || product_comment.user.images.empty? %>
-                                <%= link_to image_tag("user.png", class: "comment-pic"),profile_path(product_comment.user) %>
+                              <% if product_comment.user.images.count < 1 %>
+                                <%= link_to image_tag("user.png", class: "comment-pic default-pic"),profile_path(product_comment.user) %>
                               <% else %>
                                 <%= link_to image_tag(product_comment.user.images.last.avatar.url(:small), class: "comment-pic"
                                 ),profile_path(product_comment.user) %>

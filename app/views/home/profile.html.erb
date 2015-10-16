@@ -70,10 +70,8 @@
                 <% unless @followers.nil? || @followers.empty? %>
                   <% @followers.take(9).each do |follower| %>
                     <% if follower.images.count < 1 %>
-                      <% binding.pry %>
                       <%= link_to image_tag("user.png", class: "profile-img"), profile_path(follower.id) %>
                     <% else %>
-                      <% binding.pry %>
                       <%= link_to image_tag(follower.images.last.avatar.url(:thumb), class: "profile-img"),profile_path(follower.id) %>
                     <% end %>
                   <% end %>

@@ -1,8 +1,6 @@
 Blog::Application.routes.draw do
   resources :comments
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
+  
   resources :images
   resources :comments
   resources :products do

@@ -348,11 +348,12 @@ header .upper-header-content ul li a.user-link{
   border-radius: 50%;
 }
 .comment-pic{
-  height: 60px;
-  width: 60px;
-  border-radius: 50%;
   margin-right: 15px;
   border: 1px solid white;
+}
+.product-comment-user .default-pic{
+  height: 60px;
+  width: 60px; 
 }
 header .upper-header-content ul li a.setting-link{
   background: url('img-2.png') no-repeat;
@@ -540,7 +541,7 @@ header #search_submit{
   transition: .4s linear;
 }
 .home-page .content-img{
-  background-color: black;
+  background-color: transparent;
   width: 100%;
   float: left;
 }
@@ -668,7 +669,7 @@ header #search_submit{
   float: left;
   width: 100%;
 }
-.home-page .home-comment-person span img{
+.home-page .home-comment-person span .user-comment-profile{
   width: 65px;
   height: 65px;
   border: 2px solid #fff;
@@ -679,6 +680,10 @@ header #search_submit{
   font-size: 21px;
   font-family: 'latosemibold';
   margin: 0px;
+}
+.home-comment .product_user_default_pic{
+  width: 66px;
+  height: 66px;
 }
 .home-page .home-comment-descrip{
   width: 80%;

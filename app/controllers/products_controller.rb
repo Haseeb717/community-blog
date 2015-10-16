@@ -124,7 +124,7 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:title,:description,:pros,:cons,:price,:link,:abc, images_attributes: [:avatar])
+      params.require(:product).permit(:title,:description,:pros,:cons,:price,:link,:abc,:tag,images_attributes: [:avatar])
     end
 
     def comment_params
