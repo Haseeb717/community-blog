@@ -39,7 +39,7 @@ class HomeController < ApplicationController
   end 
 
   def search
-    
+    @solr_search = true
     if params["type"] == "user"
       respond_to do |format|
         format.html { redirect_to home_user_path(search: params[:search]) }
@@ -107,7 +107,7 @@ class HomeController < ApplicationController
         rate = rate/count
         ratings = rate.round
         user.update_attributes(:total_rating=>ratings)
-      end 
+      end
       render :json => {:message => 'success',:rate=>ratings}
     else
       render :json => {:message => 'error'}
@@ -115,22 +115,28 @@ class HomeController < ApplicationController
   end
 
   def user_sorted_products
-    
     if !params["rate_val"].empty?
       @products = Product.joins(:user).order("total_rating DESC")
     else
       @products = Product.joins(:user).order("total_rating")
     end
-    
-    
+    @solr_search = false
+  end
+
+  def like_sorted_search_products
+    if !params["rate_val"].empty?
+      @products =   Product.order("total_likes DESC")
+    else
+      @products = Product.order("total_likes")
+    end
   end
 
   def like_sorted_products
     user = User.find(params["user_id"])
     if !params["rate_val"].empty?
-      @products = user.products.order("total_likes DESC")
+      @products = user.products.order("total_likes DESC").page(params[:page]).per(3)
     else
-      @products = user.products.order("total_likes")
+      @products = user.products.order("total_likes").page(params[:page]).per(3)
     end
     
     

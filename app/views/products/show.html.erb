@@ -71,9 +71,9 @@
               <div class="product-details-like">
                 <ul>
                   <% if current_user.likes?(@product) %>
-                    <li><a class="dislike" id=<%= "#{@product.id}" %> ></a><span class="like_count"><%= @product.likers(User).count %></span></li>
+                    <li><a class="dislike" id=<%= "#{@product.id}" %> ></a><span class="like_count"><%= @product.total_likes %></span></li>
                   <% else %> 
-                    <li><a class="like" id=<%= "#{@product.id}" %> ></a><span class="like_count"><%= @product.likers(User).count %></span></li>
+                    <li><a class="like" id=<%= "#{@product.id}" %> ></a><span class="like_count"><%= @product.total_likes %></span></li>
                   <% end -%>
                 </ul>
               </div>

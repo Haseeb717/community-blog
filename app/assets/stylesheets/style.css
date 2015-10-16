@@ -1462,10 +1462,10 @@ footer .footer-content p{
   height: 15px;
 }
 .profile-page .profile-product-rating ul li:hover{
-  background: url('profile-img-13-h.png') no-repeat;
+  /*background: url('profile-img-13-h.png') no-repeat;
   -moz-transition: .4s linear;
   -webkit-transition: .4s ease-out;
-  transition: .4s linear;
+  transition: .4s linear;*/
 }
 .profile-page .profile-product-descrip{
   width: 100%;
@@ -1713,7 +1713,7 @@ footer .footer-content p{
   background: url('profile-img-13-h.png') no-repeat;
   
 }
-.ratings1:hover{
+/*.ratings1:hover{
   display: block;
   float: left;
   width: 15px;
@@ -1723,7 +1723,7 @@ footer .footer-content p{
   -moz-transition: .4s linear;
   -webkit-transition: .4s ease-out;
   transition: .4s linear;
-}
+}*/
 /*===================================================================================*/
 /*================================ EndSearch Result =================================*/
 /*===================================================================================*/

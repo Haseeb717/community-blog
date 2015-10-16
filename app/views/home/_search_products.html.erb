@@ -8,7 +8,7 @@
           <% else %>
             <%= image_tag("thumbnail-img-3.png") %>
           <% end %>
-          <div class="profile-product-rating">
+          <div class="profile-product-rating user_rating">
             <p>
               <%= link_to product.user.first_name + " " + product.user.last_name, profile_path(product.user) %>
             </p>
@@ -38,6 +38,12 @@
     </div>
   </div>
 <% end %>
+<% if @solr_search %>
+  <div id="pagination"><%= paginate @search.hits %></div>
+<% else %>
+  
+<% end %>
+
 <% if @products.count < 1 %>
   <h2 style="padding:50px;">No records found</h2>
 <% end %>
