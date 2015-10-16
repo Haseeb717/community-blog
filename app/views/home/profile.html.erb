@@ -2,6 +2,7 @@
 <input type="hidden" value=<%= current_user.id %> id="current_user_id">
 <div class="profile-page">
     <div class="container">
+
       <div class="row">
         <div class="col-md-3">
           <div class="profile-left-block">
@@ -68,10 +69,12 @@
               <ul>
                 <% unless @followers.nil? || @followers.empty? %>
                   <% @followers.take(9).each do |follower| %>
-                    <% if follower.images.nil? || follower.images.empty? %>
-                      <%= link_to image_tag("user.png", class: "profile-img"), profile_path(@user) %>
+                    <% if follower.images.count < 1 %>
+                      <% binding.pry %>
+                      <%= link_to image_tag("user.png", class: "profile-img"), profile_path(follower.id) %>
                     <% else %>
-                      <%= link_to image_tag(follower.images.last.avatar.url(:thumb), class: "profile-img"),profile_path(@user) %>
+                      <% binding.pry %>
+                      <%= link_to image_tag(follower.images.last.avatar.url(:thumb), class: "profile-img"),profile_path(follower.id) %>
                     <% end %>
                   <% end %>
                 <% end %>
@@ -94,7 +97,7 @@
                           <% if @featured_products.first.images.nil? || @featured_products.first.images.empty? %>
                             <%= image_tag("images.png",:class=>"product_profile_img") %>
                           <% else %>
-                            <%= image_tag(@featured_products.first.images.first.avatar.url, :class=>"product_profile_img") %>
+                            <%= image_tag(@featured_products.first.images.first.avatar.url(:large))%>
                           <% end %>
                         </div>
                         <div class="profile-img-list">
@@ -155,8 +158,8 @@
             <% end %>
             <div class="profile-rating-content">
               <ul>
-                <li><a href="#"><i class="fa fa-list-ul"></i><span>Sort By</span></a></li>
-                <li><a href="#"><i class="fa fa-filter"></i></a></li>
+                <li><span href="#"><i class="fa fa-list-ul"></i><span id="sort_span">Sort By</span></span></li>
+                <li><span href="#"><i class="fa fa-filter"></i></span></li>
                 <li>
                   <select class="form-control select-option product_like_sort">
                     <option>Product Likes</option>
@@ -180,7 +183,12 @@
       </div>
     </div>
   </div>
+  
   <script type="text/javascript">
+
+
+
+
     $("#follow_button").click(function() {
       var id = $(this).attr('id');
       var user_id = $("#user_id").val();

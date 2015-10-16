@@ -11,11 +11,11 @@
           <div class="col-md-9">
             <div class="profile-rating-content">
               <div class="result-search">
-                <label>1000 Search Result</label>
+                <label><%= @products.count %> Search Results</label>
               </div>
               <ul>
-                <li><a href="#"><i class="fa fa-list-ul"></i><span>Sort By</span></a></li>
-                <li><a href="#"><i class="fa fa-filter"></i></a></li>
+                <li><span><i class="fa fa-list-ul"></i><span id="sort_span">Sort By</span></span></li>
+                <li><span><i class="fa fa-filter"></i></span></li>
                 <li>
                   <select class="form-control select-option product_like_sort">
                     <option>Product Likes</option>

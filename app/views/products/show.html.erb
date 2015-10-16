@@ -42,11 +42,11 @@
                 <% else %>
                   <div class="item">
                 <% end %>
-                <%= image_tag(image.avatar.url, class: "style_image") %>
+                <%= image_tag(image.avatar.url(:slider_image)) %>
                 </div>
                 <% active=active+1 %>
               <% end %>
-              <% if @product.images.nil? || @product.images.empty? %>
+              <% if @product.images.count < 1 %>
                 <div class="item active">
                   <%= image_tag("product-img-1.png", class: "style_image") %>
                 </div>

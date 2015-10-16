@@ -540,10 +540,11 @@ header #search_submit{
   transition: .4s linear;
 }
 .home-page .content-img{
+  background-color: black;
   width: 100%;
   float: left;
 }
-.home-page .content-img img{
+.home-page .content-img .product_default_img{
   width: 100%;
 }
 .home-page .content-bottom{
@@ -831,8 +832,7 @@ footer .footer-content p{
 }
 .show_user_images img,
 .show_product_images img{
-  height: 100%;
-  width: 100%;
+  
 }
 .show_user_images a,
 .show_product_images input[type="checkbox"]{
@@ -1494,16 +1494,16 @@ footer .footer-content p{
   float: left;
   margin-left: 15px;
 }
-.profile-page .profile-rating-content ul li a{
+.profile-page .profile-rating-content ul li span{
   font-size: 17px;
   color: #3b5998;
   font-family: 'latobold';
   text-decoration: none;
 }
-.profile-page .profile-rating-content ul li a span{
+.profile-page .profile-rating-content ul li #sort_span{
   margin: 0px 0px 0px 15px;
 }
-.profile-page .profile-rating-content ul li a i{
+.profile-page .profile-rating-content ul li span i{
   color: #3b5998;
   font-size: 22px;
 }
@@ -1534,6 +1534,12 @@ footer .footer-content p{
 
 
 /*================================ listing products Start ===============================*/
+#loading-indicator {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+}
+
 .listing-products{
   width: 100%;
   float: left;
@@ -1700,7 +1706,7 @@ footer .footer-content p{
   float: left;
   width: 15px;
   height: 15px;
-  cursor: pointer;
+
   background: url('profile-img-13.png') no-repeat;
   
 }
@@ -1709,10 +1715,11 @@ footer .footer-content p{
   float: left;
   width: 15px;
   height: 15px;
-  cursor: pointer;
+
   background: url('profile-img-13-h.png') no-repeat;
   
 }
+
 /*.ratings1:hover{
   display: block;
   float: left;
@@ -1727,6 +1734,14 @@ footer .footer-content p{
 /*===================================================================================*/
 /*================================ EndSearch Result =================================*/
 /*===================================================================================*/
+
+.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
+    display: inline !important;
+}
+.carousel-inner>.item{
+  text-align: center; 
+  background-color: #000;
+}
 
 @media(max-width:1200px){
   .profile-page .categories-block,

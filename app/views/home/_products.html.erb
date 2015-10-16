@@ -16,9 +16,9 @@
           </div>
           <div class="content-img">
             <% if product.images.nil? || product.images.empty? %>
-              <%= image_tag("img-7.png", options={alt: "Logo"}) %>
+              <%= image_tag("product-img-1.png", :class =>"product_default_img")%>
             <% else %>
-              <%= image_tag(product.images.first.avatar.url(:e_large), options={alt: "Logo"}) %>
+              <%= image_tag(product.images.last.avatar.url(:e_large), options={alt: "Logo"}) %>
             <% end %>
           </div>
           <div class="content-bottom">
