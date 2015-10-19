@@ -1509,10 +1509,17 @@ footer .footer-content p{
   background: url('img-5.png') no-repeat;
   display: block;
   float: left;
-  width: 37px;
-  height: 37px;
+  width: 25px;
+  height: 25px;
   cursor: inherit;
+  background-size: 100% 100%;
   
+}
+.profile-page .profile-product-likes ul .like_count{
+  margin: 5px;
+  color: #3b5998;
+  font-size: 19px;
+  font-family: 'latobold';
 }
 .profile-page .profile-product-descrip{
   width: 100%;
