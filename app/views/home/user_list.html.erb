@@ -1,47 +1,110 @@
-<div class="listing-products">
-  <div class="container">
-    <h2>Listing User</h2>
-    <table class="table table-striped table-bordered listing-products-table">
-      <thead>
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-          <th>Ratings</th>
-          <th>Profile Pic</th>
-          <th></th>
-        </tr>
-      </thead>
 
-      <tbody>
-        <% @products.each do |product| %>
-          <tr>
-            <td><%= product.first_name %></td>
-            <td>
-                <%= product.last_name %>
-            </td>
-            <td>
-                <%= product.email %>
-            </td>
-            <td>
-              <%= product.total_rating %>
-            </td>
-            <td>
-              <% if product.images.count > 1 %>
-                <%= image_tag(product.images.first.avatar.url(:med)) %>
-              <% end %>
-            </td> 
-            <td style="text-align:right;">
-              <%= link_to 'Show', profile_path(product), :class=>"list-product-show" %>
-            </td>
-            
-          </tr>
-        <% end %>
-        <% if @products.nil? || @products.empty? %>
-          <h2>No records found</h2>
-        <% end %>
-      </tbody>
-    </table>
-    <%= paginate @search.hits %>
+<div class="profile-page search-result-page">
+  <div class="container">
+    
+      <div class="row">
+        <div class="col-md-3">
+          <div class="search-heading">
+            <label>Recommended for you</label>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="profile-rating-content">
+            <div class="result-search">
+              <label><%= @products.count %> Search Results</label>
+            </div>
+            <ul>
+              <li><span><i class="fa fa-list-ul"></i><span id="sort_span">Sort By</span></span></li>
+              <li><span><i class="fa fa-filter"></i></span></li>
+              <li>
+                <select class="form-control select-option product_like_sort">
+                  <option>Product Ratings</option>
+                  <option value="">ASC Order</option>
+                  <option value="DESC">DESC Order</option>
+                </select>
+              </li>
+              <li>
+                <select class="form-control select-option user_like_sort">
+                  <option>User Rating</option>
+                  <option value="">ASC Order</option>
+                  <option value="DESC">DESC Order</option>
+                </select>
+              </li>
+            </ul>
+          </div>
+          <div class="search_partial_products">
+            <% @products.each do |product| %>
+              <div class="search-result-widget-1">
+                <div class="row">
+                  <div class="col-md-4 col-sm-4 left-img-block">
+                    <div class="person-block">
+                      <% if product.images.count > 0 %>
+                        <%= image_tag(product.images.first.avatar.url, options={alt: "Logo"}) %>
+                      <% else %>
+                        <%= image_tag("product-img-1.png") %>
+                      <% end %>
+                      <div class="profile-product-rating user_rating" style="padding-top:0;">
+                        <ul style="float:left;">
+                          <% ratings = product.total_rating || 0 %>
+                          <% i = 1 %>
+                          <% while i <= ratings %>
+                            <li><a class="filled-ratings1" id="<%= i %>"></a></li>
+                            <% i = i+1 %>
+                          <% end %>
+                          <% while i <= 5 %>
+                            <li><a class="ratings1" id="<%= i %>"></a></li>
+                            <% i = i+1 %>
+                          <% end %>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-8 col-sm-8">
+                    <div class="profile-product-detail">
+                      <h3><%= link_to product.first_name+" "+product.last_name, profile_path(product) %></h3>
+                      <div class="profile-product-descrip">
+                        <p><%= product.email %></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            <% if @solr_search %>
+              <div id="pagination"><%= paginate @search.hits %></div>
+            <% else %>
+              
+            <% end %>
+
+            <% if @products.count < 1 %>
+              <h2 style="padding:50px;">No records found</h2>
+            <% end %>
+          </div>
+          
+        </div>
+      </div>
   </div>
 </div>
+<script type="text/javascript">
+  $('.user_like_sort').on('change', function() {
+      var rate_val =  this.value ;
+      var url_link = '/home/user_sorted';
+      $.ajax({
+          url: url_link,
+          type: "GET",
+          data: {rate_val: rate_val}
+      });
+
+  });
+
+  $('.product_like_sort').on('change', function() {
+      var rate_val =  this.value ;
+      var url_link = '/home/product_likes_sorted';
+      $.ajax({
+          url: url_link,
+          type: "GET",
+          data: {rate_val: rate_val}
+      });
+
+  });
+</script>

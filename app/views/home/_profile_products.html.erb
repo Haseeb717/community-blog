@@ -3,7 +3,7 @@
     <div class="profile-img-content">
       <div class="profile-product-img">
         <% if product.images.nil? || product.images.empty? %>
-          <%= image_tag("images.png",:class=>"product_profile_img") %>
+          <%= image_tag("product-img-1.png",:class=>"product_profile_img") %>
         <% else %>
           <%= image_tag(product.images.first.avatar.url(:large)) %>
         <% end %>

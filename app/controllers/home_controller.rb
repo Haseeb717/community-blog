@@ -12,6 +12,7 @@ class HomeController < ApplicationController
     @user = User.find(params["id"])
     if !@user.products.empty?
       @featured_products = @user.products.where(:feature=>true)
+
       @type = "user"
       # if(!@featured_product)
       #   @featured_product = current_user.products.first.update_attributes() 

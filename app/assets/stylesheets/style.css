@@ -1463,6 +1463,7 @@ footer .footer-content p{
   font-family: 'latobold';
   margin: 0px 6px 0px 0px;
   float: left;
+  width: 50%;
 }
 .profile-page .profile-product-rating ul{
   margin: 10px 0px 0px 0px;
@@ -1480,6 +1481,32 @@ footer .footer-content p{
   -moz-transition: .4s linear;
   -webkit-transition: .4s ease-out;
   transition: .4s linear;*/
+}
+.profile-page .profile-product-likes p{
+  font-size: 21px;
+  color: #3b5998;
+  font-family: 'latobold';
+  margin: 0px 6px 0px 0px;
+  float: left;
+  width: 50%;
+
+}
+.profile-page .profile-product-likes ul {
+  margin: 10px 0px 0px 0px;
+  padding: 0px;
+}
+.profile-page .profile-product-likes ul li{
+  list-style: none;
+  display: inline-block;
+}
+.profile-page .profile-product-likes ul .like{
+  background: url('img-5.png') no-repeat;
+  display: block;
+  float: left;
+  width: 37px;
+  height: 37px;
+  cursor: inherit;
+  
 }
 .profile-page .profile-product-descrip{
   width: 100%;

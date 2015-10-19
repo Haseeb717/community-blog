@@ -90,7 +90,7 @@
                       <div class="item active">
                         <div class="profile-product-img">
                           <% if @featured_products.first.images.nil? || @featured_products.first.images.empty? %>
-                            <%= image_tag("images.png",:class=>"product_profile_img") %>
+                            <%= image_tag("product-img-1.png",:class=>"product_profile_img") %>
                           <% else %>
                             <%= image_tag(@featured_products.first.images.first.avatar.url(:large))%>
                           <% end %>
