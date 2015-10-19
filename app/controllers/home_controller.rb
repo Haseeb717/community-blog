@@ -32,6 +32,8 @@ class HomeController < ApplicationController
     # @featured_products = Product.where(:feature=>true) 
     @products = @user.products.all.order('created_at DESC').page(params[:page]).per(3)
     @categories = @user.products.joins(:categories).uniq.pluck(:name)
+    @tags = @user.products.joins(:tags).uniq.pluck(:name)
+    
     if @user.followers(User).count > 0 
       @followers = @user.followers(User)
     end
@@ -39,6 +41,7 @@ class HomeController < ApplicationController
   end 
 
   def search
+    
     @solr_search = true
     if params["type"] == "user"
       respond_to do |format|
@@ -65,9 +68,16 @@ class HomeController < ApplicationController
       end
       @type = "category"
 
-    # elsif params["type"] == "hashtag"
-    #   @search_products = Array.new
-    #   @type = "hashtag"
+    elsif params["type"] == "hashtag"
+      @search = Sunspot.search(Tag) do 
+        fulltext params[:search]
+        paginate(:page => params[:page] || 1, :per_page => 3)
+      end
+      @products = Array.new
+      @search.results.each do |result|
+        @products += result.products
+      end
+      @type = "hashtag"
     else
       
     end

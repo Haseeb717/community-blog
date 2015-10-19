@@ -55,13 +55,10 @@
             <div class="tag-block">
               <h4 class="left-blocks-heading">Tag Cloud</h4>
               <ul>
+                <% @tags.each do |tag| %>
+                  <li><%= link_to "#"+tag,search_path(:type=>"hashtag",:search=>tag),:id=>"tags_profile" %></li>
+                <% end %>
                 
-                <li><a href="#">#Hashtag #Hashtag</a></li>
-                <li><a href="#">#Hashtag #Hashtag</a></li>
-                <li><a href="#">#Hashtag #Hashtag</a></li>
-                <li><a href="#">#Hashtag #Hashtag</a></li>
-                <li><a href="#">#Hashtag #Hashtag</a></li>
-                <li><a href="#">#Hashtag #Hashtag</a></li>
               </ul>
             </div>
             <div class="followers-block">
@@ -83,8 +80,7 @@
         </div>
         <div class="col-md-9">
           <div class="profile-right-block">
-            <% if @featured_products.nil? || @featured_products.empty? %>
-            <% else %>
+            <% if @featured_products.count > 0 %>
               <h2>Favorites</h2>
               <div class="profile-product">
                 <div class="profile-img-content">

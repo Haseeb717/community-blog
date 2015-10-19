@@ -44,7 +44,7 @@
             <%= f.label :cons %><br>
             <%= f.text_area :cons , class: "form-control", rows:'2' %>
           </div>
-          <div>
+          <div >
               <label id="category_label">Category</label>
               <%= f.text_field :abc, class: "form-control", id:"category", placeholder:"#product" %>
           <div>
@@ -55,8 +55,8 @@
             <%= f.text_field :price, class: "form-control", id:"exampleInputName2" %>
           </div>
           <div class="text-field">
-            <label id="category_label">Category</label>
-            <%= f.text_field :abc, class: "form-control", id:"hashtags" %>
+            <label>Hashtags</label>
+            <%= f.text_field :def, class: "form-control", id:"hashtags" , placeholder:"Tags separated by comma"%>
           </div>
           <div class="text-field">
             <label>Link To Product</label>
@@ -107,7 +107,7 @@
         theme: "facebook"
       });
 
-      $("#hashtags").tokenInput();
+      
 
     });
     

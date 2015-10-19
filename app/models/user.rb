@@ -9,8 +9,6 @@ class User < ActiveRecord::Base
   acts_as_followable
   
 	has_many :products
-  has_many :user_tags
-  has_many :tags, through: :user_tags
   has_many :comments
   has_many :ratings, as: :rate_able
   has_many :images, as: :imageable

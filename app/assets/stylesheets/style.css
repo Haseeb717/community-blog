@@ -1203,7 +1203,16 @@ footer .footer-content p{
   float: left;
   visibility: hidden;
 }
-
+#tag_style{
+  background-color: transparent;
+  font-size: 100%;
+  color: #337ab7;
+  padding: 0;
+}
+#tags_profile{
+  font-weight: 700;
+  color: #337ab7;
+}
 /*============================ Product Page Detail ============================*/
 
 /*===================================================================================*/

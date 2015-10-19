@@ -125,6 +125,15 @@
                     </div>
                   <% end %>
                 </div>
+                <div class="product-detail">
+                  <% if @product.tags.count>0 %>
+                    <div class="product-detail-bg">
+                        <% @product.tags.each do |tag| %>
+                          <span class="label label-primary" id="tag_style">#<%= tag.name %></span>
+                        <% end %>
+                    </div>
+                  <% end %>
+                </div>
                 <!-- <div class="product-detail">
                   <% unless @product.price.nil? %>
                   <h3>Price</h3>
