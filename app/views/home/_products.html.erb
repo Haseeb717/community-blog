@@ -46,7 +46,7 @@
                   <% if product.comments.last.user.images.nil? || product.comments.last.user.images.empty? %>
                     <span><%= link_to image_tag("user.png", :class=>"product_user_default_pic"),profile_path(product.comments.last.user) %></span>
                   <% else %>
-                    <span><%= link_to image_tag(product.comments.last.user.images.last.avatar.url(:small)),profile_path(product.comments.last.user) %></span>
+                    <span><%= link_to image_tag(product.comments.last.user.images.last.avatar.url(:small),:class=>"non-default"),profile_path(product.comments.last.user) %></span>
                   <% end %>
                   <%= link_to product.comments.last.user.first_name + " " + product.comments.last.user.last_name, profile_path(product.comments.last.user) %>
                 </h3>

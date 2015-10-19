@@ -17,9 +17,9 @@
                   <div class="col-md-4 col-sm-4 left-img-block">
                     <div class="person-block">
                       <% if product.images.count > 0 %>
-                        <%= image_tag(product.images.first.avatar.url, options={alt: "Logo"}) %>
+                        <%= image_tag(product.images.first.avatar.url(:large), options={alt: "Logo"}) %>
                       <% else %>
-                        <%= image_tag("product-img-1.png") %>
+                        <%= image_tag("product-img-1.png",:class=>"user_list_image") %>
                       <% end %>
                       <div class="profile-product-likes">
                         <p>
@@ -66,7 +66,7 @@
           data: {id: id},
           success: function (data) {
               if(data.message = "success"){
-                  alert('featured')
+                  
               }
               else{
                   alert('not featured')

@@ -10,7 +10,7 @@
               <% if @user.images.nil? || @user.images.empty? %>
                 <%= image_tag("user.png", class: "profile-pic") %>
               <% else %>
-                <%= image_tag(@user.images.last.avatar.url(:profile), class: "profile-pic") %>
+                <%= image_tag(@user.images.last.avatar.url(:profile), class: "non-default") %>
               <% end %>
               <div class="person-block-rating">
                 <ul>

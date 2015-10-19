@@ -348,6 +348,7 @@ header .upper-header-content ul li a.user-link{
   border-radius: 50%;
 }
 .comment-pic{
+  border-radius: 50%;
   margin-right: 15px;
   border: 1px solid white;
 }
@@ -684,6 +685,7 @@ header #search_submit{
 .home-comment .product_user_default_pic{
   width: 66px;
   height: 66px;
+  border-radius: 50%;
 }
 .home-page .home-comment-descrip{
   width: 80%;
@@ -1035,6 +1037,7 @@ footer .footer-content p{
   border-radius: 0px;
   box-shadow: none;
   margin-bottom: 0px;
+  margin-top: 15px;
 }
 .product-page-detail .product-descrip-imgs{
   width: 100%;
@@ -1239,8 +1242,11 @@ footer .footer-content p{
   height: 263px;
   border-radius: 50%;
 }
+.non-default{
+  border-radius: 50%;
+}
 .profile-page .person-block img{
-  width: 100%;
+  
 }
 .profile-page .person-block h2{
   font-size: 27px;
@@ -1567,6 +1573,10 @@ footer .footer-content p{
   margin: 0px;
   text-decoration: none;
   text-align: center;
+}
+.user_list_image{
+    max-width: 200px;
+    min-height: 146px;
 }
 /*===================================================================================*/
 /*================================ Profile Page Close ===============================*/
