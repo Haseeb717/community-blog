@@ -11,7 +11,7 @@
         <div class="col-md-9">
           <div class="profile-rating-content">
             <div class="result-search">
-              <label><%= @products.count %> Search Results</label>
+              <label id="search_count"><%= @products.count %> Search Results</label>
             </div>
             <ul>
               <li><span><i class="fa fa-list-ul"></i><span id="sort_span">Sort By</span></span></li>
@@ -43,7 +43,7 @@
                       <% else %>
                         <%= image_tag("product-img-1.png", :class=>"user_list_image") %>
                       <% end %>
-                      <div class="profile-product-rating user_rating" style="padding-top:0;">
+                      <!-- <div class="profile-product-rating user_rating" style="padding-top:0;">
                         <ul style="float:none;">
                           <% ratings = product.total_rating || 0 %>
                           <% i = 1 %>
@@ -56,12 +56,12 @@
                             <% i = i+1 %>
                           <% end %>
                         </ul>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                   <div class="col-md-8 col-sm-8">
                     <div class="profile-product-detail">
-                      <h3><%= link_to product.first_name+" "+product.last_name, profile_path(product) %></h3>
+                      <h3><%= link_to product.name, profile_path(product) %></h3>
                       <div class="profile-product-descrip">
                         <p><%= product.email %></p>
                       </div>

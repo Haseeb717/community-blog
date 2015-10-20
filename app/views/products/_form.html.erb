@@ -26,7 +26,7 @@
               <%= photo.file_field :avatar,class: "form-control product-img" %>
             <% end %>
             
-            <button style="display:none;" id="add-img">Add More Images</button>
+            <%= button_tag "Add More Images",:type => 'button',:id=>"add-img" , :style=>"display:none;"%>
           </div>
           <div class="text-field">
             <%= f.label :title %><br>
@@ -95,7 +95,7 @@
         $(el).after(d_field);
       }
       else{
-        
+        alert("Fill previous one first")
       }
     });
     

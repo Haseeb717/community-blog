@@ -28,9 +28,8 @@ gem 'jbuilder', '~> 1.2'
 
 # Use devise for authentication
 gem 'devise'
-
+gem 'inherited_resources', github: 'josevalim/inherited_resources'
 # Use activeadmin for admin panel
-gem 'activeadmin', github: 'activeadmin'
 
 # Use socialization for liking and following
 gem "socialization"

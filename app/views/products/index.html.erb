@@ -21,7 +21,7 @@
                       <% else %>
                         <%= image_tag("product-img-1.png",:class=>"user_list_image") %>
                       <% end %>
-                      <div class="profile-product-likes">
+                      <div class="profile-product-likes" style="margin-top:25px;">
                         <p>
                           <label for=featured_<%= product.id %>>Feature</label>
                           <%= radio_button_tag 'featured', product.id, product.feature == true ? true : false %>
@@ -33,12 +33,18 @@
                     </div>
                   </div>
                   <div class="col-md-8 col-sm-8">
-                    <div class="profile-product-detail">
+                    <div class="profile-product-detail" style="margin-bottom:10px;">
                       <h3><%= link_to product.title, product_path(product) %></h3>
                       <div class="profile-product-descrip">
                         <p><%= product.description %></p>
                       </div>
                     </div>
+                    <% if product.user == current_user %>
+                      <div class="profile-product-buttons" style="text-align:right;">
+                        <%= link_to "Edit Button",edit_product_path(product),:class=>"list-product-edit" %>
+                        <%= link_to "Destroy Button",product, method: :delete, data: { confirm: 'Are you sure?' },:class=>"list-product-delete" %>
+                      </div>
+                    <% end %>
                   </div>
                 </div>
               </div>

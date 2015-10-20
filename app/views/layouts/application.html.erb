@@ -24,7 +24,8 @@
                       <% else %>
                         <%= link_to image_tag(current_user.images.last.avatar.url(:thumb), class: "profile-img"),profile_path(current_user) %>
                       <% end %>
-                      <%= link_to current_user.first_name + current_user.last_name, profile_path(current_user) %></a>
+
+                      <%= link_to current_user.name, profile_path(current_user) %></a>
                     </li>
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle setting-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
@@ -44,6 +45,7 @@
             </div>
           </div>
         </div>
+
         <div class="main-header">
           <nav class="navbar navbar-default">
             <div class="header-container">
@@ -72,14 +74,19 @@
                     <% @type ||= "product" %>
                     <li>
                       <label class="checkbox-inline">
-                        <%= radio_button_tag 'type', 'hashtag', @type == "hashtag" ? true : false %>  Hashtag
+                        <%= radio_button_tag 'type', 'All', @type == "All" ? true : false %> All
                       </label>
                     </li>
                     <li>
                       <label class="checkbox-inline">
-                        <%= radio_button_tag 'type', 'user', @type == "user" ? true : false %> User
+                        <%= radio_button_tag 'type', 'hashtag', @type == "hashtag" ? true : false %>  Hashtag
                       </label>
                     </li>
+                    <!-- <li>
+                      <label class="checkbox-inline">
+                        <%= radio_button_tag 'type', 'user', @type == "user" ? true : false %> User
+                      </label>
+                    </li> -->
                     <li>
                       <label class="checkbox-inline">
                         <%= radio_button_tag 'type', 'product', @type == "product" ? true : false %> Product

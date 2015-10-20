@@ -8,5 +8,11 @@ $(document).ready(function(){
       $('#loading-indicator').hide();
     });
     
-    
+    $(window).scroll(function(){
+      if ($(this).scrollTop() > 200) {
+        $('.main-header').addClass("getFix");
+      } else if($(this).scrollTop() < 200) {
+        $('.main-header').removeClass("getFix");
+      }
+    });
 });

@@ -33,6 +33,7 @@
               </ul>
             </div>
             <div class="content-bottom-date">
+              <span><%= link_to product.user.name,profile_path(product.user) %></span>
               <span><%= product.created_at.strftime("%d/%m/%Y") %></span>
               <span><%= image_tag("img-8.png", options={alt: "Logo"}) %></span>
             </div>
@@ -48,7 +49,7 @@
                   <% else %>
                     <span><%= link_to image_tag(product.comments.last.user.images.last.avatar.url(:small),:class=>"non-default"),profile_path(product.comments.last.user) %></span>
                   <% end %>
-                  <%= link_to product.comments.last.user.first_name + " " + product.comments.last.user.last_name, profile_path(product.comments.last.user) %>
+                  <%= link_to product.comments.last.user.name, profile_path(product.comments.last.user) %>
                 </h3>
               </div>
               <div class="home-comment-descrip">

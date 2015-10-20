@@ -10,9 +10,9 @@
           <% end %>
           <div class="profile-product-rating user_rating">
             <p>
-              <%= link_to product.user.first_name + " " + product.user.last_name, profile_path(product.user) %>
+              <%= link_to product.user.name, profile_path(product.user) %>
             </p>
-            <ul>
+            <!-- <ul>
               <% ratings = product.user.total_rating || 0 %>
               <% i = 1 %>
               <% while i <= ratings %>
@@ -23,7 +23,7 @@
                 <li><a class="ratings1" id="<%= i %>"></a></li>
                 <% i = i+1 %>
               <% end %>
-            </ul>
+            </ul> -->
           </div>
         </div>
       </div>

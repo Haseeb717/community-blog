@@ -11,7 +11,7 @@
           <div class="col-md-9">
             <div class="profile-rating-content">
               <div class="result-search">
-                <label><%= @products.count %> Search Results</label>
+                <label id="search_count"><%= @products.count %> Results Found</label>
               </div>
               <ul>
                 <li><span><i class="fa fa-list-ul"></i><span id="sort_span">Sort By</span></span></li>
@@ -27,7 +27,7 @@
                   <select class="form-control select-option user_like_sort">
                     <option>User Rating</option>
                     <option value="">ASC Order</option>
-                    <option value="DESC">DESC ORder</option>
+                    <option value="DESC">DESC Order</option>
                   </select>
                 </li>
               </ul>

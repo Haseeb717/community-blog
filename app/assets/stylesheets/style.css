@@ -400,10 +400,13 @@ header .setting-menu li a{
   font-size: 17px !important;
 }
 header .main-header{
-  width: 100%;
-  float: left;
-  padding: 10px 0px;
-  background: url('img-13.png')0% 100% no-repeat;
+    width: 100%;
+    float: left;
+    padding: 10px 0px;
+    background: url('img-13.png') no-repeat;
+    background-size: 100%;
+    background-position: 0% 100%;
+
 }
 header .main-header .navbar-default{
   background-color: transparent;
@@ -437,7 +440,7 @@ header .form-group input{
   border: 1px solid #c0c0c0;
   height: 50px;
   border-radius: 20px;
-  padding-left: 50px;
+  padding-left: 15px;
 }
 header .form-group{
   position: relative;
@@ -445,9 +448,9 @@ header .form-group{
 header .form-group i{
   position: absolute;
   top: 13px;
-  left: 13px;
+  right: 13px;
   font-size: 24px;
-  color: #d7d7d7;
+  color: #3b5998;
 }
 header .form-chk{
   width: 100%;
@@ -472,6 +475,15 @@ header #search_submit{
 .logout-link{
   font-size: 15px !important;
   padding-left: 0px !important; 
+}
+.getFix{
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  background-color: white !important;
+  left: 0;
+  padding-left: 75px !important;
+  padding-right: 75px !important;
 }
 /*============================ Header ============================*/
 
@@ -555,7 +567,7 @@ header #search_submit{
   padding: 25px 40px 0px;
 }
 .home-page .content-bottom-like{
-  width: 50%;
+  width: 20%;
   float: left;
   text-align: left;
 }
@@ -632,7 +644,7 @@ header #search_submit{
   font-family: 'latobold';
 }
 .home-page .content-bottom-date{
-  width: 50%;
+  width: 80%;
   float: left;
   text-align: right;
 }
@@ -641,12 +653,10 @@ header #search_submit{
   font-family: 'latosemibold';
   color: #3b5998;
   text-decoration: none;
-}
-.home-page .content-bottom-date span:first-child{
+  vertical-align: top;
   margin-right: 10px;
-  position: relative;
-  top: 5px;
 }
+
 .home-page .home-comment{
   width: 100%;
   float: left;
@@ -1450,6 +1460,24 @@ footer .footer-content p{
   font-family: 'latobold';
   margin: 0px;
 }
+.profile-page .profile-product-buttons a{
+  color: #fff;
+  padding: 8px 13px;
+  border-radius: 5px;
+  font-family: 'latoregular';
+  line-height: 30px;
+  text-decoration: none;
+}
+
+.profile-product-buttons .list-product-show{
+  background-color: #449d44;
+}
+.profile-product-buttons .list-product-edit{
+  background-color: #286090;
+}
+.profile-product-buttons .list-product-delete{
+  background-color: #d9534f;
+}
 .profile-page .profile-img-content{
   width: 30%;
   float: left;
@@ -1468,8 +1496,8 @@ footer .footer-content p{
   color: #3b5998;
   font-family: 'latobold';
   margin: 0px 6px 0px 0px;
-  float: left;
-  width: 50%;
+  text-align: left;
+  width: 90%;
 }
 .profile-page .profile-product-rating ul{
   margin: 10px 0px 0px 0px;
