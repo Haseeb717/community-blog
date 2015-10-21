@@ -19,7 +19,7 @@ $(document).ready(function(){
       }  
     });
 
-    $(".product-img:file").first().on('change' ,function(){
+    $(document).on('change' , '.product-img:file',function(){
       var a = ($(this).val());
       if(a.length != 0){
         $("#add-img").show();
