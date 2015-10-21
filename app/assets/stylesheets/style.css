@@ -1669,11 +1669,10 @@ footer .footer-content p{
 .listing-products .list-product-delete{
   background-color: #d9534f;
 }
-.product-comment-date a{
-  background: url('cross.png');
+.product-comment-date span.edit{
   height: 10px;
   width: 10px;
-  text-indent: -9999px;
+  
   text-align: initial;
   background-size: 100% 100%;
   margin: 0px;

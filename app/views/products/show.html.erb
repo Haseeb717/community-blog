@@ -162,9 +162,9 @@
                           <div class="product-comment-date">
                             <span style="width:auto;display:inline;"><%= product_comment.created_at.strftime("%d/%m/%Y") + " at " + product_comment.created_at.strftime("%H:%M") %></span>
                             <% if product_comment.user == current_user %>
-                              <span>
-                                  <%= link_to 'Delete', comment_path(product_comment.id), {:method => :delete, :confirm => 'Are you sure?'} %>
-                                </span>
+                              <span class="edit" data-toggle="tooltip" data-placement="left" title="Click on Comment to Edit">
+                                  <i class="fa fa-pencil"></i>
+                              </span>
                             <% end %>
                           </div>
                           <div class="text-field">

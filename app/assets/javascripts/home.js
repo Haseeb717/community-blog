@@ -9,9 +9,9 @@ $(document).ready(function(){
     });
     
     $(window).scroll(function(){
-      if ($(this).scrollTop() > 200) {
+      if ($(this).scrollTop() > 23) {
         $('.main-header').addClass("getFix");
-      } else if($(this).scrollTop() < 200) {
+      } else if($(this).scrollTop() < 23) {
         $('.main-header').removeClass("getFix");
       }
     });
