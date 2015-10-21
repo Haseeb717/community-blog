@@ -64,7 +64,7 @@
                     
                       <p>
                         <%= text_field_tag :search, params[:search],:class=>"form-control",:placeholder=>"Search by hashtag, user, product, category..." %>
-                          <span><i class="fa fa-search"></i></span>
+                          <span id="search_span"><i class="fa fa-search"></i></span>
                         <%= submit_tag "Search", :name => nil, :id=>"search_submit" %>
                       </p>
                     
@@ -163,3 +163,9 @@
   </body>
 <% end %>
 </html>
+<script type="text/javascript">
+  $("#search_span").click(function(){
+      $('form').submit();
+      return false;
+  });
+</script>

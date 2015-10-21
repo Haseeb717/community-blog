@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   
   searchable do
     text :name
+    text :first_name
+    text :last_name
   end
 
   accepts_nested_attributes_for :images

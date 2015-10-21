@@ -85,6 +85,7 @@ class HomeController < ApplicationController
         paginate(:page => params[:page] || 1, :per_page => 10)
       end
       @products = @search.results
+      @type = "All"
     else
     end
   end
