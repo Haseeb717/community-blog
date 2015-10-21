@@ -67,6 +67,10 @@ $(document).ready(function(){
         alert("Fill previous one first")
       }
     });
+    $(document).on('click', '.fa-pencil', function(){
+      var t = $(this).attr('id');
+      $('.text-field #'+t).click();
+    });
 
  });
 

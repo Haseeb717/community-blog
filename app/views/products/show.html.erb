@@ -148,7 +148,7 @@
                             <span style="width:auto;display:inline;"><%= product_comment.created_at.strftime("%d/%m/%Y") + " at " + product_comment.created_at.strftime("%H:%M") %></span>
                             <% if product_comment.user == current_user %>
                               <span class="edit" data-toggle="tooltip" data-placement="left" title="Click on Comment to Edit">
-                                  <i class="fa fa-pencil"></i>
+                                  <i class="fa fa-pencil" id ="best_in_place_comment_<%= product_comment.id %>_description"></i>
                               </span>
                             <% end %>
                           </div>
