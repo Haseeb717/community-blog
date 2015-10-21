@@ -100,22 +100,7 @@
                     <p><%= simple_format h @product.description %></p>
                   </div>
                 </div>
-                <div class="product-detail">
-                  <% unless @product.pros.empty? %>
-                    <h3>Pros</h3>
-                    <div class="product-detail-bg">
-                      <p><%= simple_format h @product.pros %></p>
-                    </div>
-                  <% end %>
-                </div>
-                <div class="product-detail">
-                  <% unless @product.cons.empty? %>
-                  <h3>Cons</h3>
-                    <div class="product-detail-bg">
-                      <p><%= simple_format h @product.cons %></p>
-                    </div>
-                  <% end %>
-                </div>
+                
                 <div class="product-detail">
                   <% if !@product.categories.empty? %>
                     <div class="product-detail-bg">

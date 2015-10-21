@@ -290,6 +290,7 @@
 #create-comment:focus{
   outline: none;
 }
+
 #target{
   display: none;
   margin-top: 10px;
@@ -889,6 +890,12 @@ footer .footer-content p{
 }
 .show_user_images:hover a{
   opacity: 1;
+}
+.target{
+  display: none;
+  margin-top: 10px;
+  margin-right: 15px;
+  max-height: 66px;
 }
 /*============================ Product Page ============================*/
 
