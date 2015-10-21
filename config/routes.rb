@@ -22,6 +22,8 @@ Blog::Application.routes.draw do
   get '/home/user_sorted' => 'home#user_sorted_products'
   get '/home/like_sorted' => 'home#like_sorted_products'
   get '/home/product_likes_sorted' => 'home#like_sorted_search_products'
+  get '/home/date_sorted' => 'home#date_sorted_products'
+
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
