@@ -24,7 +24,8 @@
             </div>
             <div class="form-group form-login">
               <%= f.fields_for :images,@user.images.build do |photo| %>
-                <%= photo.file_field :avatar %>
+                <%= photo.file_field :avatar,:id=>"imgInp" %>
+                <img id="target" src="#" alt="your image" />
               <% end %>
             </div>
             <div class="login-link">

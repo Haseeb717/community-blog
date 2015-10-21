@@ -30,6 +30,13 @@
                     <option value="DESC">DESC Order</option>
                   </select>
                 </li>
+                <li>
+                  <select class="form-control select-option date_sort">
+                    <option>Created At</option>
+                    <option value="">Oldest</option>
+                    <option value="DESC">Newest</option>
+                  </select>
+                </li>
               </ul>
             </div>
             <div class="search_partial_products">
@@ -55,6 +62,17 @@
     $('.product_like_sort').on('change', function() {
         var rate_val =  this.value ;
         var url_link = '/home/product_likes_sorted';
+        $.ajax({
+            url: url_link,
+            type: "GET",
+            data: {rate_val: rate_val}
+        });
+
+    });
+
+    $('.date_sort').on('change', function() {
+        var rate_val =  this.value ;
+        var url_link = '/home/date_sorted';
         $.ajax({
             url: url_link,
             type: "GET",

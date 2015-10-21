@@ -290,6 +290,11 @@
 #create-comment:focus{
   outline: none;
 }
+#target{
+  display: none;
+  margin-top: 10px;
+  max-width: 150px;
+}
 /*============================ Header ==================================*/
 
 
@@ -446,9 +451,14 @@ header .form-group{
   position: relative;
 }
 header .form-group i{
+  padding: 12px 0 0 10px;
+}
+header .form-group span{
+  border-left: 1px solid;
   position: absolute;
-  top: 13px;
-  right: 13px;
+  top: 0;
+  height: 50px;
+  right: 15px;
   font-size: 24px;
   color: #3b5998;
 }

@@ -12,20 +12,15 @@ class Product < ActiveRecord::Base
   has_many :tags, through: :product_tags
 
   searchable do
-    text :title, :boost => 5
-    text :description
-    # text :comments do
-    #   comments.map(&:description)
-    # end
-    # text :categories do 
-    #   categories.map(&:name).compact.join(" ")
-    # end
-    # text :user do
-    #   user.first_name
-    #   user.last_name
-    # end
-    
+      text :title, :boost => 5
+      text :categories do
+        categories.map { |category| category.name }
+      end
+      text :tags do
+        tags.map { |tag| tag.name }
+      end
   end
+
 
   accepts_nested_attributes_for :images
   accepts_nested_attributes_for :comments

@@ -79,8 +79,13 @@ class HomeController < ApplicationController
         @products += result.products
       end
       @type = "hashtag"
+    elsif params["type"] == "All"
+      @search = Sunspot.search(Product) do
+        fulltext params[:search]
+        paginate(:page => params[:page] || 1, :per_page => 10)
+      end
+      @products = @search.results
     else
-      
     end
   end
 
@@ -149,7 +154,14 @@ class HomeController < ApplicationController
     else
       @products = user.products.order("total_likes").page(params[:page]).per(3)
     end
-    
-    
   end
+
+  def date_sorted_products
+    if !params["rate_val"].empty?
+      @products = Product.all.order('created_at DESC')
+    else
+      @products = Product.all.order('created_at')
+    end
+  end
+
 end

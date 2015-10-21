@@ -1,0 +1,2 @@
+$('.search_partial_products').html("<%= escape_javascript(render 'search_products')%>");
+$("#search_count").html("<%= @products.count%>"+" "+"Results Found");
