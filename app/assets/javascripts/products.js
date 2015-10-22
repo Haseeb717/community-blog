@@ -33,15 +33,18 @@ $(document).ready(function(){
     function readURL(input) {
       if (input.files && input.files[0]) {
           var reader = new FileReader();
-          var last = input.id;            
+          var last = input.id;
           reader.onload = function (e) {
-              var file = e.target;
-              $('#'+last+'preview').attr('src', e.target.result);
-              $('.target').show();
-              
+            var file = e.target;
+            $('#'+last+'preview').attr('src', e.target.result);
+            $('.target').show();
           }
-          
           reader.readAsDataURL(input.files[0]);
+      }
+      else
+      {
+        var last = input.id;
+        $('#'+last+'preview').hide();
       }
     }
     
