@@ -15,4 +15,6 @@ $(document).ready(function(){
         $('.main-header').removeClass("getFix");
       }
     });
+
+    
 });
