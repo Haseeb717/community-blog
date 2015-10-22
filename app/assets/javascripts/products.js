@@ -1,6 +1,10 @@
 $(document).ready(function(){
 
     jQuery(".best_in_place").best_in_place();
+
+    $('a.colorbox').colorbox();
+
+
     $(document).on('click', '#delete-img', function(){
       var checkValues = $('input[name=image_id]:checked').map(function(){
           return $(this).val();
