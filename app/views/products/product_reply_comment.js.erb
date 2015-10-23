@@ -1,0 +1,10 @@
+$(document).ready(function(){
+	var q = "#comment_replies<%= @product_comment.id %>";
+  	$(q).html("<%= escape_javascript(render partial: 'product_comment_reply' ) %>");
+
+  	var all_replies = "#all_replies_<%= @product_comment.id %>div";
+  	$(all_replies).show();
+
+  	var view_button = "#all_replies_<%= @product_comment.id %>";
+  	$(view_button).hide();
+});

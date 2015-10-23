@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy,:product_comments,:product_likes_and_dislikes]
+  before_action :set_product, only: [:show, :edit, :update, :destroy,:product_comments,:product_likes_and_dislikes,:product_reply_comment]
 
   respond_to :html
 
@@ -66,6 +66,18 @@ class ProductsController < ApplicationController
         format.html { redirect_to @product, alert: 'Empty Comment not added. Try Again' }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def product_reply_comment
+    description = params["comment"]
+    parent_id = params["parent_id"]
+    @product_comment = @product.comments.where(:id=>parent_id).first
+    @display = true
+    comment = Comment.new(:description=>description , :parent_id=>parent_id)
+    if comment.save
+      @product.comments << comment
+      current_user.comments << comment
     end
   end
 

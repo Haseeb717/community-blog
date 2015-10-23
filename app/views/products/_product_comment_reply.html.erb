@@ -1,0 +1,66 @@
+<% first_reply = @product.comments.where(:parent_id=>@product_comment.id).first %>
+
+<% if !first_reply.nil? %>
+  <div class="product-comment-detail under-comment" >
+
+    <div class="product-comment-body">
+      <div class="text-field">
+        <span>
+        <% if @product_comment.user.images.count < 1 %>
+          <%= link_to image_tag("user.png", class: "comment-pic default-pic"),profile_path(product_comment.user) %>
+        <% else %>
+          <%= link_to image_tag(@product_comment.user.images.last.avatar.url(:reply), class: "comment-pic"
+          ),profile_path(@product_comment.user) %>
+        <% end %>
+      </span>
+      <p class="show-reply-comment"><%= first_reply.description %></p>
+
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% all_replies = @product.comments.where(:parent_id=>@product_comment.id) %>
+
+<div id="all_replies_<%= @product_comment.id %>div" style="display:none;">
+  <% if all_replies.count > 1 %>
+    <% all_replies.each do |reply| %>
+      <div class="product-comment-detail under-comment" >
+        <% if reply.id != first_reply.id %>
+          <div class="product-comment-body">
+            <div class="text-field">
+              <span>
+                <% if @product_comment.user.images.count < 1 %>
+                  <%= link_to image_tag("user.png", class: "comment-pic default-pic"),profile_path(@product_comment.user) %>
+                <% else %>
+                  <%= link_to image_tag(@product_comment.user.images.last.avatar.url(:reply), class: "comment-pic"
+                  ),profile_path(@product_comment.user) %>
+                <% end %>
+              </span>
+              <p class="show-reply-comment"><%= reply.description %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<div class="product-comment-detail under-comment" id="under-comment<%= @product_comment.id %>div" style="display:none;">
+  <div class="product-comment-body">
+    <div class="text-field">
+      <span>
+      <% if @product_comment.user.images.count < 1 %>
+        <%= link_to image_tag("user.png", class: "comment-pic default-pic"),profile_path(@product_comment.user) %>
+      <% else %>
+        <%= link_to image_tag(@product_comment.user.images.last.avatar.url(:reply), class: "comment-pic"
+        ),profile_path(@product_comment.user) %>
+      <% end %>
+    </span>
+    <input type="hidden" value=<%= @product_comment.id %> id="comment_id">
+    <textarea class="form-control reply-comment" rows="2" placeholder="Reply.." id ="<%= @product_comment.id %>" autofocus></textarea>
+    </div>
+  </div>
+</div>
+<% if all_replies.count > 1 %>
+  <div style="width:100%;text-align:right;"><button type="button" class="load_reply" id="all_replies_<%= @product_comment.id %>">View all</button></div>
+<% end %>

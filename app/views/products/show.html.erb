@@ -130,7 +130,7 @@
                 <% if !@product.comments.empty? %>
                   <div class="product-comment-detail">
                     <h3>Comments</h3>
-                    <% product_comments = @product.comments.all.page(params[:page]).per(10) %>
+                    <% product_comments = @product.comments.all.where(:parent_id=>nil).page(params[:page]).per(10) %>
                     <% product_comments.each do |product_comment| %>
                         <div class="product-comment-info">
                           <div class="product-comment-user">
@@ -146,6 +146,7 @@
                           </div>
                           <div class="product-comment-date">
                             <span style="width:auto;display:inline;"><%= product_comment.created_at.strftime("%d/%m/%Y") + " at " + product_comment.created_at.strftime("%H:%M") %></span>
+                            <span class="reply"><i class="fa fa-reply" id="under-comment<%= product_comment.id %>"></i></span>
                             <% if product_comment.user == current_user %>
                               <span class="edit" data-toggle="tooltip" data-placement="left" title="Click on Comment to Edit">
                                   <i class="fa fa-pencil" id ="best_in_place_comment_<%= product_comment.id %>_description"></i>
@@ -162,12 +163,16 @@
                             <% end %>  
                           </div>
                         </div>
+                        <div id="comment_replies<%= product_comment.id %>">
+                          <%= render :partial => "product_comment_reply", :locals => {:@product_comment => product_comment} %>
+                        </div>
+                                
                     <% end %>
                     <div style="text-align:center;">
                       <%= paginate product_comments %>
                     </div>
                   </div>
-                  <div class="product-comment-detail under-comment">
+                  <div class="product-comment-detail under-comment" >
                     <div class="product-comment-body">
                       <div class="new_comment_field">
                         <%= form_for @product , url: product_comments_product_path(@product), :method => :post do |f| %>

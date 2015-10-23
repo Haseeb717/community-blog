@@ -45,20 +45,21 @@
             <div class="home-comment-content">
               <div class="home-comment-person">
                 <h3 class="comment-person-first">
-                  <% if product.comments.last.user.images.nil? || product.comments.last.user.images.empty? %>
-                    <span><%= link_to image_tag("user.png", :class=>"product_user_default_pic"),profile_path(product.comments.last.user) %></span>
+                  <% product_comment = product.comments.all.where(:parent_id=>nil).last %>
+                  <% if product_comment.user.images.nil? || product_comment.user.images.empty? %>
+                    <span><%= link_to image_tag("user.png", :class=>"product_user_default_pic"),profile_path(product_comment.user) %></span>
                   <% else %>
-                    <span><%= link_to image_tag(product.comments.last.user.images.last.avatar.url(:small),:class=>"non-default"),profile_path(product.comments.last.user) %></span>
+                    <span><%= link_to image_tag(product_comment.user.images.last.avatar.url(:small),:class=>"non-default"),profile_path(product_comment.user) %></span>
                   <% end %>
-                  <%= link_to product.comments.last.user.name, profile_path(product.comments.last.user) %>
+                  <%= link_to product_comment.user.name, profile_path(product_comment.user) %>
                 </h3>
               </div>
               <div class="home-comment-descrip">
                 <div class="text-field">
-                  <p><%= product.comments.last.description %></p>
+                  <p><%= product_comment.description %></p>
                 </div>
                 <div class="product-comment-date">
-                  <span style="width:auto;display:inline;"><%= product.comments.last.created_at.strftime("%d/%m/%Y") + " at " + product.comments.last.created_at.strftime("%H:%M") %></span>
+                  <span style="width:auto;display:inline;"><%= product_comment.created_at.strftime("%d/%m/%Y") + " at " + product_comment.created_at.strftime("%H:%M") %></span>
                   <span style="width:auto;display:inline;"><img src="/assets/img-8.png" alt="Img 8"></span>
                 </div>  
               </div>

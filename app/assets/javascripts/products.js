@@ -74,9 +74,37 @@ $(document).ready(function(){
         alert("Fill previous one first")
       }
     });
+
     $(document).on('click', '.fa-pencil', function(){
       var t = $(this).attr('id');
       $('.text-field #'+t).click();
+    });
+
+    $(document).on('click', '.fa-reply', function(){
+      var t = $(this).attr('id');
+      $("#"+t+"div").show();
+    });
+
+    $(document).on('keypress', '.reply-comment',function(e){
+        if (e.keyCode == 13 && !e.shiftKey) {
+            var comment = $(this).val();
+            var current_id = $(this).attr('id');
+            var product_id = $("#product_id").val();
+            var url_link = '/products/'+product_id+'/product_reply_comment';
+            $.ajax({
+                url: url_link,
+                type: "POST",
+                data: {parent_id: current_id, id: product_id,comment: comment}
+                
+            });
+        }
+
+    });
+
+    $(document).on('click','.load_reply',function(e){
+      var t = $(this).attr('id');
+      $("#"+t+"div").show();
+      $(this).hide();
     });
 
  });
