@@ -83,6 +83,7 @@ $(document).ready(function(){
     $(document).on('click', '.fa-reply', function(){
       var t = $(this).attr('id');
       $("#"+t+"div").show();
+      
     });
 
     $(document).on('keypress', '.reply-comment',function(e){
